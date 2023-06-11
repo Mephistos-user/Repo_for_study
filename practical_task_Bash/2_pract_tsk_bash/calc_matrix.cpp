@@ -19,9 +19,9 @@ void sizeError() {
         cout << "Неправильный размер матриц!\nПеремножение невозможно!\n";
         cout << "(Количество столбцов матрицы1 должно быть равно количеству строк матрицы2)\n";
         cout << "Ввести размеры повторно?(y/n)" << endl;
-        string answ;
+        char answ;
         cin >> answ;
-        if(answ=="y"){
+        if(answ=='y'){
             // ввод размеров матриц повторно
             sizeMatric();
         } else exit(0);
@@ -36,52 +36,64 @@ sizeError();
 //задаем размеры матриц на основе введенных данных
 int arr_1[row_1][column_1], arr_2[row_2][column_2], arr_3[row_1][column_2];
 
-// вводим значения в матрицу 1:
-cout << "Введите " << row_1*column_1 << " значений матрицы 1:" << endl;
-for (int i=0;i<row_1;++i)
+cout << "Ввести случайные значения в матрицы (r) или ввести вручную (m)?" << endl;
+char answer;
+cin >> answer;
+if (answer == 'r')
 {
-    for(int j=0;j<column_1;++j)
-    {
-        cin >> arr_1[i][j];
+    // вводим случайные значения в матрицу 1:
+    for (int i = 0; i < row_1; i++) {
+        for (int j = 0; j < column_1; j++) {
+            arr_1[i][j] = 0;
+            arr_1[i][j] = rand() % 1000;
+        }
     }
-}
-// вводим значения в матрицу 2:
-cout << "Введите " << row_2*column_2 << " значений матрицы 2:" << endl;
-for (int i=0;i<row_2;++i)
-{
-    for(int j=0;j<column_2;++j)
-    {
-        cin >> arr_2[i][j];
+    // вводим случайные значения в матрицу 2:
+    for (int i = 0; i < row_2; i++) {
+        for (int j = 0; j < column_2; j++) {
+            arr_2[i][j] = 0;
+            arr_2[i][j] = rand() % 1000;
+        }
+    }
+} else {
+    // вводим значения в матрицу 1 вручную:
+    cout << "Введите " << row_1*column_1 << " значений матрицы 1:" << endl;
+    for (int i=0; i < row_1; ++i) {
+        for(int j=0; j < column_1; ++j) {
+            arr_1[i][j] = 0;
+            cin >> arr_1[i][j];
+        }
+    }
+    // вводим значения в матрицу 2 вручную:
+    cout << "Введите " << row_2*column_2 << " значений матрицы 2:" << endl;
+    for (int i=0; i < row_2; ++i) {
+        for(int j=0; j < column_2; ++j) {
+            arr_2[i][j] = 0;
+            cin >> arr_2[i][j];
+        }
     }
 }
 // выводим значения из матрицы 1:
 cout << "матрица 1:" << endl;
-for (int i=0;i<row_1;++i)
-{
-    for(int j=0;j<column_1;++j)
-    {
+for (int i=0;i<row_1;++i){
+    for(int j=0;j<column_1;++j) {
         cout << arr_1[i][j] << " ";
     }
     cout << endl;
 }
 // выводим значения из матрицы 2:
 cout << "матрица 2:" << endl;
-for (int i=0;i<row_2;++i)
-{
-    for(int j=0;j<column_2;++j)
-    {
+for (int i=0;i<row_2;++i){
+    for(int j=0;j<column_2;++j) {
         cout << arr_2[i][j] << " ";
     }
     cout << endl;
 }
-
-// вычисляем и записываем значения в матрицу3
+// вычисляем и записываем значения в матрицу 3:
 for(int i=0;i < row_1; ++i){
     for (int j=0;j<column_2; ++j){
         for (int n=0; n<column_1; ++n){
-            // обнуляем значения матрицы 3
-            arr_3[i][j]=0;
-            // записываем значения
+            arr_3[i][j]=0; // обнуляем значения матрицы 3
             arr_3[i][j]=arr_3[i][j]+arr_1[i][n]*arr_2[n][j];
         }
     }
@@ -94,6 +106,7 @@ for (int i=0;i<row_1;++i){
     }
     cout << endl;
 }
+    cout << endl;
     cout << "runtime = " << clock()/1000.0 << endl; // время работы программы 
     return 0;
 }
