@@ -1,12 +1,7 @@
 #include <iostream>
 #include <ctime>
-
-#include <stdio.h>
-#include <stdlib.h>//??????
-#include <string.h>
-#include <sys/types.h>//??????
-#include <sys/wait.h>//???????
-#include <unistd.h> // библиотека дает возможность использовать fork() - создатель процессов
+#include <sys/wait.h>
+#include <unistd.h> // библиотека дает возможность работать с процессами
 using namespace std;
 
 // задаем переменные размера матриц
@@ -65,23 +60,23 @@ int main()
             }
         }
         } else {
-        // вводим значения в матрицу 1 вручную:
-        cout << "Введите " << row_1*column_1 << " значений матрицы 1:" << endl;
-        for (int i=0; i < row_1; ++i) {
-            for(int j=0; j < column_1; ++j) {
-                arr_1[i][j] = 0;
-                cin >> arr_1[i][j];
+            // вводим значения в матрицу 1 вручную:
+            cout << "Введите " << row_1*column_1 << " значений матрицы 1:" << endl;
+            for (int i=0; i < row_1; ++i) {
+                for(int j=0; j < column_1; ++j) {
+                    arr_1[i][j] = 0;
+                    cin >> arr_1[i][j];
+                }
+            }
+            // вводим значения в матрицу 2 вручную:
+            cout << "Введите " << row_2*column_2 << " значений матрицы 2:" << endl;
+            for (int i=0; i < row_2; ++i) {
+                for(int j=0; j < column_2; ++j) {
+                    arr_2[i][j] = 0;
+                    cin >> arr_2[i][j];
+                }
             }
         }
-        // вводим значения в матрицу 2 вручную:
-        cout << "Введите " << row_2*column_2 << " значений матрицы 2:" << endl;
-        for (int i=0; i < row_2; ++i) {
-            for(int j=0; j < column_2; ++j) {
-                arr_2[i][j] = 0;
-                cin >> arr_2[i][j];
-            }
-        }
-    }
     for(int i=0; i < row_1; ++i){
             for (int j=0; j<column_2; ++j){
                 arr_3[i][j] = 0; // обнуляем значения матрицы 3
@@ -89,8 +84,8 @@ int main()
     }
 
     // делим вычисления значений матрицы 3 на два процесса:
-    int fd1[2]; // Used to store two ends of first pipe 
-    int fd2[2]; // Used to store two ends of second pipe
+    int fd1[2];
+    int fd2[2];
 
     pid_t p;
 
@@ -112,56 +107,57 @@ int main()
         fprintf(stderr, "fork Failed");
         return 1;
     }
-    // Parrent process
+    // Родительский процесс
     else if (p > 0)
     {
-        int arr_3[100][100];
+        int tempArr[100][100];
         
-        close(fd1[0]);
-
-        wait(NULL);
-
-        close(fd2[1]); // Close writing end of second pipe
-        // Read string from child, print it and close
-        // reading end.
-        read(fd2[0], arr_3, 10000);
-
-            // выводим значения из матрицы 1:
-            cout << "матрица 1:" << endl;
-            for (int i=0;i<row_1;++i) {
-                for(int j=0;j<column_1;++j) {
+        // выводим значения из матрицы 1:
+        cout << "матрица 1:" << endl;
+        for (int i=0;i<row_1;++i) {
+            for(int j=0;j<column_1;++j) {
                     cout << arr_1[i][j] << " ";
-                }
-                cout << endl;
             }
-            // выводим значения из матрицы 2:
-            cout << "матрица 2:" << endl;
-            for (int i=0;i<row_2;++i) {
-                for(int j=0;j<column_2;++j) {
-                    cout << arr_2[i][j] << " ";
-                }
-                cout << endl;
+            cout << endl;
+        }
+        // выводим значения из матрицы 2:
+        cout << "матрица 2:" << endl;
+        for (int i=0;i<row_2;++i) {
+            for(int j=0;j<column_2;++j) {
+                cout << arr_2[i][j] << " ";
             }
-            // выводим значения из матрицы 3:
-            cout << "Результат умножения - матрица 3:" << endl;
-            for (int i=0;i<row_1;++i) {
-                for(int j=0;j<column_2;++j){
-                    cout << arr_3[i][j] << " ";
-                }
-                cout << endl;
-            }
+            cout << endl;
+        }
 
-        close(fd1[0]);// Close reading end of first pipe
+        close(fd1[0]); // закрываем запись первого пайпа
+
+        wait(NULL); // ожидаем данные от ребенка
+
+        close(fd2[1]); // закрываем чтение второго пайпа
+        // считываем данные от ребенка
+        read(fd2[0], arr_3, 10000);
+        
+
+        // выводим значения из матрицы 3:
+        cout << "Результат умножения - матрица 3:" << endl;
+        for (int i=0;i<row_1;++i) {
+            for(int j=0;j<column_2;++j){
+                cout << arr_3[i][j] << " ";
+            }
+            cout << endl;
+        }
+
+        close(fd1[0]);// закрываем чтение первого и второго пайпа
         close(fd2[0]);
     
             cout << endl;
             cout << "runtime = " << clock()/1000.0 << endl; // время работы программы 
     }
-    // child process
+    // процесс ребенок
     else
     {
-        int arr_3[100][100];
-        close(fd1[1]); // Close writing end of first pipe
+        int tempArr[100][100];
+        close(fd1[1]); // закрываем запись первого пайпа
         // вычисляем и записываем значения во временный массив:
         for(int i=0; i < row_1; ++i){
             for (int j=0; j<column_2; ++j){
@@ -172,11 +168,11 @@ int main()
             }
         }
                     cout << endl;
-                    // Close both reading ends
+                    // закрываем чтение обоих концов
                     close(fd1[0]);
                     close(fd2[0]);
                     
-                    // Write concatenated string and close writing end
+                    // записываем массив в конец и закрываем запись конца второго пайпа10
                     write(fd2[1], arr_3, 10000);
                     close(fd2[1]);
     }

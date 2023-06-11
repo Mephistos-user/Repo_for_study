@@ -1,12 +1,7 @@
 #include <iostream>
 #include <ctime>
-
-#include <stdio.h>
-#include <stdlib.h>//??????
-#include <string.h>
-#include <sys/types.h>//??????
-#include <sys/wait.h>//???????
-#include <unistd.h> // библиотека дает возможность использовать fork() - создатель процессов
+#include <sys/wait.h>
+#include <unistd.h> // библиотека дает возможность работать с процессами
 using namespace std;
 
 // задаем переменные размера матриц
