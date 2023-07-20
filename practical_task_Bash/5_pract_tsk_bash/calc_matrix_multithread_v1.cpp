@@ -5,10 +5,6 @@
 
 using namespace std;
 
-
-
-
-
 //задать размеры матриц
 // задаем переменные размера матриц
 int row_1, column_1, row_2, column_2, row_thread;
@@ -43,9 +39,6 @@ void sizeError()
     }
 }
 
-
-
-
 //функция вычисления матрицы (вектора)
 // вычисляем и записываем значения в матрицу 3:
 
@@ -66,7 +59,6 @@ void* calc_matrix (int t)
 
 int main ()
 {
-
     sizeMatric();
     sizeError();
 
