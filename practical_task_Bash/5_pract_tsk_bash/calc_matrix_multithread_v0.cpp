@@ -1,6 +1,11 @@
 #include <iostream>
 #include <ctime>
+#include <thread>
+#include <vector>
+
 using namespace std;
+
+
 
 // задаем переменные размера матриц
 int row_1, column_1, row_2, column_2;
@@ -29,6 +34,9 @@ void sizeError() {
 }
 
 int main() {
+//may return 0 when not able to detect
+const auto processor_count = thread::hardware_concurrency();
+cout << "Колличество доступных ядер = " << processor_count << endl;
 
 sizeMatric();
 sizeError();
