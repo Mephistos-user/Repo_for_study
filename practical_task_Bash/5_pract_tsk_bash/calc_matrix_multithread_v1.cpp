@@ -116,6 +116,15 @@ int main ()
         }
     }
 
+    vector <thread> vector_thread;
+    for(int t = 1; t <= num_thread; ++t)
+    {
+        vector_thread.push_back (thread(calc_matrix(t)));
+    }
+    
+
+
+
     // выводим значения из матрицы 1:
     cout << "матрица 1:" << endl;
     for (int i=0;i<row_1;++i){
@@ -132,12 +141,7 @@ int main ()
         }
         cout << endl;
     }
-    vector <thread> vector_thread;
-    for(int t = 1; t <= num_thread; ++t)
-    {
-        vector_thread.push_back (thread(calc_matrix(t)));
-    }
-    for(int t = 1; t <= num_thread; ++t)
+for(int t = 1; t <= num_thread; ++t)
     {    
         vector_thread.at (t).join ();
     }
@@ -146,3 +150,6 @@ int main ()
 
     return 0;
 }
+
+// g++ -o calc.out calc_matrix_multithread_v1.cpp -lpthread
+// ./calc.out
