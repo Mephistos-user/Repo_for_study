@@ -3,6 +3,7 @@
 #include <thread>
 #include <vector>
 #include <chrono>
+#include <fstream>
 
 using namespace std;
 
@@ -228,31 +229,6 @@ if (answer == 'r')
         vec_thrd.push_back (thread(calc_matrix, t));
     }
     
-    // выводим значения из матрицы 1:
-    cout << "матрица 1:" << endl;
-    for (int i=0;i<row_1;++i)
-    {
-        for(int j=0;j<column_1;++j)
-        {
-            cout << arr_1[i][j] << " ";
-        }
-        cout << endl;
-    }
-    // выводим значения из матрицы 2:
-    cout << "матрица 2:" << endl;
-    for (int i=0;i<row_2;++i)
-    {
-        for(int j=0;j<column_2;++j)
-        {
-            cout << arr_2[i][j] << " ";
-        }
-        cout << endl;
-    }
-   
-
-
-
-
     for(int t = 0; t < num_core; ++t)
     {    
         vec_thrd.at (t).join ();// ожидаем завершения всех потоков и записи значений в матрицу3
@@ -262,16 +238,93 @@ if (answer == 'r')
 
 
     // выводим значения из матрицы 3:
-    cout << "Результат умножения - матрица 3:" << endl;
-    for (int i=0;i<row_1;++i) 
-    {
-        for(int j=0;j<column_2;++j)
-        {
-            cout << arr_3[i][j] << " ";
-        }
-        cout << endl;
-    }
+    cout << "Вывести результат вычислений матриц в файл (f) или в терминал (t)?" << endl;
 
+cin >> answer;
+if (answer == 'f')
+{
+
+
+    ofstream ofile("matrix_result.txt", ios::out);
+    if (ofile.is_open())
+    {
+        // выводим значения из матрицы 1:
+        ofile << "матрица 1:" << endl;
+        for (int i=0;i<row_1;++i)
+        {
+            for(int j=0;j<column_1;++j)
+            {
+                ofile << arr_1[i][j] << " ";
+                
+            }
+            ofile << endl;
+            
+        }
+        ofile << endl;
+    
+    // выводим значения из матрицы 2:
+        ofile << "матрица 2:" << endl;
+        for (int i=0;i<row_2;++i)
+        {
+            for(int j=0;j<column_2;++j)
+            {
+                ofile << arr_2[i][j] << " ";
+            }
+            ofile << endl;
+        }
+        ofile << endl;
+
+        cout << "Результаты умножения - матриц1,2 и 3 выведены в файл: matrix_result.txt" << endl;
+        ofile << "Результат умножения - матрица 3" << endl;
+        for (int i=0;i<row_1;++i) 
+        {
+            for(int j=0;j<column_2;++j)
+            {
+                ofile << arr_3[i][j] << " ";
+            }
+            ofile << endl;
+        }
+    }
+}else
+{
+        // выводим значения из матрицы 1:
+        cout << "матрица 1:" << endl;
+        for (int i=0;i<row_1;++i)
+        {
+            for(int j=0;j<column_1;++j)
+            {
+                cout << arr_1[i][j] << " ";
+                
+            }
+            cout << endl;
+            
+        }
+        
+    
+    // выводим значения из матрицы 2:
+        cout << "матрица 2:" << endl;
+        for (int i=0;i<row_2;++i)
+        {
+            for(int j=0;j<column_2;++j)
+            {
+                cout << arr_2[i][j] << " ";
+            }
+            cout << endl;
+        }
+
+        cout << "Результат умножения - матрица 3:" << endl;
+        for (int i=0;i<row_1;++i) 
+        {
+            for(int j=0;j<column_2;++j)
+            {
+                cout << arr_3[i][j] << " ";
+                
+            }
+            cout << endl;
+            
+        }
+    
+}    
 
     
 
