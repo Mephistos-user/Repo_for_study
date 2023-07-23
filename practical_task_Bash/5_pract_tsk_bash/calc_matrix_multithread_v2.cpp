@@ -47,6 +47,29 @@ void sizeError()
     }
 }
 
+// функция ввода случайных значений в матрицу 1:
+void farr1()
+{
+    for (int i = 0; i < row_1; i++)
+    {
+        for (int j = 0; j < column_1; j++)
+        {                
+            arr_1[i][j] = rand() % 1000;
+        }
+    }
+}
+// функция ввода случайных значений в матрицу 2:
+void farr2()
+{
+    for (int i = 0; i < row_2; i++)
+    {
+        for (int j = 0; j < column_2; j++)
+        {                
+            arr_1[i][j] = rand() % 1000;
+        }
+    }
+}
+
 //функция вычисления матрицы (вектора)
 // вычисляем и записываем значения в матрицу 3:
 
@@ -176,21 +199,11 @@ int main ()
     if (answer == 'r')
     {
         // вводим случайные значения в матрицу 1:
-        for (int i = 0; i < row_1; i++)
-        {
-            for (int j = 0; j < column_1; j++)
-            {                
-                arr_1[i][j] = rand() % 1000;
-            }
-        }
+        thread f1(farr1);
         // вводим случайные значения в матрицу 2:
-        for (int i = 0; i < row_2; i++)
-        {
-            for (int j = 0; j < column_2; j++)
-            {                
-                arr_2[i][j] = rand() % 1000;
-            }
-        }
+        thread f2(farr2);
+        f1.join();
+        f2.join();
     } else
     {
         // вводим значения в матрицу 1 вручную:
@@ -212,7 +225,7 @@ int main ()
             }
         }
     }
-
+    auto start = chrono::steady_clock::now();
     // создаем вектор потоков и записываем в него создаваемые потоки   
     vector <thread> vec_thrd;
     for(int t = 1; t <= num_core; t++)
@@ -224,7 +237,7 @@ int main ()
     {    
         vec_thrd.at (t).join ();// ожидаем завершения всех потоков и записи значений в матрицу3
     }
-    
+    auto end = chrono::steady_clock::now();
     // выводим значения из матрицы 3:
     cout << "Вывести результат вычислений матриц в файл (f) или в терминал (t)?" << endl;
 
@@ -307,8 +320,15 @@ int main ()
             cout << endl;
         }
     }
+    //очистка векторов
+    arr_1.clear();
+    arr_2.clear();
+    arr_3.clear();
 
-    cout << "runtime = " << clock()/1000.0 << "ms" << endl; // время работы программы
+    //время работы программы
+    
+    cout << "Время вычислений в паралельных потоках = " << chrono::duration_cast<chrono::milliseconds>(end - start).count() << "ms" << endl;
+    
     return 0;
 }
 
