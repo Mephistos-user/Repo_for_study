@@ -1,6 +1,5 @@
 #include <iostream>
 #include <ctime>
-//#include <pthread.h>
 #include <thread>
 #include <vector>
 #include <chrono>
@@ -156,6 +155,7 @@ void calc_matrix (int t)
 
 int main ()
 {
+    
     setlocale (LC_ALL, "ru");
     sizeMatric();
     sizeError();
@@ -274,6 +274,8 @@ if (answer == 'r')
 
 
     
+
+    cout << "runtime = " << clock()/1000.0 << "ms" << endl; // время работы программы
     return 0;
 }
 
