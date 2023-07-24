@@ -65,7 +65,7 @@ void farr2()
     {
         for (int j = 0; j < column_2; j++)
         {                
-            arr_1[i][j] = rand() % 1000;
+            arr_2[i][j] = rand() % 1000;
         }
     }
 }
@@ -202,8 +202,8 @@ int main ()
         thread f1(farr1);
         // вводим случайные значения в матрицу 2:
         thread f2(farr2);
-        f1.join();
         f2.join();
+        f1.join();
     } else
     {
         // вводим значения в матрицу 1 вручную:
