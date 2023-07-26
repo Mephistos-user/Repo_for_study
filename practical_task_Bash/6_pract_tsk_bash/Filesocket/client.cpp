@@ -7,20 +7,25 @@
 #include <stdlib.h>
 
 //#define SOCKET_NAME "/home/mephistos/my_project/6_Sockets/Filesocket/server.soc"
+char SOCKET_NAME[256];
 
 int main()
 {
+    //определяем текущую дирректорию
+    char temp_name[256];
+    getcwd(SOCKET_NAME, 256);
+    strcat(SOCKET_NAME, "/");
+    printf("Текущая дирриктория:\n%s\n", SOCKET_NAME);
+
+    printf("Введите название сокета:\n");
+    scanf("%s", temp_name);
+    
     char _soc[5] = ".soc";
-    char SOCKET_NAME [100];
-    scanf("%s", SOCKET_NAME);
-    strncat(SOCKET_NAME, _soc, 5);
+    strncat(temp_name, _soc, 5);
+    strncat(SOCKET_NAME, temp_name, 256);
 
-    /*if (argc != 2)
-    {
-        printf("./client.out <message>\n");
-        return -1;
-    }*/
-
+    printf("Имя сокета\n%s\n", SOCKET_NAME);
+  
     int sfd = socket(AF_UNIX, SOCK_DGRAM, 0);
     if (sfd == -1)
     {
@@ -39,7 +44,7 @@ int main()
         return errno;
     }
 
-    char *msg = SOCKET_NAME;
+    char *msg = temp_name;
     if (send(sfd, msg, strlen(msg), 0) == -1)
     {
         perror("send call error");
@@ -47,19 +52,9 @@ int main()
     }
     else
     {
-        printf("send message: %s\n", msg);
+        printf("send message:\nИмя сокета: %s\n", msg);
     }
-
-    if (send(sfd, msg, strlen(msg), 0) == -1)
-    {
-        perror("send call error");
-        return errno;
-    }
-    else
-    {
-        printf("send message: %s\n", msg);
-    }
-
+ 
     close(sfd);
 
     return 0;

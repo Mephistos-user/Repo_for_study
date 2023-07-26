@@ -3,10 +3,10 @@
 CC = g++
 
 .PHONY: all 
-all: server.out client.out
+all: server0.out server1.out client.out
 
 %.out: %.cpp
 	$(CC) -o $@ $^
 
 clean:
-	rm -rf *.out
+	rm -rf *.out *.soc
