@@ -44,35 +44,21 @@ int main(int argc, char *argv[])
 
     int bytes;
     char bufServer[BUFSIZ];
+        
+    printf("Введите название сокета: ");
+    scanf("%s", buf);
 
-    //while (TRUE)
-    //{
-        printf("Введите число: ");
-        scanf("%s", buf);
+    if (send(sock, buf, strlen(buf) + 1, 0) < 0)
+    {
+        perror("Error: sendto() failed");
+        return -1;
+    }
 
-        if (send(sock, buf, strlen(buf) + 1, 0) < 0)
-        {
-            perror("Error: sendto() failed");
-            return -1;
-        }
+    printf("Название сокета отправлено!\n");
 
-        printf("Число отправлено!\n");
-        /*int buf1[100] = serv_addr.
-        char buf = (char) buf1;
-        if (send(sock, buf, strlen(buf) + 1, 0) < 0)
-        {
-            perror("Error: sendto() failed");
-            return -1;
-        }
+    bytes = recv(sock, bufServer, sizeof(bufServer), 0);
 
-        printf("Адресс: %d!\n", buf);*/
-
-
-
-        bytes = recv(sock, bufServer, sizeof(bufServer), 0);
-
-        printf("\nОтвет сервера: %s\n\n", bufServer);
-    //}
+    printf("\nОтвет сервера: %s\n\n", bufServer);
 
     close(sock);
 

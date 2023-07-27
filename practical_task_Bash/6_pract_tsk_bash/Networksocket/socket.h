@@ -2,7 +2,7 @@
 
 #define _SOCKET_H_
 
-#define PORT 9877
+#define PORT 9001
 
 #define MAX_LEN_BUF 64
 

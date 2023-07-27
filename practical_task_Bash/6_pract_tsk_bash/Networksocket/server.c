@@ -17,6 +17,7 @@
 
 int main(int argc, char *argv[])
 {
+       
     setbuf(stdout, NULL);
 
     int arr_sock[MAX_COUNT_SOCK] = {0};
@@ -106,7 +107,7 @@ int main(int argc, char *argv[])
                 if (arr_sock[i] == 0)
                 {
                     arr_sock[i] = newsock;
-                    printf("Клиент номер %d\n", i);
+                    printf("Клиент номер %d подключен\n", i);
                     flag = 0;
                 }
             }
@@ -134,18 +135,10 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    int number = atoi(buf);
-
-                    if (number)
-                    {
-                        printf("Клиент номер %d Result: %d\n", i, number);
-                    }
-                    else
-                    {
-                        printf("Клиент номер %d. \"%s\" не является числом!\n", i, buf);
-                    }
-
+                    printf("Сообщение от клиента номер %d : %s\n", i, buf);
+                    
                     // Response to the client
+                    strcat(bufSend, "Сообщение доставленно на сервер!");
                     if (send(arr_sock[i], bufSend, strlen(bufSend) + 1, 0) < 0)
                     {
                         perror("Error: sendto fail");
