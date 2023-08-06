@@ -5,21 +5,18 @@ name = input()
 pets[name] = dict()
 
 print("Введите вид питомца:")
-animal = input()
-pets[name]['Вид питомца'] = animal
+pets[name]['Вид питомца'] = input()
 
 print("Введите возраст питомца:")
-age = int(input())
-pets[name]['Возраст питомца'] = age
+pets[name]['Возраст питомца'] = int(input())
 
 print("Введите имя владельца")
-host_name = input()
-pets[name]['Имя владельца'] = host_name
+pets[name]['Имя владельца'] = input()
 
 year = ''
-if (age % 10 == 1):
+if (pets[name]['Возраст питомца'] % 10 == 1):
     year = 'год'
-elif ((age % 10 >= 2) and (age % 10 <= 4)):
+elif ((pets[name]['Возраст питомца'] % 10 >= 2) and (pets[name]['Возраст питомца'] % 10 <= 4)):
     year = 'года'
 else:
     year = 'лет'
