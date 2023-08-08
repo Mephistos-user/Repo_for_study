@@ -2,10 +2,10 @@ import collections
 
 id = 0
 pets = dict()
-
+last = 0
 def create():
-    last = collections.deque(pets, maxlen=1)[0]
-    id = last
+    #last = collections.deque(pets, maxlen=1)[0]
+    #id = last
     pets[id] = dict()
     
     name = input('Введите кличку питомца: ')
@@ -22,13 +22,15 @@ def read():
     if get_pet(id) == False:
         return print(f'Питомца с ID = {id} нет в базе!')
     else:
-        pet = get_pet(id)
-        n = pet.keys
-        v = pet[name]['Вид питомца']
-        age = pet[name]['Возраст питомца']
-        h = pet[name]['Имя владельца']
+        pet = dict(get_pet(id))
+        k = pet.keys
+        #v = pet.values
 
-    print(f'Это {v}, по кличке \"{n}\". Возраст питомца: {age}, {get_suffix(age)}. Имя владельца: {h}')
+        v = pet[k[0]]['Вид питомца']
+        age = pet[k[0]]['Возраст питомца']
+        h = pet[k[0]]['Имя владельца']
+    #print(f'Это {v[1]}, по кличке \"{k[0]}\". Возраст питомца: {v[1]}, {get_suffix(v[1])}. Имя владельца: {v[2]}')
+    print(f'Это {v}, по кличке \"{k[0]}\". Возраст питомца: {age}, {get_suffix(age)}. Имя владельца: {h}')
 
 def update():
     id = int(input('Введите идентификатор: '))
@@ -69,6 +71,9 @@ def get_suffix(age):
 
 
 def pets_list():
-    for i in pets.keys:
+    for i in pets:
         print(get_pet(i))
 
+create()
+read()
+pets_list()
