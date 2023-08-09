@@ -86,6 +86,7 @@ command = ''
 
 while command != 'stop':
     command = input('Введите команду: ')
+    
     if command == 'create': create()
     elif command == 'read': read()
     elif command == 'update': update()
