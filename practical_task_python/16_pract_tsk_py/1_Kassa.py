@@ -1,4 +1,4 @@
-class Cassa(object):
+class Kassa(object):
 
     ballans = 0
 
@@ -17,7 +17,7 @@ class Cassa(object):
         else:
             self.ballans -= y
 
-b = Cassa(3000)#Начальный баланс 3000
+b = Kassa(3000)#Начальный баланс 3000
 b.count_1000()#количество целых тысяч
 b.top_up(500)#пополняем баланс на 500
 print(b.ballans)#проверяем остаток баланса

@@ -1,8 +1,8 @@
 x = 0
 y = 0
-s = 15
+s = 6
 
-x2 = 18
+x2 = 14
 y2 = 11
 
 delta_x = abs(x2 - x)
@@ -77,8 +77,15 @@ for i in range(start_iter1, end_iter1, iter1):
     res_x.append(i)#возможная длина шага
     optim_x.append(delta1 // i)#количество шагов по длине шага
     ostat_x.append(delta1 % i)#оставшееся расстояние
-
-    if i == s and delta1 % i == 0 and delta1 >= i:
+    
+    if delta1 == s == i:
+        dey_x.append(1)
+    #elif i >= delta1 // 2 and i > s and i < delta1:
+     #   dey_x.append(abs(s - delta1) + 1)
+    elif i >= delta1 // 2 and i <= s and i < delta1:
+        dey_x.append(abs(s - i) + 1 + abs(i - abs(delta1 - i)) + 1)
+        
+    elif i == s and delta1 % i == 0 and delta1 >= i:
         dey_x.append(delta1 // i)
     elif i > delta1:
         dey_x.append(abs(s - delta1) + 1)
@@ -86,7 +93,7 @@ for i in range(start_iter1, end_iter1, iter1):
         dey_x.append(abs(s - delta1) + 1)
     #elif i == s:
      #   dey_x.append((delta1 // i) + (i - (delta1 % i)) + 1)
-    elif delta1 % i == 0:
+    elif delta1 % i == 0 and i != s:
         dey_x.append(abs(i - s) + (delta1 // i))
     else:
         dey_x.append(abs(i - s) + 1 + (delta1 // i))
