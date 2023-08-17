@@ -81,3 +81,23 @@ class Map():
                     self.cells[ri][ci] = 0
         for i in range(5):
             self.add_fire()
+
+
+    def process_helicopter(self, helico):
+        c = self.cells[helico.x][helico.y]
+        if (c == 2):
+            helico.tang = helico.max_tang
+        elif (c == 5 and helico.tang > 0):
+            helico.tang -= 1
+            self.cells[helico.x][helico.y] = 1
+
+
+
+
+
+
+
+
+
+
+

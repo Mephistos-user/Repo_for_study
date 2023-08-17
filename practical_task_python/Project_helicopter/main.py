@@ -41,7 +41,8 @@ while True:
     os.system("cls") # clear для linux
     print(helico.x, helico.y)
     print("TICK", tick)
-    helico.print_menu()
+    field.process_helicopter(helico)
+    helico.print_stat()
     field.print_map(helico)
     tick += 1
     time.sleep(TICK_SLEEP)

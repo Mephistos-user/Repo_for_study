@@ -17,5 +17,5 @@ class Helicopter:
         if (nx >= 0 and ny >= 0 and nx < self.h and ny < self.w):
             self.x, self.y = nx, ny
 
-    def print_menu(self):
+    def print_stat(self):
         print('🛢️', self.tang, '/', self.max_tang, '💗', self.hp, '💰', self.point)
