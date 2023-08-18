@@ -42,34 +42,13 @@ Back to top1. Emoticons ( 1F601 - 1F64F )
 😹 U+1F639	\xF0\x9F\x98\xB9	cat face with tears of joy
 😺 U+1F63A	\xF0\x9F\x98\xBA	smiling cat face with open mouth
 😻 U+1F63B	\xF0\x9F\x98\xBB	smiling cat face with heart-shaped eyes
-😼
-😼
-😼
-U+1F63C	\xF0\x9F\x98\xBC	cat face with wry smile
-😽
-😽
-😽
-U+1F63D	\xF0\x9F\x98\xBD	kissing cat face with closed eyes
-😾
-😾
-😾
-U+1F63E	\xF0\x9F\x98\xBE	pouting cat face
-😿
-😿
-😿
-U+1F63F	\xF0\x9F\x98\xBF	crying cat face
-🙀
-🙀
-🙀
-U+1F640	\xF0\x9F\x99\x80	weary cat face
-🙅
-🙅
-🙅
-U+1F645	\xF0\x9F\x99\x85	face with no good gesture
-🙆
-🙆
-🙆
-U+1F646	\xF0\x9F\x99\x86	face with ok gesture
+😼 U+1F63C	\xF0\x9F\x98\xBC	cat face with wry smile
+😽 U+1F63D	\xF0\x9F\x98\xBD	kissing cat face with closed eyes
+😾 U+1F63E	\xF0\x9F\x98\xBE	pouting cat face
+😿 U+1F63F	\xF0\x9F\x98\xBF	crying cat face
+🙀 U+1F640	\xF0\x9F\x99\x80	weary cat face
+🙅 U+1F645	\xF0\x9F\x99\x85	face with no good gesture
+🙆 U+1F646	\xF0\x9F\x99\x86	face with ok gesture
 🙇
 🙇
 🙇
@@ -2810,10 +2789,7 @@ U+1F634	\xF0\x9F\x98\xB4	sleeping face
 U+1F636	\xF0\x9F\x98\xB6	face without mouth
 Back to top6b. Additional transport and map symbols ( 1F681 - 1F6C5 )
 Native [1]	Apple [2]	Android [3]	Android [3]	Symbola [4]	Twitter [5]	Unicode	Bytes (UTF-8)	Description
-🚁
-🚁
-🚁
-U+1F681	\xF0\x9F\x9A\x81	helicopter
+🚁 U+1F681	\xF0\x9F\x9A\x81	helicopter
 🚂
 🚂
 🚂
