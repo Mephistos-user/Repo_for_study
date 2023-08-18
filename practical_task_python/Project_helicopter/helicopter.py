@@ -30,3 +30,19 @@ class Helicopter:
         print("🟧                                🟧")
         print("🟧"*18)
         exit(0)
+
+    def export_data(self):
+        return {"score": self.point,
+                "lives": self.hp,
+                "x": self.x,
+                "y": self.y,
+                "tang": self.tang,
+                "mxtang": self.max_tang }
+    
+    def import_data(self, data):
+        self.x = data["x"] or 0
+        self.y = data["y"] or 0
+        self.tang = data["tang"] or 0
+        self.max_tang = data["mxtang"] or 1
+        self.hp = data["lives"] or 3
+        self.point = data["score"] or 0
