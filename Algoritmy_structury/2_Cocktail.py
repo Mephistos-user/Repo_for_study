@@ -18,22 +18,30 @@ print("-------")
 ########################################################
 left_index = 0
 rigth_index = n - 1
-
+is_sorted = True# флаг проверки были ли сделаны перестановки в текущем проходе
 while left_index <= rigth_index:
     for i in range(left_index, rigth_index):
         left = arr[i]
         rigth = arr[i + 1]
         if left > rigth:# если условие left < rigth то сортировка по убыванию 
+            is_sorted = False# если изменения есть то флаг False
             arr[i] = rigth
             arr[i + 1] = left
     rigth_index = rigth_index - 1
+    print(arr)
     for i in range(rigth_index, left_index, -1):
         rigth = arr[i]
         left = arr[i - 1]
         if left > rigth:# если условие left < rigth то сортировка по убыванию 
+            is_sorted = False# если изменения есть то флаг False
             arr[i] = left
             arr[i - 1] = rigth
     left_index = left_index + 1
+    print(arr)
+    if is_sorted is True:
+        break
+    else:
+        is_sorted = True
 
 ########################################################
 
