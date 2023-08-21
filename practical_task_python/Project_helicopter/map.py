@@ -104,24 +104,29 @@ class Map():
     # функция генерация огня
     def add_fire(self):
         c = randcell(self.w, self.h)
-        cx,cy = c[0], c[1]
+        cx, cy = c[0], c[1]
         if self.cells[cx][cy] == 1:
             self.cells[cx][cy] = 5
-        # распространение огня
-        elif self.cells[cx][cy] == 5:
-            n = randcell2[cx][cy]
-            nx, ny = n[0], n[1]
-            if self.cells[nx][ny] == 1:
-                self.cells[nx][ny] = 5
-
+       
     # функция обновления огня
-    def update_fires(self):
+    def update_fires(self, helico):
         for ri in range(self.h):
             for ci in range(self.w):
                 cell = self.cells[ri][ci]
                 if cell == 5:
+                    if helico.point > 0:
+                        # количество очков отнимаемых за каждое сгоревшее дерево
+                        helico.point -= 10
+                    # распространение пожара
+                    move = [[-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0]]
+                    #n = randcell2(ri, ci)
+                    for n in move:
+                        nx, ny = n[0], n[1]
+                        if self.check_bounds(nx, ny) is True:
+                            if self.cells[nx][ny] == 1:
+                                self.cells[nx][ny] = 5
                     self.cells[ri][ci] = 0
-                    self.point -= 20
+
         for i in range(10):
             self.add_fire()
 
