@@ -106,7 +106,13 @@ class Map():
         c = randcell(self.w, self.h)
         cx,cy = c[0], c[1]
         if self.cells[cx][cy] == 1:
-            self.cells[cx][cy] =5
+            self.cells[cx][cy] = 5
+        # распространение огня
+        elif self.cells[cx][cy] == 5:
+            n = randcell2[cx][cy]
+            nx, ny = n[0], n[1]
+            if self.cells[nx][ny] == 1:
+                self.cells[nx][ny] = 5
 
     # функция обновления огня
     def update_fires(self):
@@ -115,6 +121,7 @@ class Map():
                 cell = self.cells[ri][ci]
                 if cell == 5:
                     self.cells[ri][ci] = 0
+                    self.point -= 20
         for i in range(10):
             self.add_fire()
 
