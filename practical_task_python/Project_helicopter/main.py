@@ -6,11 +6,11 @@ import os
 import json
 from helicopter import Helicopter as Helico
 
-TICK_SLEEP = 0.05
-TREE_UPDATE = 50
-CLOUDS_UPDATE = 100
-FIRE_UPDATE = 75
-MAP_W, MAP_H = 20, 10
+TICK_SLEEP = 0.05     # скорость смены кадров
+TREE_UPDATE = 25      # частота появления новых деревьев
+CLOUDS_UPDATE = 100   # частота обновления облаков
+FIRE_UPDATE = 75      # частота распростронения огня / скорость горения
+MAP_W, MAP_H = 20, 10 # размеры поля
 
 field = Map(MAP_W, MAP_H)
 
@@ -50,7 +50,7 @@ listener = keyboard.Listener(
 listener.start()
 
 while True:
-    os.system("cls") # clear для linux
+    os.system("cls") # "clear" для linux
     #print(helico.x, helico.y)
     field.process_helicopter(helico, clouds)
     helico.print_stat()

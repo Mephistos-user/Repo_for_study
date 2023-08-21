@@ -18,9 +18,9 @@ from helicopter import Helicopter
 # - frame 🟧 🟫 🔳 
 
 CELL_TYPES = "🟩🌳🌊🏥🏪🔥"
-TREE_BONUS = 100
-UPGRADE_PRICE = 5000
-LIFE_COST = 10000
+TREE_BONUS = 100     # очки за потушенове дерево
+UPGRADE_PRICE = 5000 # стоимость апгрейда бака вертолета
+LIFE_COST = 10000    # стоимость повышения HP
 
 class Map():
 
@@ -119,15 +119,14 @@ class Map():
                         helico.point -= 10
                     # распространение пожара
                     move = [[-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0]]
-                    #n = randcell2(ri, ci)
                     for n in move:
-                        nx, ny = n[0], n[1]
+                        nx, ny = ri + n[0], ci + n[1]
                         if self.check_bounds(nx, ny) is True:
                             if self.cells[nx][ny] == 1:
                                 self.cells[nx][ny] = 5
                     self.cells[ri][ci] = 0
-
-        for i in range(10):
+        # новые очаги пожара
+        for i in range(8):
             self.add_fire()
 
     # функция проверки действий вертолета
