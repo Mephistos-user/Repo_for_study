@@ -12,9 +12,8 @@ print(arr)
 print("-------")
 
 ########################################################
-itter = n - 1
-count = 0
-is_sorted = True# флаг проверки были ли сделаны перестановки в текущем проходе
+itter = n - 1 # иттератор вложенного цикла
+is_sorted = True # флаг проверки были ли сделаны перестановки в текущем проходе
 for i in range(n):
     print(itter)
     for j in range(itter):
@@ -28,14 +27,10 @@ for i in range(n):
                # т.к. крайнее правое значение по окончанию прохода проверять уже не нужно
     print(arr)
     if is_sorted is True:
-        break
+        break # выходим из цикла если в ходе прохода изменений в массиве не было
     else:
         is_sorted = True
 
-
-    #        count += 1   
-    #if count == itter:
-     #   itter -= 1  
         # Еще один вариант:
         #if arr[j] > arr[j + 1]:
         #    temp = arr[j]
