@@ -1,8 +1,13 @@
 # Interpolation search
 # Интерполяционный поиск
 import random
+from time import time
 
-n = 40
+
+n = 4_000_000
+
+start = time()
+
 arr = list()
 for i in range(n):
     number = random.randint(1, 100)
@@ -10,7 +15,10 @@ for i in range(n):
 
 to_search = random.randint(1, 100)
 answer = -1
+end = time()
+print(end - start)
 ########################################################
+start = time()
 arr.sort() # сортировка ОБЯЗАТЕЛЬНА!!!
 left = 0
 right = len(arr) - 1
@@ -39,9 +47,10 @@ while (left <= right and
     else: 
         right = index - 1
 
-
+end = time()
+print(end - start)
 ########################################################
-print(arr)
+# print(arr)
 print(to_search)
 print("--------")
 
