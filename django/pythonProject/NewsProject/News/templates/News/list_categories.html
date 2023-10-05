@@ -2,10 +2,9 @@
 
 <div class="list-group">
   {{ arg1 }} {{ arg2 }}
-    {% get_list_categories as categories %}
   {% for cat in categories %}
     <a href="{{ cat.get_absolute_url }}" class="list-group-item list-group-item-action">
-      {{ cat.title }}
+      {{ cat.title }}<span class="badge bg-primary rounded-pill" style="width: 30px; color: white;">{{ cat.cnt }}</span>
     </a>
   {% endfor %}
 </div>

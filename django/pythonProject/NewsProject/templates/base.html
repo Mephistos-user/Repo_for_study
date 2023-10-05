@@ -14,7 +14,7 @@
   <body>
 
 
-      <div class="container mt-3">
+      <div class="container mt-3" style="margin-left: 0px;">
         <h1>{{ title }}</h1>
         <div class="row">
           <div class="col-md-4">
@@ -23,51 +23,9 @@
           <div class="col-md-8">
             {% block content %}CONTENT{% endblock %}
           </div>
-
-
-          <div class="col-md-4">
-            <div class="list-group">
-              {% for cat in categories %}
-                <a href="{% url 'Category' cat.pk %}" class="list-group-item list-group-item-action">
-                  {{ cat.title }}
-                </a>
-              {% endfor %}
-            </div>
-          </div>
-          <div class="col-md-8">
-            {% for i in news %}
-              <div class="card mb-3">
-                {{ forloop.counter }}
-                  <div class="card-header">
-                    Категория: <a href="{% url 'Category' i.category.pk %}">{{ i.category}}</a>
-                  </div>
-                  <div class="media" style="display:flex">
-                    <div class="media-photo">
-                      {% if i.photo%}
-                        <img src = "{{ i.photo.url }}" class="mr-3" width="350" alt="Photo">
-                      {% else %}
-                        <h6>Нет фото</h6>
-                      {% endif%}
-                    </div>
-                    <div class="media-body">
-                      <div class="card-body">
-                        <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ i.title }}</h5>
-                        {% autoescape off %}
-                          <p class="card-text">{{ i.content|truncatewords:60|linebreaks }}</p>
-                        {% endautoescape %}
-                        <a href="#" class="btn btn-primary">Read more...</a>
-                      </div>
-                      <div class="card-footer text-body-secondary">
-                        {{ i.create_at|date:'Y-m-d H:i' }}
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            {% endfor %}
-          </div>
         </div>
       </div>
-  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}" </script>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"> </script>
 <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>-->
   </body>
 </html>
