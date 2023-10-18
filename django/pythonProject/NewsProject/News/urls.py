@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from News.views import HomeNews, NewsByCategory, ViewNews, AddNews
-# from News.views import index, get_category, view_news, add_news
+from News.views import HomeNews, NewsByCategory, ViewNews, AddNews, register, login
+# from News.views import index, get_category, view_news, add_news, test
 
 urlpatterns = [
     path('', HomeNews.as_view(), name='Home'),
@@ -12,4 +12,7 @@ urlpatterns = [
     # path('news/<int:news_id>', view_news, name='View_news'),
     path('news/add_news', AddNews.as_view(), name='Add_news'),
     # path('news/add_news', add_news, name='Add_news'),
+    # path('test/', test, name='Test'),
+    path('register', register, name='Register'),
+    path('login', login, name='Login'),
 ]

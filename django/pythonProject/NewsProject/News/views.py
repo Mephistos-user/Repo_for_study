@@ -1,14 +1,37 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 
 from .forms import NewsForm
 from .models import News, Category
+from .utils import MyMixin
+from django.contrib.auth.forms import UserCreationForm
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Регистрация прошла успешно')
+            return redirect('Login')
+        else:
+            messages.error(request, 'Ошибка регистрации')
+    else:
+        form = UserCreationForm()
+    return render(request, 'News/register.html', {'form': form})
+
+def login(request):
+    return render(request, 'News/login.html')
 
 class HomeNews(ListView):
     model = News
     context_object_name = 'news'
     template_name = 'News/home_news_list.html'
     extra_context = {'title': 'Главная'}
+    paginate_by = 2
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -32,6 +55,7 @@ class NewsByCategory(ListView):
     template_name = 'News/home_news_list.html'
     context_object_name = 'news'
     allow_empty = False
+    paginate_by = 2
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -66,6 +90,7 @@ class ViewNews(DetailView):
 class AddNews(CreateView):
     form_class = NewsForm
     template_name = 'News/add_news.html'
+    login_url = '/admin/'
 
 
 # def add_news(request):
@@ -78,3 +103,11 @@ class AddNews(CreateView):
 #     else:
 #         form = NewsForm()
 #     return render(request, 'News/add_news.html',{'form': form})
+
+# def test(request):
+#     objects = ('john', 'garry', 'bill', 'sara', 'john2', 'garry2', 'bill2', 'sara2')
+#     paginator = Paginator(objects, 2)
+#     page_num = request.GET.get('page', 1)
+#     page_object = paginator.get_page(page_num)
+#     return render(request, 'News/test.html', {'page_obj': page_object})
+

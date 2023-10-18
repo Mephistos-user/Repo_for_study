@@ -10,8 +10,9 @@
 {% endblock %}
 
 {% block content %}
+{{ mixin_group }}
   {% for item in news %}
-    <div class="card mb-3" style="width: 1600px;">
+    <div class="card mb-3" style="width: 190%;">
       {{ forloop.counter }}
       <div class="card-header">
         Категория: <a href="{{ item.category.get_absolute_url }}">{{ item.category.title}}</a>

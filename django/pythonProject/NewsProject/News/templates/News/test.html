@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+<!--{% include 'inc/_sidebar.html' %}-->
+
+{% block title %}
+  Тестовая страница :: {{ block.super}}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+  {% for name in page_obj.object_list %}
+    <p>{{ name }}</p>
+  {% endfor %}
+
+{% endblock %}
