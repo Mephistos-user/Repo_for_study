@@ -4,29 +4,44 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 
-from .forms import NewsForm
+from .forms import NewsForm, UserRegisterForm, UserLoginForm
 from .models import News, Category
 from .utils import MyMixin
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth import login, logout
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Регистрация прошла успешно')
-            return redirect('Login')
+            user = form.save()
+            login(request, user)
         else:
             messages.error(request, 'Ошибка регистрации')
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, 'News/register.html', {'form': form})
 
-def login(request):
-    return render(request, 'News/login.html')
+def user_login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('Home')
+    else:
+        form = UserLoginForm()
 
-class HomeNews(ListView):
+    return render(request, 'News/login.html', {'form': form})
+
+def user_logout(request):
+    logout(request)
+    return redirect('Login')
+
+
+class HomeNews(ListView, MyMixin):
     model = News
     context_object_name = 'news'
     template_name = 'News/home_news_list.html'
@@ -50,7 +65,7 @@ class HomeNews(ListView):
 #     }
 #     return render(request, 'News/index.html', context=context)
 
-class NewsByCategory(ListView):
+class NewsByCategory(ListView, MyMixin):
     model = News
     template_name = 'News/home_news_list.html'
     context_object_name = 'news'
@@ -77,6 +92,7 @@ class NewsByCategory(ListView):
 
 class ViewNews(DetailView):
     model = News
+    template_name = 'News/view_news.html'
     context_object_name = 'news_item'
 
 # def view_news(request, news_id):

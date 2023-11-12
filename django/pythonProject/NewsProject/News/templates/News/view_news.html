@@ -2,7 +2,7 @@
 <!--{% include 'inc/_sidebar.html' %}-->
 
 {% block title %}
-  {{ title }} :: {{ block.super}}
+  {{ news_item.title }} :: {{ block.super}}
 {% endblock %}
 
 {% block sidebar %}
@@ -10,21 +10,23 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card mb-3">
+    <div class="card mb-3" style="width: 1600px">
       {{ forloop.counter }}
       <div class="card-header">
-        Категория: <a href="{{ news_item.category.get_absolute_url }}">{{ news_item.category}}</a>
+        Категория: <a href="{{ news_item.category.get_absolute_url }}">{{ news_item.category.title }}</a>
       </div>
       <div class="card-body">
         {% if news_item.photo%}
-        <img src = "{{ news_item.photo.url }}" class="mr-3" width="350" alt="Photo">
+        <img src = "{{ news_item.photo.url }}" class="mr-3" width="350" alt="Photo" style="margin-left: 600px;">
         {% else %}
         <h6>Нет фото</h6>
         {% endif%}
       </div>
-      <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ news_item.title }}</h5>
+      <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}" style="margin-left: 700px;">{{ news_item.title }}</h5>
       {% autoescape off %}
-      <p class="card-text">{{ news_item.content|linebreaks }}</p>
+      <div class="content" style="margin: 15px;">
+        <p class="card-text">{{ news_item.content|linebreaks }}</p>
+      </div>
       {% endautoescape %}
       <div class="card-footer text-body-secondary">
         {{ news_item.create_at|date:'Y-m-d H:i' }}

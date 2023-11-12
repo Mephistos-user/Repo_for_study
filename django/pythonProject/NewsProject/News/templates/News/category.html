@@ -2,7 +2,7 @@
 <!--{% include 'inc/_sidebar.html' %}-->
 
 {% block title %}
-  {{ category.title }} :: {{ block.super}}
+  {{ title }} :: {{ block.super}}
 {% endblock %}
 
 {% block sidebar %}
@@ -14,7 +14,7 @@
     <div class="card mb-3">
       {{ forloop.counter }}
       <div class="card-header">
-        Категория: <a href="{% url 'Category' item.category.pk %}">{{ item.category}}</a>
+        Категория: <a href="{% url 'Category' item.category.pk %}">{{ item.category }}</a>
       </div>
       <div class="media" style="display:flex">
         <div class="media-photo">

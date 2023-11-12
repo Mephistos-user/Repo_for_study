@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-<!--{% include 'inc/_sidebar.html' %}-->
 
 {% block title %}
   {{ title }} :: {{ block.super}}
@@ -25,17 +24,19 @@
           <h6>Нет фото</h6>
           {% endif %}
         </div>
-        <div class="media-body">
+        <div class="media-body" style="margin-left: 40px;">
           <div class="card-body">
-            <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}">{{ item.title }}</h5>
+            <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-primary' %}" style="margin-left: 400px;">{{ item.title }}</h5>
             {% autoescape off %}
-            <p class="card-text">{{ item.content|truncatewords:60|linebreaks }}</p>
+            <p class="card-text">{{ item.content|truncatewords:100|linebreaks }}</p>
             {% endautoescape %}
-            <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+            <a href="{{ item.get_absolute_url }}" class="btn btn-primary" style="margin-left: 450px;">Read more...</a>
           </div>
-          <div class="card-footer text-body-secondary">
-            {{ item.create_at|date:'Y-m-d H:i' }}
-          </div>
+        </div>
+      </div>
+      <div class="card-footer text-body-secondary">
+        <div class="data"  style="margin-left: 600px;">
+          {{ item.create_at|date:'Y-m-d H:i' }}
         </div>
       </div>
     </div>
