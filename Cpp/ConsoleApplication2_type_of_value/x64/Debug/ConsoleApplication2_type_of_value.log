@@ -1,0 +1,4 @@
+﻿  ConsoleApplication2_type_of_value.cpp
+D:\УЧЕБА\Project_by_Mephistos_local\ConsoleApplication2_type_of_value\ConsoleApplication2_type_of_value.cpp(20,20): warning C4305: инициализация: усечение из "double" в "float"
+D:\УЧЕБА\Project_by_Mephistos_local\ConsoleApplication2_type_of_value\ConsoleApplication2_type_of_value.cpp(50,9): error C2371: i3: переопределение; различные базовые типы
+D:\УЧЕБА\Project_by_Mephistos_local\ConsoleApplication2_type_of_value\ConsoleApplication2_type_of_value.cpp(37,24): message : см. объявление "i3"

@@ -1,0 +1,3 @@
+﻿  ConsoleApplication3struct.cpp
+D:\УЧЕБА\Project_by_Mephistos_local\ConsoleApplication3struct\ConsoleApplication3struct.cpp(33,22): warning C4305: инициализация: усечение из "double" в "float"
+  ConsoleApplication3struct.vcxproj -> D:\УЧЕБА\Project_by_Mephistos_local\ConsoleApplication3struct\x64\Debug\ConsoleApplication3struct.exe

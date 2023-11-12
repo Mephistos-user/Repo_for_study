@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th {
+            background: #10e433;
+            border: #000000;
+        }
+        td {
+            background: rgb(199, 196, 33);
+            text-align: center;
+            border: #000000;
+        }
+        .rec {
+            font-display: 80%;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#">Стажировки в <strong>IT</strong></a>
+            </div>
+            <div class="#">
+                <nav>
+                    <ul>
+                        <li><a href="#vac">Вакансии</a></li>
+                        <li><a href="#usl">Условия</a></li>
+                        <li><a href="#rec">Требования</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <a href="#zay">Подать заявку</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h1>Стажировка в одной из лучших IT-компаний в России</h1>
+        </section>
+        <section id="vac">
+            <h2>Вакансии</h2>
+            <ul>
+                <li>Frontend</li>
+                <li>Backend</li>
+                <li>Мобильная разработка</li>
+                <li>DevOps</li>
+                <li>Анализ данных</li>
+                <li>Машинное обучение</li>
+            </ul>
+        </section>
+        <section id="usl">
+            <h2>Условия</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Стажировка в течение года</th>
+                        <th>Стажировка летняя</th>
+                        <th>Погружение: интенсивная стажировка</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Формат работы</th>
+                        <td colspan="2">Очно или дистанционно</td>
+                        <td>Очно</td>
+                    </tr>
+                    <tr>
+                        <th>Дата начала</th>
+                        <td>Каждый месяц</td>
+                        <td>Май</td>
+                        <td>Февраль, август</td>
+                    </tr>
+                    <tr>
+                        <th>Оплата проезда</th>
+                        <td colspan="3">Да</td>
+                    </tr>
+                    <tr>
+                        <th>Оплата проживания</th>
+                        <td>Нет</td>
+                        <td colspan="2">Да</td>
+                    </tr>
+                    <tr>
+                        <th>Занятость</th>
+                        <td colspan="2">Гибкий график от 20 до 40 часов в неделю</td>
+                        <td>Полная 5/2</td>
+                    </tr>
+                    <tr>
+                        <th>Продолжительность</th>
+                        <td>от 3 до 6 месяцев</td>
+                        <td>3 месяца</td>
+                        <td>1 месяц</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Оплата</th>
+                        <td colspan="2">до 50 000 Р</td>
+                        <td>до 100 000 Р</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        <section id="rec">
+            <h2>Требования</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi consectetur sapiente voluptates <strong>deleniti ab quibusdam alias delectus</strong> excepturi voluptatum. Aperiam aut veritatis necessitatibus eaque nemo sunt et iure quam voluptate a tenetur blanditiis fugit possimus vel, dolores error, soluta doloribus ratione quibusdam. Nulla similique <a href="#">asperiores</a>, hic ab illo nihil dicta dolores obcaecati nisi nostrum neque, itaque veritatis cum, mollitia maiores provident illum aspernatur in. Expedita, maiores ullam. Dicta soluta amet, repudiandae corrupti dolorum corporis <em>voluptates aliquam repellat facere</em> quidem? Nesciunt dolorem enim quasi exercitationem, corrupti perspiciatis aspernatur illo assumenda, commodi voluptatum sed repellendus consequatur maiores provident error repellat similique possimus?</p>
+        </section>
+        <section id="zay">
+            <h2>Подать заявку</h2>
+            <form action="" method="get">
+                <label for="city">Ваш город</label>
+                <select name="city" id="city">
+                    <option value="">--Выберите город--</option>
+                    <option value="moskow">Москва</option>
+                    <option value="saintpetersburg">Санкт-Петербург</option>
+                    <option value="kasan">Казань</option>
+                    <option value="nnovgorod">Нижний Новгород</option>
+                </select>
+
+                <label for="naps">Направление</label>
+                <select name="naps" id="naps">
+                    <option value="">--Выберите направление--</option>
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                    <option value="DevOps">DevOps</option>
+                </select>
+
+                <label for="name">Имя</label>
+                <input type="text" id="name" required>
+
+                <label for="surname">Фамилия</label>
+                <input type="text" id="surname" required>
+
+                <label for="mail">Email</label>
+                <input type="email" id="mail" required>
+
+                <label for="tel">Телефон</label>
+                <input type="tel" id="tel" required>
+
+                <label for="education">Уровень Вашего образования</label>
+                <fieldset id="education">
+                    <label>
+                        <input type="checkbox" value="Среднее общее">
+                        Среднее общее
+                    </label>
+                    <label>
+                        <input type="checkbox" value="Среднее профессиональное">
+                        Среднее профессиональное
+                    </label>
+                    <label>
+                        <input type="checkbox" value="Высшее">
+                        Высшее
+                    </label>
+                </fieldset>
+
+                <label for="social">Ссылка на соц.сети</label>
+                <input type="url" id="social" required>
+
+                <label for="desc">Ваш опыт</label>
+                <textarea name="desc" id="desc" autocomplete="off" cols="30" rows="10" placeholder="Расскажите о себе"></textarea>
+
+                <button type="reset">Сбросить</button>
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+        <section>
+            <div class="map">
+                <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a><a href="https://yandex.ru/maps/213/moscow/?ll=37.679066%2C55.751637&utm_medium=mapframe&utm_source=maps&z=12.04" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/?ll=37.679066%2C55.751637&z=12.04" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+            </div>
+        </section>
+
+
+    </main>
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <a href="#">Стажировки в <strong>IT</strong></a>
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem blanditiis dolorem ad iusto esse non ea maiores minima, molestias harum recusandae ratione magni dolorum obcaecati? Delectus nobis, soluta beatae quibusdam quasi temporibus dolores, impedit dicta cupiditate, necessitatibus doloribus! Laborum perspiciatis reiciendis modi necessitatibus eius quisquam in libero optio impedit nihil.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
