@@ -1,0 +1,28 @@
+/* 
+● Задайте фоновый цвет всей страницы #F0F8FF
+● Задайте цвет текста всей страницы #00008B
+● Задайте шрифт всей страницы Arial, sans-serif
+● Задайте размер шрифта всей страницы 16px
+● Задайте жирность шрифта заголовка первого уровня bold
+● Задайте подчеркивание текста ссылки underline
+● Задайте ширину изображения 300px 
+*/
+
+body {
+    background-color: #F0F8FF;
+    color: #00008B;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: underline;
+}
+
+img {
+    width: 300px;
+}
