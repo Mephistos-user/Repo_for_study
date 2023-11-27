@@ -1,0 +1,116 @@
+.container {
+    margin: 0 auto;
+    width: 70vw;
+}
+html {
+    font-size: 18px;
+}
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(199, 245, 189)
+}
+body {
+    background: #BBD2C5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #292E49, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #292E49, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+header .container div {
+    display: inline-block;
+    margin: 0 10px 0 10px;
+}
+.navbar ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+figcaption {
+    color: rgba(199, 245, 189, 0.2);
+}
+h1 {
+    width: 90%;
+    font-size: 3rem;
+}
+p {
+    line-height: 130%;
+}
+h2 {
+    font-size: 2.2rem;
+    color: rgba(229, 14, 114);
+}
+h2 + p a {
+    color: #02020a;
+    /* background: #fdea42; */
+}
+h2:hover {
+    color: blue;
+}
+a:visited {
+    color: #10e433;
+}
+.zayavka label, select, input, textarea {
+    display: block;
+    font-size: 1.1rem;
+    border-radius: 10px;
+}
+.zayavka button {
+    display: inline-block;
+    color: #fafafa;
+    background-color: #9942fd;
+    font-size: 1.1rem;
+    border-radius: 15px;
+    margin-top: 10px;
+    height: 40px;
+}
+.zayavka textarea {
+    padding: 10px 25px;
+    width: 100%;
+}
+.zayavka label {
+    margin-top: 15px;
+}
+#education {
+    width: 50%;
+    padding: 0px 5px;
+    border: none;
+}
+#education label {
+    margin: 5px 5px;
+}
+#education input {
+    display: inline;
+}
+.logic-block {
+    padding: 100px 0;
+}
+#vac ul {
+    padding: 0;
+}
+#vac ul li {
+    font-size: 1.5rem;
+    background: #9942fd;
+    display: inline-block;
+    padding: 20px 30px;
+    margin: 0 10px 10px 0;
+    border-radius: 40px;
+}
+.main-title {
+    line-height: 100%;
+}
+.main-title strong {
+    font-weight: normal;
+    color: rgba(229, 14, 114);
+}
+
+.big-table td {
+    text-align: center;
+    padding: 15px;
+}
+.big-table tr:nth-child(2n) {
+    background-color: #9942fd;
+}
+.big-table tr:nth-child(2n) td:last-child {
+    border-radius: 0 30px 30px 0;
+}
+.big-table tr:nth-child(2n) th {
+    border-radius: 30px 0 0 30px;
+}
