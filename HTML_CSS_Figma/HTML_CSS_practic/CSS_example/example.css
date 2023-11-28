@@ -135,3 +135,105 @@ s - секунда. 1s=1000ms */
 05 - элементы с display: inline
 06 - элементы (включая потомков) с z-index: auto или  z-index: 0, а также элементы с opacity(прозрачность) меньше 0
 07 - элементы (включая потомков) с z-index больше 0 */
+
+        /* ПСЕВДО-КЛАССЫ */
+button:hover, a:hover {
+    /* при наведении мыши */
+}
+button:active, a:active {
+    /* при нажатии на элемент */
+}
+a:visited {
+    /* посещенная ссылка */
+}
+fieldset:checked {
+    /* когда в чекбоксе выбран элемент */
+}
+input:checked ~ span {
+    /* когда в чекбоксе выбран элемент */
+}
+input:valid {
+    /* когда поле заполненно валидно */
+}
+input:invalid {
+    /* когда поле заполненно невалидно или не заполненно*/
+}
+input:required {
+    /* для полей обязательных к заполнению*/
+}
+
+.vac-list li:not(.active) {
+    /* для значений от противного */
+}
+
+        /* Псевдо-класс CHILD */
+.vac-list li:nth-child(2) {
+    /* второму ребенку списка li класса vac-list задать какие-то атрибуты*/
+}
+.vac-list li:first-child {
+    /* первому ребенку списка li класса vac-list задать какие-то атрибуты*/
+}
+.vac-list li:last-child {
+    /* последнему ребенку списка li класса vac-list задать какие-то атрибуты*/
+}
+.vac-list li:nth-last-child(3) {
+    /* третьему с конца ребенку списка li класса vac-list задать какие-то атрибуты*/
+}
+.vac-list li:nth-child(odd) {
+    /* всем нечетным детям списка li класса vac-list задать какие-то атрибуты*/
+}
+.vac-list li:nth-child(even) {
+    /* всем четным детям списка li класса vac-list задать какие-то атрибуты*/
+}
+.vac-list li:nth-child(3n+2) {
+    /* каждому ТРЕТЬЕМУ ребенку начиная со ВТОРОГО списка li класса vac-list задать какие-то атрибуты*/
+}
+.vac-list li:only-child {
+    /* если элемент явлеется единственным дочерним для родительского */
+}
+
+        /* ПСЕВДО-ЭЛЕМЕНТЫ */
+    /* встраивание ДО: */
+/* <h2>
+    ::before == $0
+    ВАКАНСИИ
+</h2>
+
+h2::before {
+    content = "!!!";
+} */
+
+    /* встраивание ПОСЛЕ: */
+/* <h2>
+    ::after == $0
+    ВАКАНСИИ
+</h2>
+
+h2::after {
+    content = "!!!";
+} */
+
+    /* первый символ
+.text::first-letter {
+    font-size: 52px;
+} */
+    /* первая строка
+.text::first-line {
+    font-size: 52px;
+} */
+    /* выделенный текст
+.text::selection {
+    background: red;
+} */
+
+/* textarea::placeholder {
+    пространство внутри input, textarea
+} */
+
+.vac-list {
+    /* list-style-type: none;
+    counter-reset: new-counter;
+    counter-increment: new-counter;
+    content: counter(new-counter) ") "; 
+    content: "Вакансия" counter(new-counter) ") "; */
+}
