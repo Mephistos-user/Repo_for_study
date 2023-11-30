@@ -230,10 +230,95 @@ h2::after {
     пространство внутри input, textarea
 } */
 
-.vac-list {
-    /* list-style-type: none;
-    counter-reset: new-counter;
-    counter-increment: new-counter;
-    content: counter(new-counter) ") "; 
-    content: "Вакансия" counter(new-counter) ") "; */
+        /* АНИМАЦИЯ */
+    /* ПЕРЕХОДЫ (transition:hover,:active,:checked,:valid,:invalid) */
+    /* Применение: */
+/* 01 большинство свойств с числовыми значениями: 
+       margin, padding, width, height, border, box-shadow, font-size, top, right, bottom, left и т.п */
+/* 02 большинство свойств, указывающих цвет: 
+       color, background-color и т.п. */
+/* 03 свойство transform */
+
+
+/* transition: имя свойства / длительность / временная функция / задержка */
+
+/* .button {
+    color: #fff;
+    background: linear-gradient(265.71deg, rgba(161, 69, 189, 0.8)-1.44%,
+    rgba(55,0,89,0.8)77.83%),rgba(161, 69, 189, 1);
+    transition: color .4s, background-color 1s, box-shadow 1s;
 }
+.button:hover {
+    color: rgb(161, 69, 189);
+    background: #fff;
+    box-shadow: 0px 4px 33px #FFFFFF;
+} */
+
+        /* временная функция */
+/* transition-timing-function: ease (по умолчанию);
+transition-timing-function: ease-in;
+transition-timing-function: ease-out;
+transition-timing-function: ease-in-out;
+transition-timing-function: linear;
+transition-timing-function: cubic-bezier(p1, p2, p3, p4); http://cubic-bezier.com/#.25..1..25.1 */
+
+        /* TRANSFORM */
+/* .button {
+    transition: transform 2s;
+}
+.button:hover {
+    transform: translate(Xpx,Ypx); - перемещение по осям X, Y
+
+    transform: scale(X, Y); - увеличение или уменьшение элемента по осям X,Y.
+                            Если один аргумент то пропорционально и по X и по Y.
+                            Могуть быть дробные значения.
+                            Если отрицательный аргумент то элемент отразится
+
+    transform: skewX(Xdeg); - наклон по осям X
+    transform: skewY(Ydeg);                  Y
+
+    transform: rotate(Zdeg); - поворот в градусах или аналогичных единицах 
+
+} */
+
+        /* свойства АНИМАЦИЯ */
+/* разбивка на кадры: */
+@keyframes nameanimation {
+    50% {
+        /*  */
+    }
+    100%{
+        /*  */
+    }
+}
+@keyframes nameanimation {
+    from {
+        /*  */
+    }
+    to {
+        /*  */
+    }
+}
+
+/* .box {
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    animation-name: nameanimation; - название анимации
+    animation-duration: 5s; - длительность анимации
+    animation-iteration-count: infinite; количество иттераций (infinite - бесконечно)
+    animation-direction: alternate; - направление анимации (alternate - возвращается покадрово назад)
+    
+} */
+
+        /* @media запросы
+
+width   375px - 960px   - смартфон
+        960px - 1200px  - планшет
+        1200px - 1920px - десктоп */
+
+/* @media (min-width: 900px) {
+    .block {
+        display: inline-block;
+    }    
+} */

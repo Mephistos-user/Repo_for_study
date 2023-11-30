@@ -141,3 +141,50 @@ header {
     top: 0;
     z-index: 2;
 }
+#hero-figure {
+    position: absolute;
+    right: 200px;
+    top: 30px;
+}
+#hero-figure figcaption{
+    width: 100px;
+}
+.vac-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#first {
+    order: -1;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 1280px) {
+    .vac-list {
+        width: 100%;
+    }
+    h1 {
+        padding: 150px 0 50px 0;
+    }
+    #hero-figure {
+        position: static;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+    .container {
+        width: 90vw;
+    }
+}
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90vw;
+    }
+}

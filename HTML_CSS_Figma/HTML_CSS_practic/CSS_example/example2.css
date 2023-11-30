@@ -1,0 +1,69 @@
+body {
+    overflow-x: hidden;
+}
+.container {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+/* кастомный list-style */
+.vac_list {
+    list-style-type: none;
+}
+/* .vac_list {
+    list-style-type: none;
+    counter-reset: new-counter;
+} */
+.list_item {
+    counter-increment: new-counter;
+}
+.list_item::before {
+    content: counter(new-counter) ") ";
+    /* content:"Вакансия " counter(new-counter) ") "; */
+}
+
+/* кастомный checkbox */
+.custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.custom-checkbox+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+.custom-checkbox+label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5db;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+.custom-checkbox:checked+label::before {
+    border-color: #0b76ef;
+    background-color: #0b76ef;
+    /* background-image: url("#"); */
+}
+
+/* full width */
+h2 {
+    position: relative;
+}
+h2::before {
+    content: "";
+    position: absolute;
+    width: 300%;
+    z-index: -1;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    background: rgb(7, 157, 187);
+}
