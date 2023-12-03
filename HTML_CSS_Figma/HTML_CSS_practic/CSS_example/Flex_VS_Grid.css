@@ -1,3 +1,4 @@
+        /* FLEX */
 
 /* .container {
     display: flex;
@@ -69,3 +70,59 @@
 /* .item {
     flex-wrap: wrap; - перенос
 } */
+
+
+
+        /* GRID */
+
+/* .container {
+    display: grid;
+} */
+
+    /* СЕТКА:
+.vac-list {
+    display: grid;
+    grid-template-columns: 200px auto 40%; - 3 колонки
+    grid-template-rows: 100px 5vw;         - 2 строки
+} */
+/* .vac-list {
+    display: grid;
+                пропорции:
+    grid-template-columns: 1fr 2fr 1fr; - 3 колонки (2ая колонка в 2 раза больше 1й и 3й)
+    grid-template-rows: 100px 5vw;      - 2 строки
+} */
+/* .vac-list {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; - 3 колонки (2ая колонка в 2 раза больше 1й и 3й)
+        повторяющиеся строки:
+    grid-auto-rows: 100px 15vw 15rem;   - 3 повторяющиеся строки (когда количество заранее не известно)
+} */
+    /* Сложная структура: */
+/* .wrapper {
+    display: grid;
+    grid-template-columns: repeat (3, 1fr); - 3 колонки в пропорции 1 к 1
+        повторяющиеся строки:
+    grid-auto-rows: 100px;   - 1 повторяющаяся строка (когда количество заранее не известно)
+}
+.box1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+.box2 {
+    grid-column-start: 1;
+    grid-row-start: 3;
+    grid-row-end: 5;
+} */
+
+        /* Промежутки между блоками: */
+/* .wrapper {
+    display: grid;
+    grid-template-columns: repeat (3, 1fr); - 3 колонки в пропорции 1 к 1
+        промежутки:
+    grid-column-gap: 10px;   - промежутки между столбцами
+    grid-row-gap: 1em;       - промежутки между строками
+} */
+
+

@@ -1,0 +1,70 @@
+        движки для браузеров:
+
+Blink:
+Chrome, Yandex, Opera, Edge
+
+Gecko:
+Mozila, Tor
+
+Webkit:
+Safary, Chrome(2008-2013г.г.)
+
+EdgeHTML, Trident(до EdgeHTML):
+Edge(до win10), IE
+
+
+        Какие браузеры учитывать:
+01 Mozila Firefox (и другие на базе Gecko)
+02 IE и Edge предыдущих версий (на базе Gecko EdgeHTML и Trident)
+03 Opera предыдущих версий
+04 Safary, Chrome, Yandex, Chromium (на базе WebKit и Blink)
+
+40.79% Google Chrome
+29.77% Яндекс.Браузер
+13.53% Safary
+3.98% Opera
+2.76% Android Browser
+
+        Как адаптировать:
+    Вариант 1: Разделить стили браузеров
+<!--[if IE 9]>
+    <link rel="stylesheet" href="style-for-ie9.css"
+<![endif]-->
+
+    Вариант 2: Использовать префиксы
+-webkit-flex-wrap: wrap; // для  Chrome с 4 по 28 версии, Safary с 3.1 по 8 версии;
+-ms-flex-wrap: wrap; // для IE 10;
+flex-wrap: wrap; 
+
+-moz- в Firefox;
+-ms- в Edge и IE;
+-webkit- в Safary, Chrome и браузерах на основе движков WebKit и Blink;
+-o- в старых версиях браузера Opera
+
+        Как тестировать:
+    Вариант 1
+Установить несколько браузеров + тестирование на своих устройствах 
+    Вариант 2
+Специализированные сервисы:
+        - browsershots.org
+        - browserstack.com
+    Вариант 3
+Виртуальные машины
+
+        Как задать префиксы:
+    Вариант 1
+файл normalize.css
+    Вариант 2
+Autoprefixer - модуль для VScode
+        CTRL+SHIFT+P
+            Autoprefixer: Run
+
+            в настройках: 
+            "autoprefixer.options": {
+                "browsers" : [
+                    "last 5 version",
+                    "ie >= 9",
+                    "> 5%"
+                ]
+            }
+
