@@ -1,0 +1,75 @@
+<!-- Cookies - HTTP cookie (web cookie, куки браузера) - это небольшой фрагмент данных (до 4Кбайт), который сервер отправляет браузеру пользовател.
+
+Браузер может сохранить этот фрагмент у себя и отправлять на сервер с каждым последующим запросом
+
+С помощью кук можно сохранить любую информацию о состоянии, HTTP-протокол сам по себе этого делать не умеет
+
+Обычно cookies используются на сайте для того, чтобы:
+    * "узнать" (идентифицировать) пользователя (эмулировать постоянное соединение с сервером)
+    * сохранить информацию о просмотренных страницах или товарах
+    * осуществить простую защиту счётчиков и системы голосования от накрутки
+    * запомнить настройки интерфейса, расположение блоков, товара, добавленного в корзину и много другого.
+
+Ограничение:
+   * объем до 4Кбайт
+   * до 20 куки на один домен
+ -->
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <script>
+
+        // 1. чтение cookies
+        let cookies = document.cookie;
+        console.log(cookies);
+    
+
+        // 2. запись cookie
+        document.cookie = "user = Anna";
+        document.cookie = "date = 14.07.2022";
+        document.cookie = "age = 21";
+        document.cookie = "user = Angela";
+        console.log(document.cookie);
+    
+
+        // 3. корректная запись cookie
+        let str1 = "Phrase with";
+        let str2 = "spaces inside";
+    
+        // encodeURIComponent(str) - это метод. кодирующий компонент универсального идентификатора (URI) заменой каждой определенной последовательности символов одной, двумя, тремя или четырьмя последовательностями символов, представленных в кодировке UTF-8 (будет только 4 управляющих для символов, состоящих из 2 "суррогатных" символов)
+        console.log(document.cookie = encodeURIComponent(str1) + '=' + encodeURIComponent(str2));
+        console.log(document.cookie = str1 + '=' + str2);
+    
+        
+        // 4. настройки:
+        // user = Anna; - значение
+        // path=/; - путь - отвечает за страницы на сервере (ресурсе), для которых будут видны эти куки. "/" - означеет главную дирректорию, что для всех (так не безопасно!)
+        // expires=Tue, 19 Jan 2038 03:14:07 GMT - время жизни куки (дата, время удаления). Если не указан этот параметр куки удалятся сразу после закрытия браузера
+        // domain=site.com; - позволяет указать домен в рамках которого можно просматривать куки (по умолчанию только с домена где распологается сайт (эта настройка добавляет разрешения для дополнительных доменов))
+        // max-age=3600; - аналог exprise, только время жизни в миллисекундах
+        // secure; samesite - настройки безопасности
+
+        document.cookie = "user = Anna; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
+        // domain=site.com; max-age=3600; secure; samesite
+        console.log(document.cookie);
+
+
+        // 5. cookies со сроком жизни в 1 месяц:
+        document.cookie = "name = user; max-age=2629743";
+        /* или */
+        var cookie_date = new Date();
+        cookie_date.setMonth(cookie_date.getMonth() + 1);
+        document.cookie = "name = user; expires=" + cookie_date.toUTCString();
+
+    
+     </script>  
+ </body>
+
+ </html>

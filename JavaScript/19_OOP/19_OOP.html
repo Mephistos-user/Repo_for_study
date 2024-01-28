@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // объявление одиночного объекта (объекты как литералы):
+
+        let book = {
+            title: 'Anna Karenina',
+            author: 'L.Tolstoy',
+            annotation: function () {
+                console.log(`Автором книги ${this.title} является ${this.author}`)
+            }
+        }
+        book.annotation();
+
+        let book1 = {
+            title: 'War and Peace',
+            author: 'L.Tolstoy',
+            annotation: function () {
+                console.log(`Автором книги ${this.title} является ${this.author}`)
+            }
+        }
+        book1.annotation();
+
+        // функциональный способ создания объекта (функции как объекты):
+        function Book(author, title) { // если функция является конструктором, то имя с большой буквы
+            this.author = author;
+            this.title = title;
+        }
+
+        let book4 = new Book('L.Tolstoy', 'War and Peace');
+        let book5 = new Book('L.Tolstoy', 'Anna Karenina');
+
+        console.log(book4);
+
+
+        // класс:
+        class BookClass {
+            constructor(author = "A.Pushkin", title = "The Captain Daughter") {
+                this.author = author;
+                this.title = title;
+            }
+            showBook() {
+                console.log(`Автором книги ${this.title} является ${this.author}`);
+            }
+        };
+        // использование
+        let book6 = new BookClass("L.Tolstoy", "Anna Karenina") // при таком создании объекта автоматически вызывается конструктор класса
+        book6.showBook();
+        let book7 = new BookClass();
+        book7.showBook();
+
+        console.log(typeof BookClass);
+
+        //let book8 = BookClass(); // ошибка - Class constructor BookClass cannot be invoked without 'new'
+        //book8.showBook();
+
+
+        // более сложный пример
+        // приватные свойства класса
+        class User {
+            #password; // приватное свойство может быть изменено только внутри класса и/или с помощью его методов (работает свойство класса - ИНКАПСУЛЯЦИЯ)
+            constructor(email, password) {
+                this.email = email;
+                this.#password = password;
+            }
+            login(email, password) {
+                if (email === this.email && password === this.#password) {
+                    console.log('Login Successfully');
+                } else {
+                    console.log('Authentication Failed!');
+                }
+            }
+            setPassword(newPassword) {
+                this.#password = newPassword;
+            }
+            logout() {
+                console.log('Logout Successfully');
+            }
+        };
+
+        let user = new User('useremail@email.com', 'password');
+        user.login('useremail@email.com', 'password');
+
+        console.log(user.email);
+        console.log(user.password);
+
+        user.setPassword('new_password');
+        user.login('useremail@email.com', 'password');
+        user.login('useremail@email.com', 'new_password');
+
+        // наследование
+        class Author extends User { // extends - Author наследуется (extends) от User
+            #numOfPost;
+            constructor(email, password) {
+                super(email, password); // наследуются от родительского класса
+                this.#numOfPost = 0;
+            }
+
+            createPost(content) {
+                console.log(content);
+                this.#numOfPost++;
+            }
+
+            getNumOfPost() {
+                return this.#numOfPost;
+            }
+        }
+
+        const user1 = new Author('user1@email.com', 'password');
+
+        user1.login('user1@email.com', 'password');
+        user1.createPost('L.Tolstoy is the Russian author');
+        console.log(user1.getNumOfPost());
+
+
+    </script>
+</body>
+</html>

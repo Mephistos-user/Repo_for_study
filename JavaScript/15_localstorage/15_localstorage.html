@@ -1,0 +1,87 @@
+<!-- localstorage - локальное хранилище
+
+Отличие от cookies:
+   * объем от 2Мбайт (можно менять в настройках)
+   * localstorage привязано к домену, протоколу, порту
+   * сервер не имеет доступа к localstorage
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .comment {
+            width: 50%;
+            height: 150px;
+            padding: 10px;
+            outline: 0;
+            border: 2px solid #1c87c9;
+            background: #bccde2d1;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <textarea class="comment" id="area" placeholder="Напишите сообщение здесь" cols="30" rows="10">
+    </textarea>
+    <br>
+    <button onclick="localstorage.removeItem('area');area.value = '' ">Очистить</button>
+    <script>
+        area.value = localStorage.getItem('area');
+        area.oninput = () => {
+            localStorage.setItem('area', area.value);
+        }
+
+        const answerForEverything = 42;
+        console.log(typeof answerForEverything);
+        localStorage.setItem('number', answerForEverything);
+        console.log(typeof localStorage.getItem('number'));
+
+        // нюансы использования localstorage
+        // ввести данные в localstorage с помощью JSON
+        let newUser = {
+            userName: 'Anna',
+            userAge: 27
+        }
+        localStorage.setItem('newUser', JSON.stringify(newUser)); // в localstorage получим object Object
+        console.log(localStorage.getItem('newUser'));
+        console.log('Тип переменной после сохранения: ' + typeof localStorage.getItem('newUser'));
+
+        // получить данные (распарсить) из localstorage в формате JSON
+        let newVar = JSON.parse(localStorage.getItem('newUser'));
+        console.log(newVar);
+
+        // изменить данные
+        newVar.userAge = 18;
+        console.log(newVar);
+
+
+        for (let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+            console.log(`${key}:${localStorage.getItem(key)}`);
+        }
+
+        // события
+        window.addEventListener('storage', event => { // addEventListener - "прослушивает" события
+            console.log(event);
+            // удобно, например, если веб-приложение открыто на разных устройствах или в новых вкладках
+        })
+
+
+
+/*        // методы localstorage:
+        setItem(key, value) - сохранить пару ключ/значение
+        getItem(key)        - получить данные по ключу key 
+        removeItem(key)     - удалить данные с ключем key 
+        clear()             - удалить все 
+        key(indexed)        - получить ключ на заданной позиции 
+        length              - количество элементов в хранилище
+*/
+        
+        
+    </script>
+</body>
+</html>

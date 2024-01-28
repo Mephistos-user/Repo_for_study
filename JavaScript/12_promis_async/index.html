@@ -1,0 +1,32 @@
+<!-- promise -->
+
+ <!-- 2. встраиваем в html-документ скрипт -->
+
+<script>
+    function loadNewScript(src) {
+        return new Promise(function(resolve, reject) {
+            let script = document.createElement('script');
+            script.src = src;
+
+            script.onload = () => resolve(script);
+            script.onerror = () => reject(new Error(`Script download error! ${src}`));
+
+            document.head.append(script);
+        })
+    }
+
+    let promise = loadNewScript("myScript.js");
+    promise.then(
+        function(result) {
+            veryShortFunction();
+        })
+    promise.catch(alert);
+
+/*
+    let promise = loadNewScript("myScript.js");
+    promise
+    .finally(alert("Finished"))
+    .then(result => veryShortFunction())
+    .catch(result => alert(result));
+*/
+</script>

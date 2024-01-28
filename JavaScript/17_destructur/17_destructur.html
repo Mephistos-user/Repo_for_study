@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // массивы
+        console.log('==1. Деструктуризация массива==');
+        let users = ["J.Bond", "J.Sparrow"];
+
+        // 1. деструктуризирующее присваивание
+        let [user1, user2] = users;
+        console.log("Деструктурирующее присваивание: " + user1 + ' и ' + user2);
+
+        // иначе
+        console.log('2. Вывод эдементов массива с помощью цикла: ');
+        for (let i = 0; i < users.length; i++) {
+            console.log(users[i] + ' ');            
+        }
+
+        console.log('==3. Функции возвращающие массив==');
+        let str = "live long and prosper";
+        let [live, long, and, prosper] = str.split(' ');
+        console.log(prosper, and, live, long);
+
+        // элементы можно пропускать
+        console.log('==4. Пропускаем элементы==');
+        [live, long, , prosper] = str.split(' ');
+        console.log(live, long + ", " + prosper);
+
+        // можем работать с любым перебираемым объектом
+        console.log('==5. Деструктурируем перебираемые объекты==');
+        let [one, two, three] = "123";
+        console.log(one, two, three);
+        console.log(one + two + three); // попрежнему строки
+
+        // оператор "остаточные параметры" ...
+        console.log('==6. Остаточные параметры==');
+        let [noun, verb, ...other] =["I'm", "gonna", "make", "him", "an", "offer", "he", "can't", "refuse"]; // other обязательно стоит только на последнем месте в дуструктурирующем присваивании
+        console.log(noun, verb, other); // получится не строкой, срезом массива (подмассивом)
+        console.log(other.length);
+
+        // если элементов в массиве меньше
+        console.log('==7. Элементов в массиве меньше==');
+        [one, two, three] = ['one', 'two'];
+        console.log(one, two, three);
+
+        // значения по умолчанию
+        console.log('==8. Значения по умолчанию==');
+        [one, two, three = 'three'] = ['one', 'two'];
+        console.log(one, two, three);
+
+        [one, two, three = 'three'] = ['one', 'two', 'ten'];
+        console.log(one, two, three);
+
+
+        // Объекты
+        console.log('==9. Деструктуризация объектов==')
+        let user = {
+            name: "John",
+            email: "user_email@email.com",
+            age:27
+        }
+
+        /*let {name, email, age} = user;
+        // или так (ОБЯЗАТЕЛЬНО!!! убрать в скобки):
+        ({name, email, age} = user);
+        console.log(name, email, age);*/
+
+        /*// изменим порядок переменных
+        let {email, age, name} = {name: "John", email: "user_email@email.com", age:27};
+        // если названия переменных совпадают с ключами им автоматически присваивается значения соответствующих ключей
+        // если названия не будут совпадать то сохранятся значения undefinded
+        console.log(name, email, age);*/
+
+        /*// чтобы имена переменных не совпадали с ключами, применяется конструкция:
+        let {email: userEmail, age: userAge, name: userName} = {name: "John", email: "user_email@email.com", age:27};
+        // если названия переменных совпадают с ключами им автоматически присваивается значения соответствующих ключей
+        // если названия не будут совпадать то сохранятся значения undefinded
+        console.log(userName, userEmail, userAge);*/
+
+
+        // значения по умолчанию
+        let user3 = {
+            name: "Anna"
+        }
+        let {email: emailUser = "user_email@email.com", age: ageUser = 27, name: nameUser} = user3;
+        console.log(nameUser);
+        console.log(emailUser);
+        console.log(ageUser);
+
+
+
+    </script>
+</body>
+</html>

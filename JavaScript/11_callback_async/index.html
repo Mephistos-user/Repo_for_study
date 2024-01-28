@@ -1,0 +1,45 @@
+<!-- callback -->
+<!-- 1. -->
+<!-- 
+<script>
+    function readBook(bookName, callback) {
+        alert(`Reading book ${bookName} in process.`); // всплывающее окно
+        callback(); // вызываем вложенную функцию
+    }
+    // вызываем функцию readBook с вложенной второй функцией (колбэком)
+    readBook('The Art of Computer Programming', function() {
+        alert('Reading is finished!');
+    })
+</script>
+ -->
+ 
+ <!-- 2. встраиваем в html-документ скрипт -->
+<!-- 
+<script>
+    function loadNewScript(src, callback) {
+        let script = document.createElement('script'); // createElement - создает в html-документе элемент с тем тегом, что указан в аргументе или HTMLUnrnownElement, если имя тега не распознается
+        script.src = src;
+
+        script.onload = () => callback(null, script); // onload - обработчик событий для объекта window. Функция callback(script) будет вызвана, когда произойдет событие загрузки окна (onload)
+
+        // обработчик события ошибки загрузки
+        script.onerror = () => callback(new Error(`Script download error! ${src}`)); // onerror - обработчик событий для объекта window. Функция callback(new Error(`Script download error! ${src}`)) будет вызвана, когда произойдет событие ошибки при загрузке (onerror)
+
+        document.head.append(script); // встраиваем(append) в document(html) в тег head переменную script, которая уже является document.createElement('script')
+    }
+/*    
+    // будет ошибка:
+    // loadNewScript("myScript.js");
+    // veryShortFunction(); // если вызвать функцию из внешнего файла пока сам файл не загрузился, то будет ошибка и этот внешний скрипт не сработает (если не применить колбэк типа - script.onload = () => callback(script); в 23 строке)
+*/
+
+    // ошибки не будет:
+    loadNewScript("myScript.js", function(error, script) { // в это случае функция будет вызвана только когда страница будет загружена (script.onload = () => callback(script);)
+        if (error) {
+            alert(error)
+        } else {
+            veryShortFunction();
+        }
+    });
+</script>
+ -->

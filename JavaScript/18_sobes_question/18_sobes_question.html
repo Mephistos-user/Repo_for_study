@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+/*        // 1. use strict - использовать "строгий режим"
+        // 'use strict' - может располагаться как в начале скрипта, так и в конкретной функции
+        // нельзя присваивать значения/обращаться к необъявленным переменным
+        function undefVar() {
+            //'use strict';
+            a = '123';
+            return a;
+        }
+
+        console.log(undefVar()); // Uncaught ReferenceError: a is not defined
+*/
+
+
+/*        // 2. какое значение у this
+        const carDescription = {
+            brand: 'Ford Mustang Shelby',
+            year: 2020,
+            getBrand() {
+                return this.brand // this ссылается на текущий объект (carDescription) и использует "свою" переменную brand (без this в этом случае будет Uncaught ReferenceError: brand is not defined)
+            },
+            isRegistered: true
+        }
+
+        console.log(carDescription.getBrand());*/
+
+
+/*        // 3. стрелочные функции:
+        let getCurrentDate = function () { // много кода
+            return new Date();
+        }
+        function getCurrentDate1() { // много кода
+            return new Date();
+        }
+        const getCurrentDate2 = () => new Date(); // мало кода (отсутствует return - вовращение работает по умолчанию)
+
+        function greeting(name) {
+            return 'Hello' + name + '!';
+        }
+
+        const greet = (name) => `Hello ${name}`;
+        const greet2 = name => `Hello ${name}`;
+
+        console.log(greet('Anna'));
+        console.log(greet2('Tom'));*/
+
+
+/*        // 4. шаблонные литералы (``)
+        let lastWords = `
+            I
+            am
+            Iron Man
+        `
+        // преимущества применения:
+            // * не требует экранирования внутри себя
+            // * учитывает количество переносов, табуляции и пробелов
+            // * удобно встраивать значения переменных*/
+
+
+/*        // 5. классы и конструкторы функций
+        // 5.1 функция
+        function Employee(name) {
+            this.name = name;
+        }
+        // let emp1 = new Employee('Alex');
+        // console.log(emp.name);
+
+        // 5.1 класс
+        class EmployeeClass {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+        // let emp2 = new EmployeeClass('Andrew');
+        // console.log(emp2.name);
+
+        // 5.2 функция
+        function Designer(name, employeeId) {
+            // вызываем конструктор суперкласса для инициализации полей, унаследованных у него
+            Employee.call(this, name);
+
+            // инициализация собственных полей объекта
+            this.employeeId = employeeId;
+        }
+
+        Designer.prototype = Object.create(Employee.prototype); // prototype - механизм с помощью которого объекты наследуют свойства друг друга
+        Designer.prototype.constructor = Designer;
+        emp1 = new Designer('Alex', 82);
+        console.log(`Имя сотрудника: ${emp1.name};
+ID сотрудника: ${emp1.employeeId}`);
+
+        // 5.2 класс
+        class DesignerClass extends EmployeeClass {
+            constructor(name, employeeId) {
+                super(name);
+                this.employeeId = employeeId;
+            }
+        }
+
+        let emp2 = new DesignerClass('Andrew', 56);
+        console.log(`Имя сотрудника: ${emp2.name};
+ID сотрудника: ${emp2.employeeId}`);*/
+
+
+/*        // 6. деструктуризация объекта
+        const employee = {
+            firstName: 'Bill',
+            surName: 'Gates',
+            position: 'Software Developer',
+            yearHired: 2020
+        }
+        // было:
+        let firstName = employee.firstName;
+        let surName = employee.surName;
+        let position = employee.position;
+        let yearHired = employee.yearHired;
+
+        // стало:
+        // let {firstName, surName, position, yearHired} = employee;
+        // let {firstName: fName, surName: lName} = employee;
+        // let {firstName = 'Mark', surName: lName} = employee;*/
+
+    </script>
+</body>
+</html>

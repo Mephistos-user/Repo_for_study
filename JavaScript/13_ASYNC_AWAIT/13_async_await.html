@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #square {
+            display: inline-block;
+            width: 200px;
+            height: 50px;
+        }
+        #main {
+            width: 500px;
+            height: 300px;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+
+    </div>
+</body>
+<!-- <script> // скрипт для получения цветов и их hex-кодов
+    // внешний сервис API - sampleapis.com
+    console.log("Старт");
+    // fetch - метод запускает процесс извлечение ресурсов полученных из сети
+    const listPromise = fetch('https://api.sampleapis.com/csscolornames/colors');
+    listPromise
+        .then(data => data.json()) // .json - метод берет response и читает его. Вовращает response и promise
+        .then(colors => {
+            newObjects(colors);
+            console.log(colors);
+        }) .catch(err => {
+            console.log('Error: ', err);
+        })
+
+        function newObjects(colors) {
+            for(const color of colors) {
+                let div = document.createElement('div');
+                div.id = "square";
+                div.style.backgroundColor = color.hex;
+                div.innerHTML = color.hex;
+                document.getElementById("main").appendChild(div);
+            }
+        }
+</script> -->
+
+<!-- <script> // скрипт для сравнивает число и дает на выход разные результаты
+    function sleepTime(time) {
+        return new Promise((resolve, reject) => {
+            if(time < 700) {
+                reject('Not enough!');
+            }
+            setTimeout(() => resolve(`I slept ${time}`), time);
+        })
+    }
+    // async - делает функцию асинхронной
+    async function handlerSleep() {
+        try { // проверка на ошибки
+            // await - ожидает завершение функции (промиса) sleepTime
+            let sleepTime1 = await sleepTime(2000);
+            console.log(sleepTime1);
+            let sleepTime2 = await sleepTime(1500);
+            console.log(sleepTime2);
+            let sleepTime3 = await sleepTime(1000);
+            console.log(sleepTime3);
+            let sleepTime4 = await sleepTime(500);
+            console.log(sleepTime4);
+        }
+        catch(err) { // блок кода в случае ошибки в блоке try
+            console.log(err);
+        }
+    }
+    handlerSleep();
+</script> -->
+
+</html>

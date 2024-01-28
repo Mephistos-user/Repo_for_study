@@ -1,0 +1,161 @@
+<!-- // indexedDB - локальное хранилище. База данных NoSQL
+
+    Ключем может быть любое значение или автоинкремент
+    Можно обновлять, удалять БД только из метода onupgradeneeded
+
+Отличие от localStorage:
+    * больший объем хранящейся информации
+    * поддержка транзакций - все операции с БД или успешно выполненны или не выполнены вообще
+    * позволяет сохранять ключи и данные любого типа
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let requestOpen = indexedDB.open('app', 4) // indexedDB.open - возвращает объект IDBOpenDBRequest
+        
+/*        Синтаксис
+            indexedDB.open (name, version) - имя, версия бд (значение по умолчанию 1, всегда целое число)
+
+            success - БД готова к работе
+            error - не удалось открыть БД
+            upgradeneeded - БД открыта, но требуется обновление*/
+
+        requestOpen.onerror = function (event) {
+            console.error("Error", requestOpen.error);
+        }
+
+        requestOpen.onsuccess = function (event) {
+            db = requestOpen.result;
+            console.log('Мы внутри бд!');
+            
+/*        // синтаксис транзакций:
+            db.transaction(store, [type]);
+            store - название хранилища;
+            type - тип транзакции, один из:
+                readonly - только чтение, по умолчанию
+                readwrite - только чтение и запись данных
+                versionchange - только из события onupgradeneeded (не для ручного использования) - ЛЮБОЕ действие с хранилищем*/
+
+            // let transaction = db.transaction("bookStore", "readwrite");
+            // let books = transaction.objectStore("bookStore");
+
+
+/*            // let book = {
+            //     title: 'War and piece',
+            //     cost: 25,
+            //     created: new Date()
+            // };
+
+            // let book = {
+            //     title: 'Anna Karenina',
+            //     cost: 55,
+            //     created: new Date()
+            // };
+
+            let book = {
+                title: 'Art of programming',
+                cost: 65,
+                created: new Date()
+            };
+
+            let request = books.add(book); // add - при первичном добавлении в базу (если ключи записей совпадут, то выдаст ошибку). put(value, [key]) - при замене/обновлении значения (если ключи записей совпадут, то значения заменятся/обновятся)
+            request.onsuccess = function () {
+                console.log("Книга успешно добавлена", request.result);
+            };
+            request.onerror = function () {
+                console.log("Ошибка", request.error);
+            };*/
+
+            // поиск элементов по ключу
+
+/*            // получим одну книгу с точным значением ключа
+            let request1 = books.get(1);
+            request1.onsuccess = function () {
+                console.log(("Книга найдена", request1.result));
+            };
+
+            request1.error = function () {
+                console.log("Ошибка", request1.error);
+            };
+
+            // получим книги в диапазоне от id < 5 и до конечной
+            let request2 = books.getAll(IDBKeyRange.upperBound(5, true)); // IDBKeyRange -интерфейс представляет конечный интервал ключей
+            request2.onsuccess = function () {
+                console.log(("Книги в диапазоне найдена", request2.result));
+            };
+            request2.error = function () {
+                console.log("Ошибка", request2.error);
+            };
+
+            // получить все книги
+            let request3 = books.getAll();
+            request3.onsuccess = function () {
+                console.log(("Все книги найдена", request3.result));
+            };
+            request3.error = function () {
+                console.log("Ошибка", request3.error);
+            };*/
+
+            // поиск по индексу
+
+            let transaction = db.transaction("bookStore", "readwrite");
+            let bookStore = transaction.objectStore("bookStore");
+
+            let indexCost = bookStore.index("indexCost");
+
+            let request = indexCost.getKey(55);
+
+            request.onsuccess = function () {
+                if (request.result !== undefined) {
+                    console.log("Резултат поиска: ", request.result);
+                    // let requestDelete = bookStore.delete(request.result); // удалить найденную запись по ключу
+                } else {
+                    console.log("Нет таких книг");
+                }
+            };
+
+        };
+
+        requestOpen.onupgradeneeded = function (event) {
+            
+            db = requestOpen.result;    
+
+            switch (event.oldVersion) {
+                case 0:
+                    console.log('База данных инициализирована!');
+                case 1:
+                    db.createObjectStore('books', {autoIncrement: true}); // createObjectStore - для создания хранилища
+                    console.log('Хранилише успешно создано!');
+                case 2:
+                    db.deleteObjectStore('books');
+                case 3:
+                    db.createObjectStore('bookStore', {autoIncrement: true});
+                case 4:
+                    db.deleteObjectStore('bookStore');
+                    let bookStore = db.createObjectStore('bookStore', {autoIncrement: true});
+                    // синтаксис создания индекса: objectStore.createIndex(name, keyPath, [options]);
+                    let index = bookStore.createIndex('indexCost', 'cost');
+
+            }
+        }
+
+        let requestDelete = indexedDB.deleteDatabase('app');
+        requestDelete.onsuccess = function () {
+            console.log(("База данных успешно удалена"));
+        };
+        requestDelete.onerror = function () {
+            console.log("Не удалось удалить базу данных");
+        };
+
+
+
+    </script>
+</body>
+</html>
