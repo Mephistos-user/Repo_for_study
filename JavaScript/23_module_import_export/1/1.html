@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module"> // type="module" - указывает что будет исползован внешний скрипт
+    // "use strict" - при типе type="module" по умолчанию скрипт использует строгий режим
+    import {greeting} from './hello.js'; // импорт метода greeting из модуля hello.js
+    greeting('Tom');
+    </script>
+</body>
+</html>
+
+
+<!-- модули работают только на сервере используя протоколы HTPP или HTPPS. При попытке открыть модуль в режиме файл - ничего не получим, нужен сервер, хотя бы локальный-->

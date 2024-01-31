@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // текстовая строка
+        let str = "This is test string";
+
+        // объявление
+        let regExp = new RegExp('test'); // с помощью конструктора объекта - динамический вариант, можно изменить
+        let regExp1 = /test/; // с помощью слешей - статичный вариант, нельзя изменить
+
+        // применение
+        //console.log('Match: ' + str.match(regExp)[0]); // match - возвращает массив совпадений ([0] - флаг первого вхождения)
+        //console.log('Test: ' + regExp.test(str)); // test - возвращает булевое значение
+
+
+        //console.log('Match: ' + str.match(regExp1)[0]); // match - возвращает массив совпадений ([0] - флаг первого вхождения)
+        //console.log('Test: ' + regExp1.test(str)); // test - возвращает булевое значение
+
+        // флаги 
+        // i - не зависимый от регистра поиск
+
+        regExp = new RegExp('Test', 'i');
+        regExp1 = /Test/i;
+        //console.log('Match: ' + str.match(regExp1)[0]);
+        //console.log('Test: ' + regExp1.test(str));
+
+        // g - поиск по всем совпадениям, а не только по первому
+        let str1 = "Alone in a wide, wide sea";
+        regExp = new RegExp('wide', 'ig');
+        regExp1 = /wide/ig;
+        
+        // console.log('Match [0]: ' + str1.match(regExp1)[0]);
+        // console.log('Match(regExp1).length: ' + str1.match(regExp1).length);
+        // console.log('Match(regExp1): ' + str1.match(regExp1));
+        // console.log('Test: ' + regExp1.test(str1));
+
+        // мультистрочный поиск
+        let str2 = `1 puppy
+2 puppy
+3 puppy
+4 puppy`;
+        // console.log(str2.match(/^\d/g)); // "/^\d/g" - поиск по строкам, ищем цифры с начала строки
+        // console.log(str2.match(/^\d/g).length);
+
+        // console.log(str2.match(/^\d/gm)); // "/^\d/g" - поиск по строкам, ищем цифры с начала строки
+        // console.log(str2.match(/^\d/gm).length); // m - мультистрочный поиск
+
+
+        // методы для регулярных выражений
+        
+        // match
+
+        // массив совпадений
+        // console.log("Alone in a wide, wide sea".match(/wide/ig));
+
+        // первое совпадение + свойства с допю информацией (позиция совпадения и исходная строка)
+        // console.log("Alone in a wide, wide sea".match(/wide/i));
+
+        // null, важно об этом помнить!
+        // console.log("Alone in a wide, wide sea".match(/Wide/));
+
+        let result = "Alone in a wide, wide sea".match(/Wide/);
+        // мы получим ошибку в примере ниже: 24_regular_exprestion.html:70 Uncaught TypeError: Cannot read properties of null (reading 'length')
+        /*if (!result.length) {
+            console.log('No matches!');
+        }*/
+
+        result = "Alone in a wide, wide sea".match(/Wide/) || []; // || [] - если (||) выражение дает null, то присвоится значение пустого массива []
+        if (!result.length) {
+            // console.log('No matches!');
+        }
+
+        // test
+        // ... 
+
+
+        // replace - замена
+
+        result = "Alone in a wide, wide sea".replace(/Wide/ig, 'far');
+        // console.log(result); 
+
+        // спец.символы
+        result = "Alone in a wide".replace(/Wide/i, '$&, wide sea'); // - дополняем
+        // console.log(result);
+
+        // символьные классы - последовательность символов, которая обозанячает какую-либо группу символов
+        // \d - digital '0-9'
+        str = "+7(955)-212-43-90";
+        regExp = /\d/g;
+        // console.log(str.match(regExp).join(''));
+
+        let date = "26 July 2022";
+        // console.log((/\d\d/).test(date)); // /\d\d/).test - проверить есть ли две подряд идущие цифры (\d\d)
+        // console.log(date.match(/\d\d/g).length);
+        // console.log(date.match(/\d\d/g));
+
+        // \s - space - пробел, \t(табуляция), \n(перевод строки) и др.
+        // console.log((/\d\d\s/).test(date)); // \d\d\s - проверить есть ли две подряд идущие цифры (\d\d) и пробел (\s)
+        // console.log(date.match(/\d\d\s/g).length);
+        // console.log(date.match(/\d\d\s/g));
+
+        // \w - word - буква латинского алфавита, цифра или "_"
+        //console.log(((/\d\d\s\w/).test(date)));
+        //console.log(date.match(/\d\d\s\w/g).length);
+        //console.log(date.match(/\d\d\s\w/g));
+
+        // . - любой символ, кроме /n
+        //console.log(((/./).test(date)));
+        //console.log(date.match(/./g).length);
+        //console.log(date.match(/./g));
+
+
+        // обратные символьные классы
+
+        // \D - любой символ, кроме \d
+        str = "+7(955)-212-43-90"
+        result = str.match(regExp).join('');
+
+        //console.log(result.replace(/\D/g, ''));
+        // \S - любой символ, кроме \s
+        //console.log(date.replace(/\S/g, "aa"))
+
+        // W - любой символ, кроме \w
+        //console.log(date.replace(/\W/g, "aa"));
+
+        // Якоря
+        // ^ - начало текста
+        str2 = `1 puppy
+2 puppy
+3 puppy
+4 puppy`;
+
+        //console.log(str2.match(/^\d/gm));
+        //console.log(str2.match(/^\d/gm).length); // здесь m - начало и конец каждой строки
+
+        // $ - конец строки
+        let sinatra = "Oh the weather outside is frightful"
+        //console.log(/frightful$/.test(sinatra));
+
+        // проверка на полное совпадение
+        let dateToCheck = '22.07.2022!';
+        //console.log(/\d\d[.]\d\d[.]\d\d\d\d$/.test(dateToCheck)); // [.] - способ экранирования ([.] - это точка)
+
+        // \b граница слова \b
+        str = "Java is a good language";
+        str1 = "I like to write code in Java";
+        str2 = "Javascript is a good language";
+        console.log(/\bJava\b/.test(str)); // либо в начале строки и заканчиваться пробелом
+        console.log(/\bJava\b/.test(str1));// либо в конце строки и начинаться пробелом
+        console.log(/\bJava\b/.test(str2));// либо в середине строки и ограничиваться с двух сторон пробелами
+
+        // набор символов
+        str = "Пол, гол, холст";
+        console.log(str.match(/[пгх]ол/gi)); // [пгх] - одна из букв
+        console.log('март'.match(/м[ар]т/)); // либо 'а' либо 'т'
+
+        // диапазон символов
+        str = "newpasS24";
+        console.log(str.match(/[a-z][A-Z][0-9]/)); // идущие подряд латинские символы в нижнем регистре + в верхнем регистре + цифра
+        // символьный класс \w - это сокращение для [a-zA-Z0-9_]
+
+        // квантификаторы
+        // {n} - количество
+        str = "+7(955)-212-43-90";
+        console.log(str.match(/\d{1,}/g)); // {1,} - от одной цифры, до любого количества
+
+        // + - 1 и более {1,}
+        console.log(str.match(/\d+/g));
+
+        // ? - 0 или 1 {0,1}
+        console.log(str.match(/\d?/g));
+
+        // * - 0 и более {0,}
+        console.log(str.match(/\d*/g));
+
+        // экранирование
+        str = '^$.';
+        console.log(/\^\$\./.test(str)); // \ - экран
+
+        regExp = new RegExp('\\^\\$\\.'); // \\ - экран для RegExp
+        console.log(regExp.test(str));
+
+        // скобочные группы
+        str = "Gogo power rangers!";
+        console.log(str.match(/(go)+/)); // (последовательность символов)
+
+        regExp = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
+        console.log("my@mail.com, his@site.com.uk".match(regExp));
+
+        // OR
+        console.log(/css|html|js/.test("I love js"));
+
+
+
+    </script>
+</body>
+</html>

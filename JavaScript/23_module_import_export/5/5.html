@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert(this); // object Window - когда this в скрипте который не является модулем
+    </script>
+    <script type="module">
+        alert(this); // undefined - когда this в скрипте который является модулем
+    </script>
+</body>
+</html>

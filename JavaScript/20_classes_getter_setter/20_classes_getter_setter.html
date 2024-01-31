@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*        let user = {
+            name: 'Andrew',
+            surname: 'Sokolov',
+            fullname: function() {
+                console.log(`${this.name} ${this.surname}`);
+            }
+        }
+        //console.log(user.name);
+        //user.fullname();
+
+        // тоже самое но с гетером
+        let user1 = {
+            name: 'Andrew1',
+            surname: 'Sokolov1',
+            get fullname() { // вместо простой функции - гетер
+                return `${this.name} ${this.surname}`; // у гетера должен быть return
+            },
+            set fullname(value) {
+                [this.name, this.surname] = value.split(" ");
+            }
+        }
+        console.log(user1.name);
+        console.log(user1.fullname);
+        user1.fullname = 'Ivan Ivanov'; // без сетера значение свойства не изменится
+        console.log(user1.name);
+        console.log(user1.fullname);*/
+
+
+/*        // обёртка
+        let user2 = {
+            get age() {
+                return this._age;
+            },
+            set age(value) {
+                if (value < 18) {
+                    alert("Доступ запрещен!");
+                    return;
+                }
+                this._age = value;
+            }
+        }
+        console.log(user2.age = 17);*/
+
+
+/*        // как изменить название свойства уже после того как объекты созданы:
+        function User(name, birthday) {
+            this.name = name;
+            this.birthday = birthday; // свойство age решили поменять на birthday:
+            // для этого ->
+            Object.defineProperty(this, "age", { // Object.defineProperty - определяет новое или изменяет существующее свойство непосредственно на объекте, возвращая этот объект
+                get() {
+                    let todayYear = new Date().getFullYear();
+                    return todayYear - this.birthday.getFullYear();
+                }
+            });
+
+        }
+
+        let user3 = new User('Petr', new Date(1992, 6, 1));
+        console.log(user3.name);
+        console.log(user3.age);*/
+
+
+        class User4 {
+            constructor(age) {
+                // вызывает сеттер
+                this.age = age;
+            }
+            get age() {
+                return this._age; // _age - "_" аналог приватного свойства
+            }
+            set age(value) {
+                if (value < 18) {
+                    alert("Доступ воспрещен!");
+                    return;
+                }
+                this._age = value;
+            }
+        }
+
+        let user4 = new User4(27);
+        alert(user4.age);
+        let user5 = new User4(17);
+
+
+    </script>
+</body>
+</html>

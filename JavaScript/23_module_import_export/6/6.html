@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import {greeting, farewell} from "./user6.js"; // импорт нескольких модулей
+        greeting('Tom');
+        farewell('Tom');
+
+
+        // если в модуле множество объектов для импорта, то:
+        import * as message from './user6.js' // import * as message from './user6.js' - импортировать ВСЁ(*) КАК(as) объект с именем message (message) из (from) модуля по адрессу ('./user6.js')
+        greeting('Anthony');
+        farewell('Anthony');
+
+    </script>
+
+
+</body>
+</html>
