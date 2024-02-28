@@ -22,7 +22,7 @@ int main()
         if (zap == "push")
         {
             int x;
-            st.push(pair<int, int> (x, min(x, st.top().second))); // вставляем пару "значение : минимум" на верх стека
+            st.push(pair<int, int> (x, min(x, st.top().second))); // вставляем пару "значение : минимум" наверх стека
         }
         else if (zap == "pop")
         {
