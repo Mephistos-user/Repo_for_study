@@ -1,0 +1,8 @@
+// алгоритмы
+
+https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+
+// конспекты
+http://neerc.ifmo.ru/wiki/index.php?title=Заглавная_страница
+
+http://e-maxx.ru/index.php

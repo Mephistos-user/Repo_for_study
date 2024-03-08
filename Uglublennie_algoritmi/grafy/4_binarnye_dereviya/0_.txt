@@ -1,0 +1,6 @@
+// сайт визуализации куч
+
+https://www.cs.usfca.edu/~galles/visualization/FibonacciHeap.html
+
+// конспекты
+https://neerc.ifmo.ru/wiki/index.php?title=Двоичная_куча
