@@ -1,4 +1,4 @@
-public class _01First {
+public class MyClass01 {
     public static void main(String[] args) {
 //        String
         int x = 5;

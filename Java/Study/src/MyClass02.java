@@ -4,12 +4,17 @@
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Scanner;
 
-public class _02Second {
+public class MyClass02 {
     public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Вставте ссыдку: ");
+        String urlInput = scanner.next();
 
-        String sourceCode = downloadWebPage("https://ya.ru");
+        String sourceCode = downloadWebPage(urlInput);
         writeToFile(sourceCode);
+        System.out.print("Готово!");
 
     }
 

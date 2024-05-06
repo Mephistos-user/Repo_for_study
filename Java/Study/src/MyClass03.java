@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class _03Third {
+public class MyClass03 {
     public static void main(String[] args) {
 
         // большее среди трех чисел

@@ -1,4 +1,4 @@
-public class _00Zero {
+public class MyClass00 {
     public static void main(String[] args) {
 //        a*x + b*x*x + c = 0  квадратное уравнение
         int a = 5;
