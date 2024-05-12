@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MyClass02 {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Вставте ссыдку: ");
+        System.out.print("Вставте ссылку: ");
         String urlInput = scanner.next();
 
         String sourceCode = downloadWebPage(urlInput);
@@ -32,6 +32,7 @@ public class MyClass02 {
         }
         return result.toString();
     }
+    // метод записи в файл
     public static void writeToFile (String str) throws IOException {
         BufferedWriter writer = new BufferedWriter((new FileWriter("C:/Users/Admin/Desktop/Скаченные страницы HTML/MyHTML.html")));
         writer.write(str);
