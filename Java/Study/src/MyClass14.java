@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
@@ -16,7 +19,7 @@ public class MyClass14 {
         System.out.println(url);
 
         try (InputStream in = new URL(url).openStream()) {
-            Files.copy(in, Paths.get("C:/Users/Admin/Desktop/Снимки_космоса_HD.jpg"));
+            Files.copy(in, Paths.get("C:/Users/Admin/Desktop/Снимки_космоса_HD1.jpg"));
         }
 
         System.out.print("Готово!");
