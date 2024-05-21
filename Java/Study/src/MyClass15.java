@@ -56,10 +56,10 @@ public class MyClass15 {
 //        }
 //        System.out.println(sum);
 
-        // факториал 5
+        // факториал 10
         int x = 1;
         int factorial = 1;
-        while (x <= 5) {
+        while (x <= 10) {
             factorial = factorial * x;
             x++;
         }

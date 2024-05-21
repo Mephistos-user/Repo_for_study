@@ -1,7 +1,6 @@
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Scanner;
 
 public class MyClass08 {
     public static void main(String[] args) throws IOException {
@@ -18,14 +17,8 @@ public class MyClass08 {
         int endIndex2 = page2.lastIndexOf("</Value>");
         String courseStr2 = page2.substring(startIndex2 + 7, endIndex2);
 
-//        System.out.println(courseStr1);
-//        System.out.println(courseStr2);
-
         double course1 = Double.parseDouble(courseStr1.replace(',', '.'));
         double course2 = Double.parseDouble(courseStr2.replace(',', '.'));
-
-//        System.out.println(course1);
-//        System.out.println(course2);
 
         if (course1 < course2) {
             System.out.println("За год курс подрос на " + (course2 - course1));
@@ -49,9 +42,4 @@ public class MyClass08 {
         }
         return result.toString();
     }
-//    public static void writeToFile (String str) throws IOException {
-//        BufferedWriter writer = new BufferedWriter((new FileWriter("C:/Users/Admin/Desktop/Скаченные страницы HTML/MyHTML.html")));
-//        writer.write(str);
-//        writer.close();
-//    }
 }
