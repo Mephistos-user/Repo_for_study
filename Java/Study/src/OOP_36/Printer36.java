@@ -1,6 +1,6 @@
-package OOP_31;
+package OOP_36;
 
-public class Printer {
+public class Printer36 {
 
     String maker;
 

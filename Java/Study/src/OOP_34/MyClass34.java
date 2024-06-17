@@ -2,7 +2,7 @@ package OOP_34;
 
 import java.util.Scanner;
 
-public class MyClass_34 {
+public class MyClass34 {
     public static void main(String[] args) {
 
         // break, continue

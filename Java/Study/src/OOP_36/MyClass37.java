@@ -1,36 +1,17 @@
 package OOP_36;
 
-public class MyClass36 {
-    public static void main(String[] args) {
+import java.io.IOException;
+import java.util.Scanner;
 
-        // перегрузка методов
+public class MyClass37 {
+    public static void main(String[] args) throws IOException {
 
-        Printer36_MFU printer = new Printer36_MFU();
+        // плеер itunes - скачивание и проигрывание preview-записей музыки (30 сек)
 
-        setPrinterPrice(printer, 349.99);
-        System.out.println(printer.price);
-
-        setPrinterPrice(printer, "369");
-        System.out.println(printer.price);
-
-        setPrinterPrice(printer, 300);
-        System.out.println(printer.price);
-
-    }
-
-    static void setPrinterPrice(Printer36_MFU balalaika, double price) {
-        price = price + 50;
-        balalaika.price = price;
-    }
-
-    static void setPrinterPrice(Printer36_MFU printer, int price) {
-        price = price + 50;
-        printer.price = price;
-    }
-
-    static void setPrinterPrice(Printer36_MFU printer, String price) {
-        double priceDouble = Double.parseDouble(price);
-        priceDouble += 50;
-        printer.price = priceDouble;
+        ITunesMusicPlayer player = new ITunesMusicPlayer();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Which song you are looking for?");
+        String name = scanner.nextLine();
+        player.playSong(name);
     }
 }

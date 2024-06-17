@@ -1,104 +1,69 @@
-package OOP_34;
+package OOP_36;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.awt.*;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-public class MyClass35 {
-    public static void main(String[] args) throws IOException {
-        // itunes API - по запросу ищем только первый ответ с фильмом
+public class ITunesMusicPlayer {
 
-        // userInput
-        String term = getUserInput();
-        // buildUrl
-        int limit = 300;
-        String url = buildUrl(term, limit);
-        // downloadWebPages
-        String page = downloadPage(url);
-        // parseResult
-        printResult(page);
-
-        // тоже вариант
-//        printResult(downloadPage(buildUrl(getUserInput())));
-
+    void playSong(String searchRequest) throws IOException {
+        playSongInternal(searchRequest, 1);
     }
 
-    static String getUserInput() {
-        System.out.println("What you looking in tunes?");
-        Scanner scanner = new Scanner(System.in);
-        String info = scanner.nextLine(); // war of world, terminator
-        return info;
+    void playSong(String searchRequest, int limit) throws IOException {
+        playSongInternal(searchRequest, limit);
     }
 
-    static String buildUrl(String term, int limit) {
-        String termWithoutSpaces = term.replace(" ", "+");
+    private void playSongInternal(String searchRequest, int limit) throws IOException {
+        String url =  buildUrl(searchRequest, limit);
+        String page = downloadWebPage(url);
+
+        String artictName = getTag(page ,"artistName");
+        String trackName = getTag(page ,"trackName");
+        String previewUrl = getTag(page ,"previewUrl");
+
+        // save download file
+        try (InputStream in = new URL(previewUrl).openStream()) {
+            Files.copy(in, Paths.get("C:/Users/Admin/Desktop/"+ artictName + " - " + trackName + ".m4a"));
+        }
+
+        System.out.println("Downloaded!");
+        System.out.println(artictName + " - " + trackName);
+
+        // open file
+        File file = new File("C:/Users/Admin/Desktop/"+ artictName + " - " + trackName + ".m4a");
+        if(!Desktop.isDesktopSupported()) {
+            System.out.println("not supported");
+            return;
+        }
+        Desktop desktop = Desktop.getDesktop();
+        if(file.exists()) {
+            desktop.open(file);
+        }
+    }
+
+
+    private String getTag(String page, String tagName) {
+        int start = page.indexOf(tagName) + tagName.length() + 3;
+        int end = page.indexOf("\"", start);
+        String value = page.substring(start, end);
+        return value;
+    }
+
+    private String buildUrl(String searchRequest, int limit) {
+        String term = searchRequest.replace(" ", "+");
         String itunesApi = "https://itunes.apple.com/search?term=";
         String limitParam = "&limit=" + limit;
-        StringBuilder url = new StringBuilder();
-        url.append(itunesApi);
-        url.append(termWithoutSpaces);
-        url.append(limitParam);
-        return url.toString();
-    }
-
-    static String downloadPage(String url) throws IOException {
-        String page = downloadWebPage(url);
-        return page;
-    }
-
-    static void printResult(String page) {
-
-        StringBuilder result = buildMovieResult(page);
-
-        if (result.length() == 0) {
-            result.append("Unknown result: ");
-            result.append(page);
-        }
-
-        System.out.println(result.toString());
-
-    }
-
-    private static StringBuilder buildMovieResult(String page) {
-        StringBuilder result = new StringBuilder();
-
-        int start, end;
-        int moviesCount = 0;
-        int currentMovieIndex = 0;
-        while (moviesCount < 10) {
-            currentMovieIndex = page.indexOf("feature-movie", currentMovieIndex + 20);
-
-            start = page.indexOf("trackName", currentMovieIndex + 20) + "trackName".length() + 3;
-            end = page.indexOf("\",", start);
-            String movieName = page.substring(start, end);
-
-            start = page.indexOf("primaryGenreName", currentMovieIndex + 20) + "primaryGenreName".length() + 3;
-            end = page.indexOf("\",", start);
-            String primaryGenreName = page.substring(start, end);
-
-            start = page.indexOf("longDescription", currentMovieIndex + 20) + "longDescription".length() + 3;
-            end = page.indexOf("\"", start);
-            String movieDescription = page.substring(start, end).replace("<br />", "\n");
-
-            if (primaryGenreName.equals("Comedy")) {
-                result.append("Finally found comedy.\n");
-                result.append(movieName);
-                result.append("\nDescription:\n");
-                result.append(movieDescription);
-                break;
-            } else {
-                result.append("This is a movie.\n");
-                result.append(movieName);
-                result.append("\nDescription:\n");
-                result.append(movieDescription + "\n");
-                moviesCount++;
-            }
-        }
-        return result;
+        String mediaParam = "&media=music";
+        StringBuilder builder = new StringBuilder();
+        builder.append(itunesApi);
+        builder.append(term);
+        builder.append(limitParam);
+        builder.append(mediaParam);
+        return builder.toString();
     }
 
     private static String downloadWebPage(String url) throws IOException {
