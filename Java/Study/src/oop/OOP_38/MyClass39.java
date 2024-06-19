@@ -1,4 +1,4 @@
-package OOP_38;
+package oop.OOP_38;
 
 import java.util.Random;
 import java.util.Scanner;

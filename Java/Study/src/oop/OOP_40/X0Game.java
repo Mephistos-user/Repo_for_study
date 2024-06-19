@@ -1,4 +1,4 @@
-package OOP_40;
+package oop.OOP_40;
 
 import java.util.Scanner;
 

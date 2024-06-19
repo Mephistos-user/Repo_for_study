@@ -1,4 +1,4 @@
-package OOP_26;
+package oop.OOP_26;
 
 public class FileInformation26 {
         String absolutePath;

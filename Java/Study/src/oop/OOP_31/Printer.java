@@ -1,4 +1,4 @@
-package OOP_31;
+package oop.OOP_31;
 
 public class Printer {
 

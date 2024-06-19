@@ -1,4 +1,4 @@
-package OOP_36;
+package oop.OOP_36;
 
 import java.awt.*;
 import java.io.*;

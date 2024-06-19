@@ -1,4 +1,4 @@
-package OOP_26;
+package oop.OOP_26;
 
 public class MyClass27 {
     public static void main(String[] args) {

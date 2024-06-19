@@ -1,4 +1,4 @@
-package OOP_40;
+package oop.OOP_40;
 
 public class MyClass40 {
     public static void main(String[] args) {

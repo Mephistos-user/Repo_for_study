@@ -1,4 +1,4 @@
-package OOP_29;
+package oop.OOP_29;
 
 import java.util.Scanner;
 

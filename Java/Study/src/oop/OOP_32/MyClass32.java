@@ -1,4 +1,4 @@
-package OOP_32;
+package oop.OOP_32;
 
 import java.util.Scanner;
 

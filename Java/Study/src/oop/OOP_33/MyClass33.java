@@ -1,4 +1,4 @@
-package OOP_33;
+package oop.OOP_33;
 
 import java.io.BufferedReader;
 import java.io.IOException;
