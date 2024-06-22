@@ -1,17 +1,33 @@
-package oop2.oop42;
+package oop2.oop45;
+
+import utils.PageDownloader;
 
 import java.awt.*;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ITunesMoviePlayer {
     PageDownloader downloader = new PageDownloader();
 
+    ITunesMovie getMovie(String searchRequest) throws  IOException {
+        String url =  buildUrl(searchRequest);
+        System.out.println("Will search film by term: " + searchRequest);
+        String page = this.downloader.downloadWebPage(url);
+
+        String movieName = getTag(page ,"trackName");
+        String previewUrl = getTag(page ,"previewUrl");
+
+        ITunesMovie movie = new ITunesMovie();
+        return movie;
+    }
+
     void playMovie(String searchRequest) throws IOException {
         String url =  buildUrl(searchRequest);
+        System.out.println("Will search film by term: " + searchRequest);
         String page = this.downloader.downloadWebPage(url);
 
         String movieName = getTag(page ,"trackName");

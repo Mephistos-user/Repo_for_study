@@ -1,4 +1,4 @@
-package oop.OOP_36;
+package oop2.oop42;
 
 import java.awt.*;
 import java.io.*;
@@ -7,34 +7,29 @@ import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class ITunesMusicPlayer {
+public class ITunesMoviePlayer {
+    PageDownloader downloader = new PageDownloader();
 
-    void playSong(String searchRequest) throws IOException {
-        playSongInternal(searchRequest, 1);
-    }
+    void playMovie(String searchRequest) throws IOException {
+        String url =  buildUrl(searchRequest);
+        String page = this.downloader.downloadWebPage(url);
 
-    void playSong(String searchRequest, int limit) throws IOException {
-        playSongInternal(searchRequest, limit);
-    }
-
-    private void playSongInternal(String searchRequest, int limit) throws IOException {
-        String url =  buildUrl(searchRequest, limit);
-        String page = downloadWebPage(url);
-
-        String artictName = getTag(page ,"artistName");
-        String trackName = getTag(page ,"trackName");
+        String movieName = getTag(page ,"trackName");
         String previewUrl = getTag(page ,"previewUrl");
+        System.out.println(movieName);
+        String fileExtention = "." + previewUrl.substring(previewUrl.length()-3);
+        String fileName = movieName + fileExtention;
 
+        System.out.println("Will downloaded trailer of movie: " + movieName);
         // save download file
         try (InputStream in = new URL(previewUrl).openStream()) {
-            Files.copy(in, Paths.get("C:/Users/Admin/Desktop/"+ artictName + " - " + trackName + ".m4a"));
+            Files.copy(in, Paths.get("C:/Users/Admin/Desktop/"+ fileName));
         }
 
         System.out.println("Downloaded!");
-        System.out.println(artictName + " - " + trackName);
 
         // open file
-        File file = new File("C:/Users/Admin/Desktop/"+ artictName + " - " + trackName + ".m4a");
+        File file = new File("C:/Users/Admin/Desktop/"+ fileName);
         if(!Desktop.isDesktopSupported()) {
             System.out.println("not supported");
             return;
@@ -45,7 +40,6 @@ public class ITunesMusicPlayer {
         }
     }
 
-
     private String getTag(String page, String tagName) {
         int start = page.indexOf(tagName) + tagName.length() + 3;
         int end = page.indexOf("\"", start);
@@ -53,11 +47,12 @@ public class ITunesMusicPlayer {
         return value;
     }
 
-    private String buildUrl(String searchRequest, int limit) {
+    private String buildUrl(String searchRequest) {
+        int limit = 50;
         String term = searchRequest.replace(" ", "+");
         String itunesApi = "https://itunes.apple.com/search?term=";
         String limitParam = "&limit=" + limit;
-        String mediaParam = "&media=music";
+        String mediaParam = "&media=movie";
         StringBuilder builder = new StringBuilder();
         builder.append(itunesApi);
         builder.append(term);
@@ -66,19 +61,4 @@ public class ITunesMusicPlayer {
         return builder.toString();
     }
 
-    private static String downloadWebPage(String url) throws IOException {
-
-        StringBuilder result = new StringBuilder();
-        String line;
-        URLConnection urlConnection = new URL(url).openConnection();
-        urlConnection.addRequestProperty("User-Agent", "Mozilla");
-        try (InputStream is = urlConnection.getInputStream();
-             BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
-            while ((line = br.readLine()) != null) {
-                result.append(line);
-            }
-        }
-        return result.toString();
-
-    }
 }

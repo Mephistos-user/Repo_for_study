@@ -1,4 +1,4 @@
-package oop.OOP_26;
+package oop51;
 
 public class Cat27 {
     public String name;

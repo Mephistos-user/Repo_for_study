@@ -1,12 +1,12 @@
-package oop2.oop41;
+package oop2.oop45;
 
 public class ITunesMovie extends ITunesProduct {
 
 
-    String trackName;
-    Double trackPrice;
-    Double trackHdPrice;
-    String shortDescription;
-    String longDescription;
+    public String trackName;
+    public Double trackPrice;
+    public Double trackHdPrice;
+    public String shortDescription;
+    public String longDescription;
 
 }

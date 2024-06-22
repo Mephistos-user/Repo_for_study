@@ -1,3 +1,5 @@
+import exceptions.CbrNotAvailableException;
+
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
@@ -6,8 +8,15 @@ public class MyClass08 {
     public static void main(String[] args) throws IOException {
 
         // сравнить курсы валюты ЦБ за две даты
-
-        String page1 = downloadWebPage("https://cbr.ru/scripts/XML_dynamic.asp?date_req1=02/05/2023&date_req2=14/05/2023&VAL_NM_RQ=R01235");
+        String page1 = "";
+        try {
+            page1 = downloadWebPage("https://cbr.ru/scripts/XML_dynamic.asp?date_req1=02/05/2023&date_req2=14/05/2023&VAL_NM_RQ=R01235");
+            // test wrong url:
+//            page1 = downloadWebPage("https://cbr.rRRRRRu/scripts/XML_dynamic.asp?date_req1=02/05/2023&date_req2=14/05/2023&VAL_NM_RQ=R01235");
+        } catch (Exception exception) {
+            System.out.println("there is some error! " + exception.getMessage());
+            throw new CbrNotAvailableException(exception);
+        }
         int startIndex1 = page1.lastIndexOf("<Value>");
         int endIndex1 = page1.lastIndexOf("</Value>");
         String courseStr1 = page1.substring(startIndex1 + 7, endIndex1);
