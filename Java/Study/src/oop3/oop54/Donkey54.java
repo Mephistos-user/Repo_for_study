@@ -1,6 +1,6 @@
 package oop3.oop54;
 
-public class Donkey implements Speakable {
+public class Donkey54 implements Speakable54 {
     @Override
     public void speak(String str) {
         System.out.println(str + "! Ia Ia!");

@@ -4,11 +4,11 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CsvTableWriter implements TableWriter{
+public class HtmlTableWriter implements TableWriter, OutputFileWriter {
     String fileName;
 
-    CsvTableWriter() {
-        this.fileName = "table.csv";
+    HtmlTableWriter() {
+        this.fileName = "table.html";
     }
 
     @Override
@@ -19,11 +19,18 @@ public class CsvTableWriter implements TableWriter{
             FileWriter fileWriter = new FileWriter(this.fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            for (int i = 0; i < table.length; i++) {
+            bufferedWriter.write("<table border=1><tr><td>");
+            Row header = table[0];
+            bufferedWriter.write(header.left);
+            bufferedWriter.write("</td><td>");
+            bufferedWriter.write(header.right);
+            bufferedWriter.write("</td></tr>");
+            for (int i = 1; i < table.length; i++) {
                 Row current = table[i];
 
-                bufferedWriter.write(current.left + ";" + current.right + "\n");
+                bufferedWriter.write("<tr><td>" + current.left + "</td><td>" + current.right + "</td></tr>");
             }
+            bufferedWriter.write("</table>");
             bufferedWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -32,24 +39,11 @@ public class CsvTableWriter implements TableWriter{
 
     @Override
     public String getOutputPlace() {
-        return "CSV file: " + fileName;
+        return "HTML file: " + fileName;
     }
 
-//    private String spaceString(Row[] table, int currLength) {
-//        int maxLenght = 0;
-//        for (int i = 0; i < table.length; i++) {
-//            Row current = table[i];
-//            if (maxLenght < current.left.length()) {
-//                maxLenght = current.left.length();
-//            }
-//        }
-//        int dif = maxLenght - currLength;
-//        String space = " ";
-//        StringBuilder str = new StringBuilder();
-//
-//        for (int i = 0; i < dif; i++) {
-//            str.append(space);
-//        }
-//        return str.toString();
-//    }
+    @Override
+    public String getFileName() {
+        return this.fileName;
+    }
 }

@@ -1,2 +1,7 @@
-package oop3.oop54;public interface TableWriter55 {
+package oop3.oop55;
+
+public interface TableWriter {
+    void writeTable(Row[] table);
+
+    String getOutputPlace();
 }

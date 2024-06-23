@@ -1,4 +1,4 @@
-package oop51;
+package oop2.oop51;
 
 public class MyClass51 {
     public static void main(String[] args) {

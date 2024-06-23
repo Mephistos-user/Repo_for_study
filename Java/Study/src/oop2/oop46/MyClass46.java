@@ -83,6 +83,7 @@ public class MyClass46 {
         LocalTime time = LocalTime.now();
         System.out.println(time);
 
+
         // 1. get-методы
 //        System.out.println(time.getHour());
 //        System.out.println(time.getMinute());

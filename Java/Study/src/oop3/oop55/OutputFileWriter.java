@@ -1,2 +1,5 @@
-package oop3.oop55;public class FileWriter {
+package oop3.oop55;
+
+public interface OutputFileWriter {
+    String getFileName();
 }
