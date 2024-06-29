@@ -1,7 +1,6 @@
-package oop4.arrayList;
+package oop4.oop62;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 

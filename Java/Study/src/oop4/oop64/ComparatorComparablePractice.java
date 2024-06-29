@@ -1,10 +1,10 @@
-package oop4.arrayList;
+package oop4.oop64;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 
-public class ComparatorComparablePractic {
+public class ComparatorComparablePractice {
     public static void main(String[] args) {
 
         /*

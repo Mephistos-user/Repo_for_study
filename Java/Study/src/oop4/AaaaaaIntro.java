@@ -1,4 +1,4 @@
-package oop4.arrayList;
+package oop4;
 
 public class AaaaaaIntro {
 
