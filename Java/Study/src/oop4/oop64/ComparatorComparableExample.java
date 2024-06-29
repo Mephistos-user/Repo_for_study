@@ -3,11 +3,11 @@ package oop4.arrayList;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Example {
+public class ComparatorComparableExample {
     public static void main(String[] args) {
 
         // компаратор - Сomparator - интерфейс, задает способ сортировки
-        // компарабельно - Сomparable - интерфейс, сравниваемый
+        // компарабельно - Сomparable - интерфейс, сравниваемый с...
         ArrayList<Person> arrayList = new ArrayList<>();
 
         Person michael = new Person("Michael");
