@@ -1,0 +1,12 @@
+.gitignore;File
+.idea;Directory
+dir.txt;File
+files;Directory
+out;Directory
+out.txt;File
+src;Directory
+Study.iml;File
+table.csv;File
+table.html;File
+table.txt;File
+text_files;Directory

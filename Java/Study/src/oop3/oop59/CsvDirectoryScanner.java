@@ -1,42 +1,34 @@
-package oop3.oop55;
+package oop3.oop59;
+
+import oop3.oop55.OutputFileWriter;
+import oop3.oop55.Row;
+import oop3.oop55.TableWriter;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CsvTableWriter implements TableWriter, OutputFileWriter {
-    String fileName;
-
-    CsvTableWriter() {
-        this.fileName = "table.csv";
-    }
-
+public class CsvDirectoryScanner implements DirectoryScanner {
     @Override
-    public void writeTable(Row[] table) {
-
-
+    public void printDirectoryFiles(File[] files) {
         try {
-            FileWriter fileWriter = new FileWriter(this.fileName);
+            FileWriter fileWriter = new FileWriter("dir.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            for (int i = 0; i < table.length; i++) {
-                Row current = table[i];
-
-                bufferedWriter.write(current.left + ";" + current.right + "\n");
+            for (int i = 0; i < files.length; i++) {
+                bufferedWriter.write(files[i].getName() + ";");
+                if (files[i].isDirectory()) {
+                    bufferedWriter.write("Directory");
+                } else {
+                    bufferedWriter.write("File");
+                }
+                bufferedWriter.write("\n");
             }
             bufferedWriter.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
-    @Override
-    public String getOutputPlace() {
-        return "CSV file: " + fileName;
-    }
-
-    @Override
-    public String getFileName() {
-        return this.fileName;
-    }
 }

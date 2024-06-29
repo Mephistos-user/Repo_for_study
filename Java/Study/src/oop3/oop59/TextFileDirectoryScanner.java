@@ -1,19 +1,22 @@
 package oop3.oop59;
 
-import java.io.File;
+import java.io.*;
 
-public class ConsoleDirectoryScanner implements DirectoryScanner{
+public class TextFileDirectoryScanner implements DirectoryScanner{
 
     @Override
     public void printDirectoryFiles(File[] files) {
-        for (int i = 0; i < files.length; i++) {
-            System.out.println(files[i].getName());
+        try {
+            FileWriter fileWriter = new FileWriter("dir.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (int i = 0; i < files.length; i++) {
+                bufferedWriter.write(files[i].getName() + "\n");
+            }
+            bufferedWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
-    @Override
-    public File[] getDirectoryFiles(String dirPath) {
-        File directory = new File(dirPath);
-        return directory.listFiles();
-    }
 }

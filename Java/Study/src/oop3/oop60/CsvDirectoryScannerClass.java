@@ -1,15 +1,15 @@
-package oop3.oop59;
-
-import oop3.oop55.OutputFileWriter;
-import oop3.oop55.Row;
-import oop3.oop55.TableWriter;
+package oop3.oop60;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 
-public class CsvDirectoryScanner implements DirectoryScanner {
+public class CsvDirectoryScannerClass extends DirectoryScannerClass {
+
+    CsvDirectoryScannerClass(String inputDir) {
+        super(inputDir);
+    }
+
     @Override
     public void printDirectoryFiles(File[] files) {
         try {

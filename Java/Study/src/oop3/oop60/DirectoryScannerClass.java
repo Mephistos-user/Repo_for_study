@@ -1,17 +1,24 @@
-package oop3.oop59;
+package oop3.oop60;
 
 import java.io.File;
 
-public interface DirectoryScanner {
-    void printDirectoryFiles(File[] files);
+public abstract class DirectoryScannerClass {
 
-    default File[] getDirectoryFiles(String dirPath) {
-        File directory = new File(dirPath);
+    String directoryPath;
+
+    DirectoryScannerClass(String inputDir) {
+        this.directoryPath = inputDir;
+    }
+
+    abstract void printDirectoryFiles(File[] files);
+
+    File[] getDirectoryFiles() {
+        File directory = new File(this.directoryPath);
         return directory.listFiles();
     }
 
-    default void readAndPrint(String directorypath) {
-        File[] files = getDirectoryFiles((directorypath));
+    void readAndPrint(String directorypath) {
+        File[] files = getDirectoryFiles();
         printDirectoryFiles(files);
     }
 }
