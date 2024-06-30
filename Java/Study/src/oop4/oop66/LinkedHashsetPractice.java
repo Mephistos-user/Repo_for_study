@@ -1,38 +1,42 @@
 package oop4.oop66;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 
-public class LinkedHashsetExample {
+public class LinkedHashsetPractice {
     public static void main(String[] args) {
 
-        // HashSet - хранит только уникальные значения (как и set)
+        // посчитать количество уникальных слов в текстовом файле:
 
-        // похож на ArrayList, только с уникальными значениями
+//        System.out.println(getText());
+        String text = getText();
+        List<String> words = Arrays.asList(text.split(" "));
 
-        // добавление с сортировкой (или случайный порядок)
-        HashSet<Integer> hashSet = new HashSet<>();
-        hashSet.add(1);
-        hashSet.add(5);
-        hashSet.add(4);
-        hashSet.add(7);
-        hashSet.add(3);
-        hashSet.add(1); // этот элемент не добавится в HashSet
-        hashSet.add(2);
-        System.out.println(hashSet);
+        HashSet<String> hashSet = new HashSet<>(words);
 
-        // связанный HashSet - добавление по очереди в конец сета
-        LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet<>();
-        linkedHashSet.add(1);
-        linkedHashSet.add(5);
-        linkedHashSet.add(4);
-        linkedHashSet.add(7);
-        linkedHashSet.add(3);
-        linkedHashSet.add(1); // этот элемент не добавится в HashSet
-        linkedHashSet.add(2);
-        System.out.println(linkedHashSet);
+        System.out.println(words.size());
+        System.out.println(hashSet.size());
 
+    }
 
-
+    static String getText() {
+        String text = "";
+        try (FileReader reader = new FileReader("./text_files/book.txt")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+                text += (char) c;
+            }
+            // заменяем знаки препинания и символы на пробелы
+            text = text.replaceAll("[-.,;:!?()\\[\\]]|[ ]", " "); // используем регулярное выражение [-.,;:!?()\\[\\]]|[ ]
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return text;
     }
 }

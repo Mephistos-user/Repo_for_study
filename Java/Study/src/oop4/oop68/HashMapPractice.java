@@ -1,28 +1,43 @@
 package oop4.oop68;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-public class HashMapExample {
+public class HashMapPractice {
+
+    static HashMap<String, ArrayList<Integer>> hashMap = new HashMap<>();
+
     public static void main(String[] args) {
 
-        // Map - словарь (ключ-значение)
+        // База данных студентов с выводом средней оценки
 
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        hashMap.put("John", 4); // добавить или перезаписать ключ-значение
-        hashMap.put("Petya", 3);
-        hashMap.put("Michael", 5);
-        System.out.println(hashMap);
-        System.out.println(hashMap.get("John")); // получить значение по ключу
-        System.out.println(hashMap.containsKey("Abrakadabra")); // возвращает true если такой ключ существует
-        hashMap.putIfAbsent("Michael", 3); // добавить пару ключ-значение если ключ отсутствует
-        System.out.println(hashMap);
-        hashMap.put("Michael", 3); // перезаписать ключ-значение
-        System.out.println(hashMap);
-        hashMap.replace("Petya", 5); // заменить значение по ключу если такой ключ есть
-        System.out.println(hashMap);
-        hashMap.remove("John"); // удаляет значение по ключу если такой ключ есть
-        System.out.println(hashMap);
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String name = scanner.next();
+            int grade = scanner.nextInt();
+            addGrade(name, grade);
+            display();
+        }
+    }
 
+    static void addGrade(String name, int grade) {
+        if (!hashMap.containsKey(name)) {
+            hashMap.put(name, new ArrayList<>());
+        }
+        hashMap.get(name).add(grade);
+    }
 
+    static void display() {
+        for (Map.Entry<String, ArrayList<Integer>> entry : hashMap.entrySet()) {
+
+            double mean = 0;
+            for (int value : entry.getValue()) {
+                mean += value;
+            }
+            mean /= entry.getValue().size();
+            System.out.println(entry.getKey() + " = " + mean);
+        }
     }
 }

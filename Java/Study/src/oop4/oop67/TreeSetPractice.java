@@ -2,55 +2,48 @@ package oop4.oop67;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
 import java.util.TreeSet;
 
-public class TreeSetExample {
+public class TreeSetPractice {
     public static void main(String[] args) {
 
         // TreeSet -как HashSet, но с Comparable сортировкой
-
-//        String text = getText();
-//        List<String> words = Arrays.asList(text.split(" "));
-
-//        TreeSet<String> treeSet = new TreeSet<>(words);
         
-        TreeSet<Integer> treeSet = new TreeSet<>();
+        TreeSet<Student> treeSet = new TreeSet<>(); // лучше использовать ArrayList или аналогичный
 
-        treeSet.add(1);
-        treeSet.add(10);
-        treeSet.add(3);
-        treeSet.add(7);
-        treeSet.add(2);
-        treeSet.add(8);
-        treeSet.add(13);
-        treeSet.add(5);
-        treeSet.add(9);
+        treeSet.add(new Student("Vasya", 5));
+        treeSet.add(new Student("Kolya", 3));
+        treeSet.add(new Student("Masha", 5)); // не будет добавлен в сет при сортировке по оценкам
+        treeSet.add(new Student("Michael", 4)); // не будет добавлен в сет при сортировке по имени
+        treeSet.add(new Student("Nastya", 3)); // не будет добавлен в сет при сортировке по оценкам
+        treeSet.add(new Student("Vasya", 4)); // не будет добавлен в сет при сортировке по оценкам и по имени
+
         System.out.println(treeSet);
 
-        System.out.println(treeSet.tailSet(4)); // возвращает часть массива после указанного значения и выше
-        System.out.println(treeSet.headSet(4)); // возвращает часть массива до указанного значения и ниже
-        System.out.println(treeSet.floor(5)); // возвращает ближайшее значение меньше или равное указанному (включительно)
-        System.out.println(treeSet.ceiling(5)); // возвращает ближайшее значение большее или равное указанному (включительно)
-        System.out.println(treeSet.lower(5)); // возвращает ближайшее значение меньше (строго) указанного (не включительно)
-        System.out.println(treeSet.higher(5)); // возвращает ближайшее значение большее (строго) указанного (не включительно)
+    }
+}
 
+class Student implements Comparable<Student> {
+    String name;
+    int grade;
+
+    public Student(String name, int grade) {
+
+        this.name = name;
+        this.grade = grade;
     }
 
-    static String getText() {
-        String text = "";
-        try (FileReader reader = new FileReader("./text_files/book.txt")) {
-            int c;
-            while ((c = reader.read()) != -1) {
-                text += (char) c;
-            }
-            // заменяем знаки препинания и символы на пробелы
-            text = text.replaceAll("[-.,;:!?()\\[\\]]|[ ]", " "); // используем регулярное выражение [-.,;:!?()\\[\\]]|[ ]
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return text;
+    @Override
+    public int compareTo(Student student2) {
+//        return student2.grade - grade; // сортировка по оценкам
+        return name.charAt(0) - student2.name.charAt(0); // сортировка по имени по алфавиту
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", grade=" + grade +
+                "}\n";
     }
 }

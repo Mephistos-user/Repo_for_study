@@ -33,7 +33,7 @@ class Customer implements Comparable<Customer2> {
         this.loyaltyPoints = loyaltyPoints;
     }
 
-
+    // сортировка с помощью Comparable
     @Override
     public int compareTo(Customer2 o) {
         return o.loyaltyPoints - loyaltyPoints;
