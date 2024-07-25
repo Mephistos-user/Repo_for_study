@@ -102,16 +102,59 @@
 
 // 9.
 
-import React from "react";
-import MyComponent4 from "./MyComponent4";
+// import React from "react";
+// import MyComponent4 from "./MyComponent4";
 
-const App = (props) => {
+// const App = (props) => {
+//     return (
+//         <div>
+//             <h1>Привет мир</h1>
+//             <MyComponent4 propValue={'prop value 2'}/>
+//         </div>
+//     );
+// };
+
+// export default App;
+
+// Shape
+
+// import React from "react";
+// import Shape from "./Shape";
+
+// const App = () => {
+//     return (
+//         <div>
+//             <Shape/>
+//         </div>
+//     );
+// };
+
+// export default App;
+
+// Управление классами:
+
+// import React from "react";
+// import { Login } from "./Styles";
+
+// const App = () => {
+//     return (
+//         <div>
+//             <Login/>
+//         </div>
+//     );
+// };
+
+// export default App;
+
+// Управление классами:
+
+import MyInput from "./ChangeClasses";
+import "./style.css";
+
+export default function App() {
     return (
-        <div>
-            <h1>Привет мир</h1>
-            <MyComponent4 propValue={'prop value 2'}/>
+        <div className="App">
+            <MyInput label={'Условный рендеринг'}/>
         </div>
     );
 };
-
-export default App;
