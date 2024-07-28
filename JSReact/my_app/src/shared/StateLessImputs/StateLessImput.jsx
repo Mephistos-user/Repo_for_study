@@ -1,9 +1,9 @@
 import React from "react";
 
-const LessImput = ({type, placeholder, label, classes, isData, onChangeProps}) => {
+const LessImput = ({type, placeholder, label, classes, isData, onChangeProps, propsName}) => {
     
     return (
-        <input type={type} placeholder={placeholder} className={classes} onChange={(ev) => onChangeProps(ev.target.value)} />
+        <input name={propsName} type={type} placeholder={placeholder} className={classes} onChange={(ev) => onChangeProps(ev.target.value)} />
     )
 };
 

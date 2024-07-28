@@ -1,9 +1,28 @@
 .add-tasks-container__add-task-form {
+    position: absolute;
+    left: 27%;
     z-index: 10;
     width: 500px;
     height: 500px;
     margin: 20px auto;
-    border: 1px solid lightgrey;
+    border: 1px solid lightgray;
     padding: 20px;
     border-radius: 10px;
+    background-color: whitesmoke;
+}
+
+.add-task-form__maintaner {
+    margin: 10px;
+}
+
+.maintaner-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: min-content;
+    height: 100px;
+}
+
+.form-btn {
+    margin: 10px;
 }

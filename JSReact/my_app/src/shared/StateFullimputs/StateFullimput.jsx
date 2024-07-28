@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FullImput = ({localType}) => {
+const FullImput = ({localType, placeholder, propsName}) => {
 
     const [isValid, setIsValid] = useState(false);
 
@@ -15,14 +15,17 @@ const FullImput = ({localType}) => {
             return (
                 <>
                     {disabled && <label>Вы младше 18 лет, к сожалению задача для Вас недоступна</label>}
-                    <input type="date" className={isValid ? 'valid' : 'not-valid'} onChange={(ev) => isValidDate(ev.target.value)}/>
+                    <input name={propsName} type="date" className={isValid ? 'not-valid' : 'valid'} onChange={(ev) => isValidDate(ev.target.value)}/>
                 </>
-            )
+            );
         case 'password':
             return (
-                <input type="password" className={isValid ? 'not-valid' : 'valid'}/>
-            )
-
+                <input name={propsName} type="password" className={isValid ? 'not-valid' : 'valid'}/>
+            );
+        case 'text-area':
+            return (
+                <textarea name={propsName} placeholder={placeholder} className="textarea"></textarea>
+            );
     }
 };
 

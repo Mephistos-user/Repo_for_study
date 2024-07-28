@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const HeaderWidget = () => {
 
     const [weatherData, setWeatherData] = useState(null);
 
-    useEffect(() => {
-        fetch('https://api.openweathermap.org/data/3.0/onecall?q={Moscow}&appid={5591418349a791d783307032073fad52}')
-        .then((data) => {console.log(data)})
-    }, [])
+    // useEffect(() => {
+    //     fetch('https://api.openweathermap.org/data/3.0/onecall?q={Moscow}&appid={5591418349a791d783307032073fad52}')
+    //     .then((data) => {console.log(data)})
+    // }, [])
 
     return (
         <div className="header-weather-widget">
