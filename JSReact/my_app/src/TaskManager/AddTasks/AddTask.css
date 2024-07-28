@@ -1,0 +1,9 @@
+.add-tasks-container__add-task-form {
+    z-index: 10;
+    width: 500px;
+    height: 500px;
+    margin: 20px auto;
+    border: 1px solid lightgrey;
+    padding: 20px;
+    border-radius: 10px;
+}

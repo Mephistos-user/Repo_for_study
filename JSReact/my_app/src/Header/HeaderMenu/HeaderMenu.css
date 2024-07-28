@@ -1,0 +1,23 @@
+.nav-menu__nav-item {
+    text-decoration: none;
+    background-color: #fff;
+    margin: 5px;
+    padding: 3px;
+    border-radius: 8px;
+}
+
+.nav-menu__nav-item:hover {
+    box-shadow: 5px 2px 5px white;
+}
+
+.header-menu-container__nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    min-width: min-content;
+    width: 100%;
+}
+
+.header-menu-container {
+    width: 60%;
+}
