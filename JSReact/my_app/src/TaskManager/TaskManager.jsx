@@ -38,3 +38,5 @@ const TaskManager = () => {
 };
 
 export default TaskManager;
+
+// TODO: Доработать правильное отображение списка задач

@@ -18,3 +18,5 @@ const HeaderWidget = () => {
 }
 
 export default HeaderWidget;
+
+// TODO: доделать регистрацию в виджете погоды
