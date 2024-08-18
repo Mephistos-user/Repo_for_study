@@ -63,7 +63,7 @@ promise
 /*
 // метод finally - метод объекта Promise - факт завершения работы самого промиса
 promise
-.finally(() => console.log(`Promise is Finished`)) // удобен, например, убрать кольцо загрузки страницы после ее успешной загрузки
-.then(result => console.log(`I,ve got ${result}! The supr is mine.`))
+.finally(() => console.log(`Promise is Finished`)) // удобен, например, убрать кольцо загрузки страницы после ее успешной загрузки (выполнится независимо от результата)
+.then(result => console.log(`I,ve got ${result}! The super is mine.`))
 .catch(result => console.log(`Oh, no! i,ve got ${result}!`));
 */

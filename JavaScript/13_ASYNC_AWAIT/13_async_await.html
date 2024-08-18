@@ -37,15 +37,15 @@
             console.log('Error: ', err);
         })
 
-        function newObjects(colors) {
-            for(const color of colors) {
-                let div = document.createElement('div');
-                div.id = "square";
-                div.style.backgroundColor = color.hex;
-                div.innerHTML = color.hex;
-                document.getElementById("main").appendChild(div);
-            }
+    function newObjects(colors) {
+        for(const color of colors) {
+            let div = document.createElement('div');
+            div.id = "square";
+            div.style.backgroundColor = color.hex;
+            div.innerHTML = color.hex;
+            document.getElementById("main").appendChild(div);
         }
+    }
 </script> -->
 
 <!-- <script> // скрипт для сравнивает число и дает на выход разные результаты

@@ -166,16 +166,16 @@ console.log(count++); // 1
 console.log(count++); // 2
 */
 
-// 7. Опреаторы сравнения:
+// 7. Операторы сравнения:
 /*
 let g = 5;
 let h = 6;
-console.log(g < h);
-console.log(g > h);
-console.log(g <= h);
-console.log(g >= h);
-console.log(g == h);
-console.log(g != h);
+console.log(g < h); // true
+console.log(g > h); // false
+console.log(g <= h); // true
+console.log(g >= h); // false
+console.log(g == h); // false
+console.log(g != h); // true
 */
 
 // Сравнение строк:
