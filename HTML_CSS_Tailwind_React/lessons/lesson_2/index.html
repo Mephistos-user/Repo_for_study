@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/output.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" class="w-80 space-y-2 my-10 mx-auto">
+        <input class="focus-visible:outline focus-visible:outline-4 focus-within:outline-blue-400 hover:border-blue-800 hover:placeholder:text-blue-800 w-full border border-gray-500 placeholder:text-gray-500 py-2 px-3 rounded-xl" type="email" placeholder="E-mail">
+        <input class="focus-visible:outline focus-visible:outline-4 focus-within:outline-blue-400 hover:border-blue-800 hover:placeholder:text-blue-800 w-full border border-gray-500 placeholder:text-gray-500 py-2 px-3 rounded-xl" type="password" placeholder="Пароль">
+        <input class="focus-visible:outline focus-visible:outline-4 focus-within:outline-blue-400 hover:border-blue-800 hover:placeholder:text-blue-800 w-full border border-gray-500 placeholder:text-gray-500 py-2 px-3 rounded-xl" type="password" placeholder="Повторите пароль">
+        <button class="active:outline active:outline-4 active:outline-blue-400 transition-colors duration-300 ease-in
+        hover:bg-green-800 w-full rounded-xl bg-green-500 py-2 px-4 font-medium text-white">Зарегистрироваться</button>
+    </form>
+    <!-- hover + border = ? -->
+    <div class="flex items-center space-x-5 m-5">
+        <ul class="flex items-center space-x-3">
+            <li><a href="/" class="px-7 py-3 border hover:border-4 border-gray-400 rounded-lg">Главная</a></li>
+            <li><a href="/" class="px-7 py-3 border hover:border-4 border-gray-400 rounded-lg">Новости</a></li>
+            <li><a href="/" class="px-7 py-3 border hover:border-4 border-gray-400 rounded-lg">О нас</a></li>
+        </ul>
+        <button class="rounded-lg bg-green-500 py-3 px-5 text-gray-50
+        transition-colors duration-300 ease-in
+        hover:bg-emerald-700
+        active:outline active:outline-4 active:outline-emerald-200
+        focus-visible:outline-none focus-visible:bg-emerald-700">Зарегистрироваться</button>
+    </div>
+    <!-- hover + outline = ? -->
+    <div class="flex items-center space-x-5 m-5">
+        <ul class="flex items-center space-x-3">
+            <li><a href="/" class="px-7 py-3 outline outline-1 transition-all duration-300 ease-out hover:outline-4 outline-gray-400 rounded-lg">Главная</a></li>
+            <li><a href="/" class="px-7 py-3 outline outline-1 transition-all duration-300 ease-out hover:outline-4 outline-gray-400 rounded-lg">Новости</a></li>
+            <li><a href="/" class="px-7 py-3 outline outline-1 transition-all duration-300 ease-out hover:outline-4 outline-gray-400 rounded-lg">О нас</a></li>
+        </ul>
+        <button class="rounded-lg bg-green-500 py-3 px-5 text-gray-50
+        transition-colors duration-500 ease-in-out
+        hover:bg-emerald-700
+        active:outline active:outline-4 active:outline-emerald-200
+        focus-visible:outline-none focus-visible:bg-emerald-700">Зарегистрироваться</button>
+    </div>
+    <!-- hover + ring = ? -->
+    <div class="flex items-center space-x-5 m-5">
+        <ul class="flex items-center space-x-3">
+            <li><a href="/" class="px-7 py-3 ring-1 hover:ring-4 ring-gray-400 rounded-lg">Главная</a></li>
+            <li><a href="/" class="px-7 py-3 ring-1 hover:ring-4 ring-gray-400 rounded-lg">Новости</a></li>
+            <li><a href="/" class="px-7 py-3 ring-1 hover:ring-4 ring-gray-400 rounded-lg">О нас</a></li>
+        </ul>
+        <button class="rounded-lg bg-green-500 py-3 px-5 text-gray-50
+        hover:bg-emerald-700
+        active:outline active:outline-4 active:outline-emerald-200
+        focus-visible:outline-none focus-visible:bg-emerald-700">Зарегистрироваться</button>
+    </div>
+    <!-- divide -->
+    <div class="flex items-center space-x-5 m-5">
+        <ul class="flex items-center divide divide-x divide-gray-400 border border-gray-400 rounded-xl overflow-hidden">
+            <li class="px-7 py-3 hover:bg-gray-200 transition-colors duration-500 delay-300 ease-out"><a href="/">Главная</a></li>
+            <li class="px-7 py-3 hover:bg-gray-200 transition-colors duration-500 delay-300 ease-out"><a href="/">Новости</a></li>
+            <li class="px-7 py-3 hover:bg-gray-200 transition-colors duration-500 delay-300 ease-out"><a href="/">О нас</a></li>
+        </ul>
+        <button class="rounded-lg bg-green-500 py-3 px-5 text-gray-50
+        hover:bg-emerald-700
+        active:outline active:outline-4 active:outline-emerald-200
+        focus-visible:outline-none focus-visible:bg-emerald-700">Зарегистрироваться</button>
+    </div>
+    <!-- card -->
+    <div class="p-5 mb-[300px]">
+        <div class="relative w-[750px] h-[450px] transition-all duration-500 bg-gradient-to-t to-transparent via-black from-red-500 bg-[length:200%_200%] bg-[0%_0%] hover:bg-[100%_100%]">
+            <div class="absolute top-0 left-0 w-full h-full bg-cover -z-10" style="background-image: url(./src/assets/image_1.png);"></div>
+            <div class="absolute bottom-0 p-9">
+                <span class="uppercase text-xs text-green-500">Параллельный импорт</span>
+                <h4 class="font-extrabold text-3xl text-white">Российские дилеры начали продажи купеобразного кроссовера Kodiaq GT</h4>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

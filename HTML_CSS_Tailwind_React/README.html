@@ -1,0 +1,641 @@
+<!-- Tailwind - шпаргалки -->
+
+<!-- Контрольные точки экранов: -->
+
+<!-- Ширина по умолчанию 16, на средних экранах 32 и на больших экранах 48 -->
+<img class="w-16 md:w-32 lg:w-48" src="...">
+
+<!--
+    Стандартные точки
+    sm  640px @media (min-width: 640px) { ... }
+    md  768px @media (min-width: 768px) { ... }
+    lg  1024px @media (min-width: 1024px) { ... }
+    xl  1280px @media (min-width: 1280px) { ... }
+    2xl  1536px @media (min-width: 1536px) { ... }
+-->
+<!-- Для изменения стандартный точек [320px] - пользовательское значение -->
+<div class="min-[320px]:text-center max-[600px]:bg-sky-300">
+    <!-- ... -->
+</div>
+
+<!-- Подключение Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Изменение конфигурации стилей -->
+<style type="text/tailwindcss"></style>
+
+<!-- установка Tailwind через CLI (консоль) -->
+<!--
+    1. yarn - инициализируем проект
+    2. yarn add tailwind - добавляем в проект tailwindcss
+    3. npx tailwind init - создаем конфигурацию проекта
+        - меняем контент на index.html;
+        - в папке src добавляем базовые дирректории:
+        - - base
+        - - components
+        - - utils
+    4. запускаем процесс сборки с подпиской на изменение
+    5. подключаем к html стили из dist
+-->
+
+<!-- Размеры текста -->
+<p class="text-xs">
+    Простой текст
+    font-size: 0.75rem;/*12px*/
+    line-height: 1rem;/*16px*/
+</p>
+<p class="text-sm">
+    Простой текст
+    font-size: 0.875rem;/*14px*/
+    line-height: 1.25rem;/*20px*/
+</p>
+<p class="text-base">
+    Базовый текст
+    font-size: 1rem;/*16px*/
+    line-height: 1.5rem;/*24px*/</p>
+<p class="text-lg">
+    Средний текст
+    font-size: 1.125rem;/*18px*/
+    line-height: 1.75rem;/*28px*/
+</p>
+<p class="text-xl">
+    Сильный текст
+    font-size: 1.25rem;/*20px*/
+    line-height: 1.75rem;/*28px*/</p>
+<p class="text-2xl">
+    Максимальный текст
+    font-size: 1.5rem;/*24px*/
+    line-height: 2rem;/*32px*/
+</p>
+...
+<p class="text-9xl">
+    Максимальный текст
+    font-size: 8rem;/*128px*/
+    line-height: 1;
+</p>
+<!-- Кастомная высота строки -->
+<p class="text-2xl/4">
+    Кастомная высота строки
+    font-size: 1.5rem;/*24px*/
+    line-height: 4rem;
+</p>
+<p class="text-base/6 ...">Кастомная высота строки</p>
+<p class="text-base/7 ...">Кастомная высота строки</p>
+<p class="text-base/loose ...">Кастомная высота строки</p>
+
+<!-- Межбуквенные интервалы -->
+<p class="tracking-tighter">Сильно сжатый letter-spacing: -0.05em;</p>
+<p class="tracking-tighter">Сжатый letter-spacing: -0.025em;</p>
+<p class="tracking-normal">Обычный letter-spacing: 0em;</p>
+<p class="tracking-wide">Разреженый letter-spacing: 0.025em;</p>
+<p class="tracking-wider">Сильнее разреженный letter-spacing: 0.05em;</p>
+<p class="tracking-widest">очень сильно разреженный letter-spacing: 0.1em;</p>
+
+<div class="w-80 bg-sky-300">
+    <br>
+    <p class="truncate">truncate - текст ограничивается до одной строки, текст который не помещается - скрывается, а в конце добавляется троеточие ...
+        Самое длинное слово в любом из основных славарей английского языка - пневмоноультрамикроскопическийсиликовулканокониоз,, обозначающее ...
+    </p>
+    <br>
+    <p class="overflow-hidden text-clip">text-clip - обрезает текст как только он выходит за контейнер
+        Самое длинное слово в любом из основных славарей английского языка - пневмоноультрамикроскопическийсиликовулканокониоз,, обозначающее ...
+    </p>
+    <br>
+    <p class="overflow-hidden text-ellipsis">text-ellipse - количество строк не ограничивается, но если слово очень длинное, то оно скрывается не переносится и добавляется в конце многоточие ...
+        Самое длинное слово в любом из основных славарей английского языка - пневмоноультрамикроскопическийсиликовулканокониоз,, обозначающее ...
+    </p>
+    <br>
+</div>
+
+<div class="w-80 bg-red-300">
+    <br>
+    <p class="break-normal">break-normal - перенос по словам, слово которое не помещается в контейнер- выходит за края контейнера ...
+        Самое длинное слово в любом из основных славарей английского языка - пневмоноультрамикроскопическийсиликовулканокониоз,, обозначающее ...
+    </p>
+    <br>
+    <p class="break-words">break-words - перенос по словам, слово которое не помещается в контейнер- разрывается по краю контейнера и переносится ...
+        Самое длинное слово в любом из основных славарей английского языка - пневмоноультрамикроскопическийсиликовулканокониоз,, обозначающее ...
+    </p>
+    <br>
+    <p class="break-all">break-all - все слова разрываются по краю контейнера и переносятся ...
+        Самое длинное слово в любом из основных славарей английского языка - пневмоноультрамикроскопическийсиликовулканокониоз,, обозначающее ...
+    </p>
+    <br>
+    <p class="break-keep">break-keep - перенос по словам, слово которое не помещается в контейнер- выходит за края контейнера ...
+        Самое длинное слово в любом из основных славарей английского языка - пневмоноультрамикроскопическийсиликовулканокониоз,, обозначающее ...
+    </p>
+    <br>
+</div>
+
+<!-- Высота и ширина -->
+<!-- 1. Фиксированная -->
+<!--
+    w-0    width: 0px;
+    w-px   width: 1px;
+    w-0.5  width: 0.125rem; /*2px*/
+    w-1    width: 0.25rem;  /*4px*/
+    w-1.5  width: 0.375rem; /*6px*/
+    w-2    width: 0.5rem;   /*8px*/
+    w-2.5  width: 0.625rem; /*10px*/
+    w-3    width: 0.75rem;  /*12px*/
+    w-3.5  width: 0.875rem; /*14px*/
+    w-4    width: 1rem;     /*16px*/
+    w-5    width: 1.25rem;  /*20px*/
+    w-6    width: 1.5rem;   /*24px*/
+    w-7    width: 1.75rem;  /*28px*/
+    w-8    width: 2rem;     /*32px*/
+    w-9    width: 2.25rem;  /*36px*/
+    w-10   width: 2.5rem;   /*40px*/
+    w-11   width: 2.75rem;  /*44px*/
+    w-12   width: 3rem;     /*48px*/
+    w-14   width: 3.5rem;   /*56px*/
+    w-16   width: 4rem;     /*64px*/
+    w-20   width: 5rem;     /*80px*/
+    w-24   width: 6rem;     /*96px*/
+    w-28   width: 7rem;     /*112px*/
+    w-32   width: 8rem;     /*128px*/
+    w-36   width: 9rem;     /*144px*/
+    w-40   width: 10rem;    /*160px*/
+    w-44   width: 11rem;    /*176px*/
+    w-48   width: 12rem;    /*192px*/
+    w-52   width: 13rem;    /*208px*/
+    w-56   width: 14rem;    /*224px*/
+    w-60   width: 15rem;    /*240px*/
+    w-64   width: 16rem;    /*256px*/
+    w-72   width: 18rem;    /*288px*/
+    w-80   width: 20rem;    /*320px*/
+    w-96   width: 24rem;    /*384px*/
+-->
+
+<!-- 2. Пропорции: Стандартные -->
+<!-- w-full  width: 100%; -->
+<!-- w-screen width: 100vw; -->
+<!-- w-max-content width: max-content; -->
+<!-- w-min-content width: min-content; -->
+<!-- w-fit-content width: fit-content; -->
+<!-- w-auto    width: auto; -->
+<!-- w-px    width: 1px; -->
+<!-- w-0.5  width: 0.125rem; -->
+<!-- w-1    width: 0.25rem; -->
+<!-- w-1.5  width: 0.375rem; -->
+<!-- w-2    width: 0.5rem; -->
+<!-- w-2.5  width: 0.625rem; -->
+<!-- w-3    width: 0.75rem; -->
+<!-- w-3.5  width: 0.875rem; -->
+<!-- w-4    width: 1rem; -->
+<!-- w-5    width: 1.25rem; -->
+<!-- w-6    width: 1.5rem; -->
+<!-- w-7    width: 1.75rem; -->
+<!-- w-8    width: 2rem; -->
+<!-- w-9    width: 2.25rem; -->
+<!-- w-10   width: 2.5rem; -->
+<!-- w-11   width: 2.75rem; -->
+<!-- w-12   width: 3rem; -->
+<!-- w-14   width: 3.5rem; -->
+<!-- w-16   width: 4rem; -->
+<!-- w-20   width: 5rem; -->
+<!-- w-24   width: 6rem; -->
+<!-- w-28   width: 7rem; -->
+<!-- w-32   width: 8rem; -->
+<!-- w-36   width: 9rem; -->
+<!-- w-40   width: 10rem; -->
+<!-- w-44   width: 11rem; -->
+<!-- w-48   width: 12rem; -->
+<!-- w-52   width: 13rem; -->
+<!-- w-56   width: 14rem; -->
+<!-- w-60   width: 15rem; -->
+<!-- w-64   width: 16rem; -->
+<!-- w-72   width: 18rem; -->
+<!-- w-80   width: 20rem; -->
+<!-- w-96   width: 24rem; -->
+
+<!-- 3. Относительные: Пропорции -->
+<!-- w-1/2   width: 50%; -->
+<!-- w-1/3   width: 33.33%; -->
+<!-- w-2/3   width: 66.66%; -->
+<!-- w-1/4   width: 25%; -->
+<!-- w-3/4   width: 75%; -->
+<!-- w-1/5   width: 20%; -->
+<!-- w-2/5   width: 40%; -->
+<!-- w-3/5   width: 60%; -->
+<!-- w-4/5   width: 80%; -->
+<!-- w-1/6   width: 16.66%; -->
+<!-- w-5/6   width: 83.33%; -->
+<!-- w-1/12  width: 8.33%; -->
+<!-- w-2/12  width: 16.66%; -->
+<!-- w-3/12  width: 25%; -->
+<!-- w-4/12  width: 33.33%; -->
+<!-- w-5/12  width: 41.66%; -->
+<!-- w-6/12  width: 50%; -->
+<!-- w-7/12  width: 58.33%; -->
+<!-- w-8/12  width: 66.66%; -->
+<!-- w-9/12  width: 75%; -->
+<!-- w-10/12 width: 83.33%; -->
+<!-- w-11/12 width: 91.66%; -->
+
+<!-- 4. Относительные: Эмуляция -->
+<!-- w-fill  width: 100%; -->
+<!-- w-available  width: available; -->
+<!-- w-max  width: max-content; -->
+<!-- w-min  width: min-content; -->
+<!-- w-fit  width: fit-content; -->
+<!-- w-content  width: content; -->
+<!-- w-initial  width: initial; -->
+<!-- w-inherit  width: inherit; -->
+<!-- w-unset  width: unset; -->
+<!-- w-current  width: current; -->
+<!-- w-none  width: none; -->
+<!-- w-full  width: 100%; -->
+<!-- w-screen  width: 100vw; -->
+<!-- w-min-screen  width: min(100vw, 100vh); -->
+<!-- w-max-screen  width: max(100vw, 100vh); -->
+<!-- w-px  width: 1px; -->
+<!-- w-0  width: 0; -->
+<!-- w-1  width: 1px; -->
+<!-- w-2  width: 2px; -->
+<!-- w-3  width: 3px; -->
+<!-- w-4  width: 4px; -->
+<!-- w-5  width: 5px; -->
+<!-- w-6  width: 6px; -->
+<!-- w-7  width: 7px; -->
+<!-- w-8  width: 8px; -->
+<!-- w-9  width: 9px; -->
+<!-- w-10  width: 10px; -->
+<!-- w-11  width: 11px; -->
+<!-- w-12  width: 12px; -->
+<!-- w-14  width: 14px; -->
+<!-- w-16  width: 16px; -->
+<!-- w-20  width: 20px; -->
+<!-- w-24  width: 24px; -->
+<!-- w-28  width: 28px; -->
+<!-- w-32  width: 32px; -->
+<!-- w-36  width: 36px; -->
+<!-- w-40  width: 40px; -->
+<!-- w-44  width: 44px; -->
+<!-- w-48  width: 48px; -->
+<!-- w-52  width: 52px; -->
+<!-- w-56  width: 56px; -->
+<!-- w-60  width: 60px; -->
+<!-- w-64  width: 64px; -->
+<!-- w-72  width: 72px; -->
+<!-- w-80  width: 80px; -->
+<!-- w-96  width: 96px; -->
+<!-- w-120  width: 120px; -->
+<!-- w-160  width: 160px; -->
+<!-- w-240  width: 240px; -->
+<!-- w-320  width: 320px; -->
+<!-- w-480  width: 480px; -->
+<!-- w-640  width: 640px; -->
+<!-- w-960  width: 960px; -->
+<!-- w-1280  width: 1280px; -->
+<!-- w-1920  width: 1920px; -->
+<!-- w-2560  width: 2560px; -->
+<!-- w-3840  width: 3840px; -->
+<!-- w-5760  width: 5760px; -->
+<!-- w-7680  width: 7680px; -->
+<!-- w-10240  width: 10240px; -->
+<!-- w-15360  width: 15360px; -->
+<!-- w-20480  width: 20480px; -->
+
+<!-- 5. Относительные: Эмуляция с использованием calc() -->
+<!-- w-1/2   width: calc(50% - 1rem); -->
+<!-- w-1/3   width: calc(33.33% - 1rem); -->
+<!-- w-2/3   width: calc(66.66% - 1rem); -->
+<!-- w-1/4   width: calc(25% - 1rem); -->
+<!-- w-3/4   width: calc(75% - 1rem); -->
+<!-- w-1/5   width: calc(20% - 1rem); -->
+<!-- w-2/5   width: calc(40% - 1rem); -->
+<!-- w-3/5   width: calc(60% - 1rem); -->
+<!-- w-4/5   width: calc(80% - 1rem); -->
+<!-- w-1/6   width: calc(16.66% - 1rem); -->
+<!-- w-5/6   width: calc(83.33% - 1rem); -->
+<!-- w-1/12  width: calc(8.33% - 1rem); -->
+<!-- w-2/12  width: calc(16.66% - 1rem); -->
+
+<!-- 6. Фон: repeat-->
+<!-- bg-repeat -->
+<!-- bg-no-repeat -->
+<!-- bg-repeat-x -->
+<!-- bg-repeat-y -->
+<!-- bg-repeat-round -->
+<!-- bg-repeat-space -->
+
+<!-- 7. Фон: attachment закрепление-->
+<!-- bg-fixed -->
+<!-- bg-local -->
+<!-- bg-scroll -->
+
+<!-- 8. Фон: size размер-->
+<!-- bg-auto -->
+<!-- bg-cover -->
+<!-- bg-contain -->
+
+<!-- 9. Фон: clip обрезка-->
+<!-- bg-clip-border -->
+<!-- bg-clip-padding -->
+<!-- bg-clip-content -->
+<!-- bg-clip-text -->
+
+<!-- 10. Фон: gradient градиент-->
+<!-- bg-gradient-to-{напр.} -->
+<!-- from-{color} -->
+<!-- to-{color} -->
+
+<!-- 11. Фон: origin происхождение-->
+<!-- bg-origin-border -->
+<!-- bg-origin-padding -->
+<!-- bg-origin-content -->
+<!-- bg-origin-self -->
+
+<!-- 12. ��он: clip-path обрезка-->
+<!-- bg-clip-path-circle -->
+<!-- bg-clip-path-inset -->
+<!-- bg-clip-path-polygon -->
+
+<!-- 13. ��он: blur размытие -->
+<!-- bg-blur-{size} -->
+ <!-- size: 0, 1, 2, ..., 200px -->
+
+<!-- 14. ��он: opacity прозрачность -->
+<!-- bg-opacity-{0.1, 0.2, ..., 1} -->
+ <!-- 0 - непрозрачный, 1 - прозрачный -->
+
+<!-- 15. ��он: filter эффекты -->
+<!-- bg-filter-grayscale -->
+ <!-- bg-filter-invert -->
+ <!-- bg-filter-sepia -->
+ <!-- bg-filter-saturate-{value} -->
+ <!-- value: 0, 1, 2, ..., 10 -->
+ <!-- bg-filter-contrast-{value} -->
+ <!-- value: 0, 1, 2, ..., 10 -->
+ <!-- bg-filter-brightness-{value} -->
+ <!-- value: 0, 1, 2, ..., 10 -->
+ <!-- bg-filter-hue-rotate-{value}deg -->
+ <!-- value: 0deg, 360deg, ..., 360deg -->
+ <!-- bg-filter-drop-shadow-{x}-{y}-{blur}-{spread}-{color} -->
+ <!-- x, y: смещение в пикселях -->
+ <!-- blur: радиус размытия в пикселях -->
+  <!-- spread: расширение эффекта в пикселях -->
+  <!-- color: цвет тени -->
+ <!-- bg-filter-blur-{value} -->
+  <!-- value: 0, 1, 2, ..., 200px -->
+ <!-- bg-filter-opacity-{0.1, 0.2, ..., 1} -->
+  <!-- 0 - непрозрачный, 1 - прозрачный -->
+ <!-- bg-filter-drop-shadow-{x}-{y}-{blur}-{spread}-{color} -->
+  <!-- x, y: смещение в пикселях -->
+  <!-- blur: ра��иус размытия в пикселях -->
+  <!-- spread: расширение эффекта в пикселях -->
+  <!-- color: цвет тени -->
+
+<!-- 16. ��он: blend-mode объединение-->
+ <!-- bg-blend-mode-normal -->
+ <!-- bg-blend-mode-multiply -->
+ <!-- bg-blend-mode-screen -->
+ <!-- bg-blend-mode-overlay -->
+ <!-- bg-blend-mode-darken -->
+ <!-- bg-blend-mode-lighten -->
+ <!-- bg-blend-mode-color-dodge -->
+ <!-- bg-blend-mode-color-burn -->
+ <!-- bg-blend-mode-hard-light -->
+ <!-- bg-blend-mode-soft-light -->
+ <!-- bg-blend-mode-difference -->
+ <!-- bg-blend-mode-exclusion -->
+ <!-- bg-blend-mode-hue -->
+ <!-- bg-blend-mode-saturation -->
+ <!-- bg-blend-mode-color -->
+ <!-- bg-blend-mode-luminosity -->
+
+<!-- 17. ��он: object-fit контроль размера изображения-->
+ <!-- object-fit-contain -->
+ <!-- object-fit-cover -->
+ <!-- object-fit-fill -->
+ <!-- object-fit-scale-down -->
+
+<!-- 18. ��он: object-position позиционирование изображения-->
+ <!-- object-position-center -->
+ <!-- object-position-top -->
+ <!-- object-position-bottom -->
+ <!-- object-position-left -->
+ <!-- object-position-right -->
+ <!-- object-position-{x}-{y} -->
+ <!-- x, y: координаты в пикселях -->
+
+<!-- 19. ��он: transform преобразования-->
+ <!-- transform-rotate-{value}deg -->
+ <!-- value: 0deg, 360deg, ..., 360deg -->
+ <!-- transform-scale-{value} -->
+ <!-- value: 0, 1, 2, ..., 10 -->
+ <!-- transform-skew-{x}-{y}deg -->
+ <!-- x, y: углы наклона в гра��усах -->
+ <!-- transform-translate-{x}-{y}px -->
+ <!-- x, y: смещение в пикселях -->
+ <!-- transform-matrix-{n1}-{n2}-{n3}-{n4}-{n5}-{n6} -->
+ <!-- n1, n2, n3, n4, n5, n6: коэффициенты матрицы -->
+
+<!-- 20. ��он: transform-origin позиционирование -->
+ <!-- transform-origin-center -->
+ <!-- transform-origin-top -->
+ <!-- transform-origin-bottom -->
+ <!-- transform-origin-left -->
+ <!-- transform-origin-right -->
+ <!-- transform-origin-{x}-{y} -->
+ <!-- x, y: координаты в пикселях -->
+
+<!-- 21. ��он: transition общее преобразование-->
+ <!-- transition -->
+ <!-- transition-property -->
+ <!-- transition-property-{property} -->
+ <!-- property: none, all, background-color, color, ... -->
+ <!-- transition-duration -->
+ <!-- transition-duration-{duration} -->
+ <!-- duration: 0s, 1s, 2s, ..., 10s -->
+ <!-- transition-timing-function -->
+ <!-- transition-timing-function-linear -->
+ <!-- transition-timing-function-ease -->
+ <!-- transition-timing-function-ease-in -->
+ <!-- transition-timing-function-ease-out -->
+ <!-- transition-timing-function-ease-in-out -->
+ <!-- transition-delay -->
+ <!-- transition-delay-{delay} -->
+ <!-- delay: 0s, 1s, 2s, ..., 10s -->
+
+<!-- 22. ��он: animation общее преобразование-->
+ <!-- animation -->
+ <!-- animation-name -->
+ <!-- animation-name-{name} -->
+ <!-- name: none, ... -->
+ <!-- animation-duration -->
+ <!-- animation-duration-{duration} -->
+ <!-- duration: 0s, 1s, 2s, ..., 10s -->
+ <!-- animation-timing-function -->
+ <!-- animation-timing-function-linear -->
+ <!-- animation-timing-function-ease -->
+ <!-- animation-timing-function-ease-in -->
+ <!-- animation-timing-function-ease-out -->
+ <!-- animation-timing-function-ease-in-out -->
+ <!-- animation-iteration-count -->
+ <!-- animation-iteration-count-{number} -->
+ <!-- number: 1, 2, ..., ∞ -->
+ <!-- animation-direction -->
+ <!-- animation-direction-normal -->
+ <!-- animation-direction-reverse -->
+ <!-- animation-direction-alternate -->
+ <!-- animation-direction-alternate-
+  reverse -->
+ <!-- animation-fill-mode -->
+  <!-- animation-fill-mode-none -->
+  <!-- animation-fill-mode-forwards -->
+  <!-- animation-fill-mode-backwards -->
+  <!-- animation-fill-mode-both -->
+ <!-- animation-play-state -->
+  <!-- animation-play-state-paused -->
+  <!-- animation-play-state-running -->
+ <!-- animation-delay -->
+  <!-- animation-delay-{delay} -->
+  <!-- delay: 0s, 1s, 2s, ..., 10s -->
+ <!-- animation-keyframes -->
+  <!-- animation-keyframes-{name} -->
+  <!-- @keyframes {name} {0% {property: value;}, 100% {property: value;}} -->
+
+<!-- 23. ��он: scroll-behavior скроллирование-->
+ <!-- scroll-behavior-auto -->
+ <!-- scroll-behavior-smooth -->
+
+<!-- 24. ��он: scroll-snap-type скроллирование-->
+ <!-- scroll-snap-type-none -->
+ <!-- scroll-snap-type-mandatory -->
+ <!-- scroll-snap-type-proximity -->
+
+<!-- 25. ��он: scroll-snap-align вертикальное позиционирование скролла-->
+ <!-- scroll-snap-align-start -->
+ <!-- scroll-snap-align-center -->
+ <!-- scroll-snap-align-end -->
+ <!-- scroll-snap-align-baseline -->
+
+<!-- 26. ��он: scroll-snap-stop-align горизонтальное позиционирование скролла-->
+ <!-- scroll-snap-stop-align-start -->
+ <!-- scroll-snap-stop-align-center -->
+ <!-- scroll-snap-stop-align-end -->
+ <!-- scroll-snap-stop-align-baseline -->
+
+<!-- 27. ��он: scroll-padding-top/bottom/left/right контроль границ скролла-->
+ <!-- scroll-padding-top -->
+ <!-- scroll-padding-bottom -->
+ <!-- scroll-padding-left -->
+ <!-- scroll-padding-right -->
+
+<!-- 28. ��он: scroll-margin-top/bottom/left/right контроль границ скролла-->
+ <!-- scroll-margin-top -->
+ <!-- scroll-margin-bottom -->
+ <!-- scroll-margin-left -->
+ <!-- scroll-margin-right -->
+
+<!-- 29. ��он: scroll-snap-destination контроль расположения скролла-->
+ <!-- scroll-snap-destination-{index} -->
+ <!-- index: 0, 1, 2, ..., �� -->
+
+<!-- 30. ��он: scroll-snap-coordinate контроль расположения скролла-->
+ <!-- scroll-snap-coordinate-{coordinate} -->
+ <!-- coordinate: 0%, 50%, 100%, ..., 100% -->
+
+<!-- 31. ��он: scroll-snap-mandatory контроль расположения скролла-->
+ <!-- scroll-snap-mandatory -->
+
+<!-- 32. ��он: scroll-snap-proximity контроль расположения скролла-->
+ <!-- scroll-snap-proximity-{distance}px -->
+ <!-- distance: 0px, 1px, 2px, ..., 100px -->
+
+<!-- 33. ��он: scroll-snap-type-x/y контроль расположения скролла-->
+ <!-- scroll-snap-type-x -->
+ <!-- scroll-snap-type-y -->
+
+<!-- 34. ��он: scroll-snap-align-x/y вертикальное/горизонтальное позиционирование скролла-->
+ <!-- scroll-snap-align-x-start -->
+ <!-- scroll-snap-align-x-center -->
+ <!-- scroll-snap-align-x-end -->
+ <!-- scroll-snap-align-x-baseline -->
+ <!-- scroll-snap-align-y-start -->
+ <!-- scroll-snap-align-y-center -->
+ <!-- scroll-snap-align-y-end -->
+ <!-- scroll-snap-align-y-baseline -->
+
+<!-- 35. ��он: scroll-snap-stop-align-x/y горизонтальное/вертикальное позиционирование скролла-->
+ <!-- scroll-snap-stop-align-x-start -->
+ <!-- scroll-snap-stop-align-x-center -->
+ <!-- scroll-snap-stop-align-x-end -->
+ <!-- scroll-snap-stop-align-x-baseline -->
+ <!-- scroll-snap-stop-align-y-start -->
+ <!-- scroll-snap-stop-align-y-center -->
+ <!-- scroll-snap-stop-align-y-end -->
+ <!-- scroll-snap-stop-align-y-baseline -->
+
+<!-- 36. ��он: scrollbar-width контроль ширины скроллбара-->
+ <!-- scrollbar-width-thin -->
+ <!-- scrollbar-width-medium -->
+ <!-- scrollbar-width-thick -->
+
+<!-- 37. ��он: scrollbar-color контроль цвета скроллбара-->
+ <!-- scrollbar-color-dark-color-light-color -->
+ <!-- scrollbar-color-dark-color-dark-color -->
+ <!-- dark-color: ���, ���, ��� -->
+ <!-- light-color: ���, ���, ��� -->
+
+<!-- 38. ��он: scrollbar-track-color контроль цвета полосы скроллбара-->
+ <!-- scrollbar-track-color-color -->
+ <!-- color: ���, ���, ��� -->
+
+<!-- 39. ��он: scrollbar-thumb-color контроль цвета ползунка скроллбара-->
+ <!-- scrollbar-thumb-color-color -->
+ <!-- color: ���, ���, ��� -->
+
+<!-- 40. ��он: scrollbar-width-auto контроль ширины скроллбара-->
+ <!-- scrollbar-width-auto -->
+
+<!-- 41. ��он: scrollbar-color-auto контроль цвета скроллбара-->
+ <!-- scrollbar-color-auto -->
+
+<!-- 42. ��он: scrollbar-track-color-auto контроль цвета полосы скроллбара-->
+ <!-- scrollbar-track-color-auto -->
+
+<!-- 43. ��он: scrollbar-thumb-color-auto контроль цвета ползунка скроллбара-->
+ <!-- scrollbar-thumb-color-auto -->
+
+<!-- 44. ��он: scrollbar-width-double контроль ширины скроллбара-->
+ <!-- scrollbar-width-double -->
+
+<!-- 45. ��он: scrollbar-color-double контроль цвета скроллбара-->
+ <!-- scrollbar-color-double-dark-color-light-color -->
+ <!-- scrollbar-color-double-dark-color-dark-color -->
+ <!-- dark-color: ���, ���, ��� -->
+ <!-- light-color: ���, ���, ��� -->
+
+<!-- 46. ��он: scrollbar-track-color-double контроль цвета полосы скроллбара-->
+ <!-- scrollbar-track-color-double-color -->
+ <!-- color: ���, ���, ��� -->
+
+<!-- 47. ��он: scrollbar-thumb-color-double контроль цвета ползунка скроллбара-->
+ <!-- scrollbar-thumb-color-double-color -->
+ <!-- color: ���, ���, ��� -->
+
+<!-- 48. ��он: scrollbar-width-groove контроль ширины скроллбара-->
+ <!-- scrollbar-width-groove -->
+
+<!-- 49. ��он: scrollbar-color-groove контроль цвета скроллбара-->
+ <!-- scrollbar-color-groove-dark-color-light-color -->
+ <!-- scrollbar-color-groove-dark-color-dark-color -->
+ <!-- dark-color: ���, ���, ��� -->
+ <!-- light-color: ���, ���, ��� -->
+
+<!-- 50. ��он: scrollbar-track-color-groove контроль цвета полосы скроллбара-->
+ <!-- scrollbar-track-color-groove-color -->
+ <!-- color: ���, ���, ��� -->
+
+<!-- 51. ��он: scrollbar-thumb-color-groove контроль цвета ползунка скроллбара-->
+ <!-- scrollbar-thumb-color-groove-color -->
+ <!-- color: ���, ���, ��� -->
+
+<!-- 52. ��он: scrollbar-width-none контроль ширины скроллбара-->
+ <!-- scrollbar-width-none -->
+
+<!-- 53. ��он: scrollbar-color-none контроль цвета скроллбара-->
+ <!-- scrollbar-color-none-color -->
+ <!-- color: ���, ���, ��� -->
