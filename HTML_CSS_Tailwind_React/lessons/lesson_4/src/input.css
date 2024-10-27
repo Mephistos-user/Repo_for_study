@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card {
+    @apply border-2 border-slate-500 rounded-3xl py-4 px-6
+}
+
+.tech-item {
+    @apply font-medium text-lg flex items-center gap-2 border border-slate-500 rounded-2xl px-3 py-2
+}
+
+.flex-item {
+    @apply rounded-3xl border-2 border-black dark:border-gray-400 py-3 px-5 grow hover:text-white hover:bg-black dark:hover:text-gray-900 dark:hover:bg-gray-400
+}
