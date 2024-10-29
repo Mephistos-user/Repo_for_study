@@ -7,122 +7,287 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="bg-[#ECECF4] text-zinc-900 min-h-screen overflow-x-hidden">
+    <div class="bg-[#ECECF4] dark:bg-zinc-900 text-zinc-900 dark:text-[#ECECF4] min-h-screen overflow-x-hidden">
         <div class="container mx-auto px-4">
             <!-- Main -->
-             <div class="pt-6 relative flex gap-4">
-                <!-- Left -->
-                <div class="flex-1">
-                    <header class="flex gap-2 items-center">
-                        <button class="uppercase border border-zinc-900 py-2 px-4 rounded-2xl">Тарифы</button>
-                        <button class="uppercase border border-zinc-900 py-2 px-4 rounded-2xl">Тарифы</button>
-                        <button class="uppercase border border-zinc-900 py-2 px-4 rounded-2xl">Тарифы</button>
-                    </header>
-                    <h1 class="my-5 font-medium text-[190px] flex flex-col">
+            <div class="pt-6 relative flex flex-col md:flex-row gap-4">
+            <!-- Left -->
+            <div class="md:flex-1">
+                <header class="hidden md:flex gap-2 items-center">
+                    <button class="header-button">Тарифы</button>
+                    <button class="header-button">Тарифы</button>
+                    <button class="header-button">Тарифы</button>
+                </header>
+                <div class="flex flex-row">
+                    <h1 class="my-5 font-medium text-[100px] sm:text-[150px] lg:text-[180px] flex flex-col">
                         <span class="-my-3 leading-none">TEN</span>
                         <span class="-my-3 leading-none">DER</span>
                         <span class="-my-3 leading-none">COM</span>
                     </h1>
+                    <button class="absolute flex self-start right-0 content-[url(../src/assets/burger.png)] md:hidden"></button>
                 </div>
-                <!-- Right -->
-                 <div class="flex-1 relative h-[730px]">
-                    <img class="absolute top-0 left-0 h-full max-w-none" src="./src/assets/MacBook Pro 14.png" alt="">
-                 </div>
-                 <button class="absolute bottom-0 left-0 bg-[#FF2D3D] rounded-xl py-2 px-24 text-sm font-semibold text-white">Buy plan</button>
-             </div>
-             <!-- Price -->
-             <div class="my-32">
-                <!-- Heading -->
-                <div class="flex flex-col items-center text-center">
-                    <span class="font-medium text-[#FF2D3D]">Pricing</span>
-                    <h2 class="mt-3 mb-6 font-bold text-5xl">Pricing plans for teams of all sizes</h2>
-                    <p class="text-lg text-[#96999D] w-9/12">Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer loyalty, and driving sales.</p>
+            </div>
+            <!-- Right -->
+                <div class="mockup-item">
+                <img class="absolute top-0 left-0 h-full max-w-none" src="./src/assets/MacBook Pro 14.png" alt="">
                 </div>
-                <!-- Cards -->
-                <div class="flex flex-col items-center my-16">
-                    <div class="rounded-full p-1 border border-zinc-900">
-                        <button class="bg-[#FF2D3D] border rounded-full text-sm font-semibold py-1 px-3">Monthly</button>
-                        <button class="rounded-full text-sm font-semibold opacity-60 py-1 px-3">Annually</button>
+                <button class="absolute bottom-0 left-0 buy-button-red">Buy plan</button>
+            </div>
+            <!-- Price -->
+            <div class="my-32">
+            <!-- Heading -->
+            <div class="flex flex-col items-center text-center">
+                <span class="font-medium text-superRed">Pricing</span>
+                <h2 class="mt-3 mb-6 font-bold text-5xl">Pricing plans for teams of all sizes</h2>
+                <p class="text-lg text-superGray w-9/12">Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer loyalty, and driving sales.</p>
+            </div>
+            <!-- Cards -->
+            <div class="flex flex-col items-center my-16">
+                <div class="rounded-full p-1 border border-zinc-900 dark:border-[#ECECF4]">
+                    <button class="bg-superRed border rounded-full text-sm font-semibold py-1 px-3">Monthly</button>
+                    <button class="rounded-full text-sm font-semibold opacity-60 py-1 px-3">Annually</button>
+                </div>
+                <div class="flex flex-col lg:flex-row gap-6 my-4 min-w-[320px]">
+                    <!-- Card -->
+                    <div class="border border-zinc-900 dark:border-[#ECECF4] py-6 px-8 rounded-2xl">
+                        <h4 class="font-semibold text-lg">Freelancer</h4>
+                        <p class="text-sm text-superGray">The essentials to provide your best work for clients.</p>
+                        <div class="my-3 flex justify-between items-center">
+                            <div class="">
+                                <span class="font-bold text-4xl">$15</span>
+                                <span class="text-sm text-superGray">/month</span>
+                            </div>
+                            <div class="">
+                                <span class="font-bold text-4xl">$144</span>
+                                <span class="text-sm text-superGray">/year</span>
+                            </div>
+                        </div>
+                        <button class="buy-button">Buy plan</button>
+                        <ul class="text-superGray my-4">
+                        <!-- <ul class="list-image-[url(../src/assets/mini.png)] text-superGray my-4"></ul> -->
+                            <li class="card-list-item">5 products</li>
+                            <li class="card-list-item">Up to 1,000 subscribers</li>
+                            <li class="card-list-item">Basic analytics</li>
+                            <li class="card-list-item">48-hour support response time</li>
+                            <li class="card-list-item">Basic analytics</li>
+                        </ul>
                     </div>
-                    <div class="flex gap-6 my-4 min-w-[320px]">
-                        <!-- Card -->
-                        <div class="border border-zinc-900 py-6 px-8 rounded-2xl">
-                            <h4 class="font-semibold text-lg">Freelancer</h4>
-                            <p class="text-sm text-[#96999D]">The essentials to provide your best work for clients.</p>
-                            <div class="my-3 flex justify-between items-center">
-                                <div class="">
-                                    <span class="font-bold text-4xl">$15</span>
-                                    <span class="text-sm text-[#96999D]">/month</span>
-                                </div>
-                                <div class="">
-                                    <span class="font-bold text-4xl">$144</span>
-                                    <span class="text-sm text-[#96999D]">/year</span>
-                                </div>
+                    <!-- Card -->
+                    <div class="border border-zinc-900 dark:border-[#ECECF4] py-6 px-8 rounded-2xl">
+                        <h4 class="font-semibold text-lg">Freelancer</h4>
+                        <p class="text-sm text-superGray">The essentials to provide your best work for clients.</p>
+                        <div class="my-3 flex justify-between items-center">
+                            <div class="">
+                                <span class="font-bold text-4xl">$15</span>
+                                <span class="text-sm text-superGray">/month</span>
                             </div>
-                            <button class="my-4 border border-[#FF2D3D] text-[#FF2D3D] py-2 px-6 w-full rounded-xl">Buy plan</button>
-                            <ul class="text-[#96999D] my-4">
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">5 products</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Up to 1,000 subscribers</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Basic analytics</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">48-hour support response time</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Basic analytics</li>
-                            </ul>
-                        </div>
-                        <!-- Card -->
-                        <div class="border border-zinc-900 py-6 px-8 rounded-2xl">
-                            <h4 class="font-semibold text-lg">Freelancer</h4>
-                            <p class="text-sm text-[#96999D]">The essentials to provide your best work for clients.</p>
-                            <div class="my-3 flex justify-between items-center">
-                                <div class="">
-                                    <span class="font-bold text-4xl">$15</span>
-                                    <span class="text-sm text-[#96999D]">/month</span>
-                                </div>
-                                <div class="">
-                                    <span class="font-bold text-4xl">$144</span>
-                                    <span class="text-sm text-[#96999D]">/year</span>
-                                </div>
+                            <div class="">
+                                <span class="font-bold text-4xl">$144</span>
+                                <span class="text-sm text-superGray">/year</span>
                             </div>
-                            <button class="my-4 border border-[#FF2D3D] text-[#FF2D3D] py-2 px-6 w-full rounded-xl">Buy plan</button>
-                            <ul class="text-[#96999D] my-4">
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">5 products</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Up to 1,000 subscribers</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Basic analytics</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">48-hour support response time</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Basic analytics</li>
-<!-- 
-                                <li class="my-2">5 products</li>
-                                <li class="my-2">Up to 1,000 subscribers</li>
-                                <li class="my-2">Basic analytics</li>
-                                <li class="my-2">48-hour support response time</li>
-                                <li class="my-2">Basic analytics</li> -->
-                            </ul>
                         </div>
-                        <!-- Card -->
-                        <div class="border border-zinc-900 py-6 px-8 rounded-2xl">
-                            <h4 class="font-semibold text-lg">Freelancer</h4>
-                            <p class="text-sm text-[#96999D]">The essentials to provide your best work for clients.</p>
-                            <div class="my-3 flex justify-between items-center">
-                                <div class="">
-                                    <span class="font-bold text-4xl">$15</span>
-                                    <span class="text-sm text-[#96999D]">/month</span>
-                                </div>
-                                <div class="">
-                                    <span class="font-bold text-4xl">$144</span>
-                                    <span class="text-sm text-[#96999D]">/year</span>
-                                </div>
+                        <button class="buy-button">Buy plan</button>
+                        <ul class="text-superGray my-4">
+                            <li class="card-list-item">5 products</li>
+                            <li class="card-list-item">Up to 1,000 subscribers</li>
+                            <li class="card-list-item">Basic analytics</li>
+                            <li class="card-list-item">48-hour support response time</li>
+                            <li class="card-list-item">Basic analytics</li>
+                        </ul>
+                    </div>
+                    <!-- Card -->
+                    <div class="border border-zinc-900 dark:border-[#ECECF4] py-6 px-8 rounded-2xl">
+                        <h4 class="font-semibold text-lg">Freelancer</h4>
+                        <p class="text-sm text-superGray">The essentials to provide your best work for clients.</p>
+                        <div class="my-3 flex justify-between items-center">
+                            <div class="">
+                                <span class="font-bold text-4xl">$15</span>
+                                <span class="text-sm text-superGray">/month</span>
                             </div>
-                            <button class="my-4 border border-[#FF2D3D] text-[#FF2D3D] py-2 px-6 w-full rounded-xl">Buy plan</button>
-                            <ul class="text-[#96999D] my-4">
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">5 products</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Up to 1,000 subscribers</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Basic analytics</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">48-hour support response time</li>
-                                <li class="before:content-[url(/src/assets/mini.png)] before:mr-2 my-2">Basic analytics</li>
-                            </ul>
+                            <div class="">
+                                <span class="font-bold text-4xl">$144</span>
+                                <span class="text-sm text-superGray">/year</span>
+                            </div>
                         </div>
+                        <button class="buy-button">Buy plan</button>
+                        <ul class="text-superGray my-4">
+                            <li class="card-list-item">5 products</li>
+                            <li class="card-list-item">Up to 1,000 subscribers</li>
+                            <li class="card-list-item">Basic analytics</li>
+                            <li class="card-list-item">48-hour support response time</li>
+                            <li class="card-list-item">Basic analytics</li>
+                        </ul>
                     </div>
                 </div>
-             </div>
+            </div>
+            </div>
+            <!-- grid -->
+            <div class="py-10 container mx-auto px-4">
+                <div class="flex flex-col my-4 md:grid md:grid-cols-2 xl:grid-cols-3 gap-2">
+                    <!-- Card_1 -->
+                    <div class="card">
+                        <span class="font-medium text-slate-500 text-lg">Доклад</span>
+                        <h4 class="font-bold text-2xl mb-4 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, est!</h4>
+                        <div class="flex gap-4 items-center my-4">
+                            <img class="w-12 h-12 object-cover rounded-full" src="./src/assets/image 9.png" alt="">
+                            <span class="text-xl">Andrew Sokolov</span>
+                            <span class="uppercase text-super-red">Lorem, ipsum.</span>
+                        </div>
+                        <div class="my-4 flex flex-wrap gap-2">
+                            <div class="tech-item">
+                                <span>ML</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                            <div class="tech-item">
+                                <span>DevOps</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card_2 long -->
+                    <div class="rounded-3xl overflow-hidden col-span-1 xl:col-span-2 relative hidden md:block">
+                        <img class="absolute top-0 left-0 min-w-full min-h-full object-cover" src="./src/assets/Frame 21.svg" alt="">
+                    </div>
+                    <!-- Card_3 -->
+                    <div class="card">
+                        <span class="font-medium text-slate-500 text-lg">Доклад</span>
+                        <h4 class="font-bold text-2xl mb-4 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, est!</h4>
+                        <div class="flex gap-4 items-center my-4">
+                            <img class="w-12 h-12 object-cover rounded-full" src="./src/assets/image 9.png" alt="">
+                            <span class="text-xl">Andrew Sokolov</span>
+                            <span class="uppercase text-slate-500">Lorem, ipsum.</span>
+                        </div>
+                        <div class="my-4 flex flex-wrap gap-2">
+                            <div class="tech-item">
+                                <span>ML</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                            <div class="tech-item">
+                                <span>DevOps</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card_4 -->
+                    <div class="card">
+                        <span class="font-medium text-slate-500 text-lg">Доклад</span>
+                        <h4 class="font-bold text-2xl mb-4 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, est!</h4>
+                        <div class="flex gap-4 items-center my-4">
+                            <img class="w-12 h-12 object-cover rounded-full" src="./src/assets/image 9.png" alt="">
+                            <span class="text-xl">Andrew Sokolov</span>
+                            <span class="uppercase text-slate-500">Lorem, ipsum.</span>
+                        </div>
+                        <div class="my-4 flex flex-wrap gap-2">
+                            <div class="tech-item">
+                                <span>ML</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                            <div class="tech-item">
+                                <span>DevOps</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card_5 -->
+                    <div class="card">
+                        <span class="font-medium text-slate-500 text-lg">Доклад</span>
+                        <h4 class="font-bold text-2xl mb-4 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, est!</h4>
+                        <div class="flex gap-4 items-center my-4">
+                            <img class="w-12 h-12 object-cover rounded-full" src="./src/assets/image 9.png" alt="">
+                            <span class="text-xl">Andrew Sokolov</span>
+                            <span class="uppercase text-slate-500">Lorem, ipsum.</span>
+                        </div>
+                        <div class="my-4 flex flex-wrap gap-2">
+                            <div class="tech-item">
+                                <span>ML</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                            <div class="tech-item">
+                                <span>DevOps</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card_6 long -->
+                    <div class="rounded-3xl overflow-hidden row-span-2 relative hidden md:block">
+                        <img class="absolute top-0 left-0 min-w-full min-h-full object-cover" src="./src/assets/Frame 26.svg" alt="">
+                    </div>
+                    <!-- Card_7 -->
+                    <div class="card">
+                        <span class="font-medium text-slate-500 text-lg">Доклад</span>
+                        <h4 class="font-bold text-2xl mb-4 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, est!</h4>
+                        <div class="flex gap-4 items-center my-4">
+                            <img class="w-12 h-12 object-cover rounded-full" src="./src/assets/image 9.png" alt="">
+                            <span class="text-xl">Andrew Sokolov</span>
+                            <span class="uppercase text-slate-500">Lorem, ipsum.</span>
+                        </div>
+                        <div class="my-4 flex flex-wrap gap-2">
+                            <div class="tech-item">
+                                <span>ML</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                            <div class="tech-item">
+                                <span>DevOps</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card_8 -->
+                    <div class="card">
+                        <span class="font-medium text-slate-500 text-lg">Доклад</span>
+                        <h4 class="font-bold text-2xl mb-4 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, est!</h4>
+                        <div class="flex gap-4 items-center my-4">
+                            <img class="w-12 h-12 object-cover rounded-full" src="./src/assets/image 9.png" alt="">
+                            <span class="text-xl">Andrew Sokolov</span>
+                            <span class="uppercase text-slate-500">Lorem, ipsum.</span>
+                        </div>
+                        <div class="my-4 flex flex-wrap gap-2">
+                            <div class="tech-item">
+                                <span>ML</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                            <div class="tech-item">
+                                <span>DevOps</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card_9 -->
+                    <div class="card">
+                        <span class="font-medium text-slate-500 text-lg">Доклад</span>
+                        <h4 class="font-bold text-2xl mb-4 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, est!</h4>
+                        <div class="flex gap-4 items-center my-4">
+                            <img class="w-12 h-12 object-cover rounded-full" src="./src/assets/image 9.png" alt="">
+                            <span class="text-xl">Andrew Sokolov</span>
+                            <span class="uppercase text-slate-500">Lorem, ipsum.</span>
+                        </div>
+                        <div class="my-4 flex flex-wrap gap-2">
+                            <div class="tech-item">
+                                <span>ML</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                            <div class="tech-item">
+                                <span>DevOps</span>
+                                <img class="dark:hidden" src="./src/assets/Vector 1.svg" alt="">
+                                <img class="hidden dark:block" src="./src/assets/Vector 1 gray.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
