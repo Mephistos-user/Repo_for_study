@@ -1,7 +1,8 @@
-import './news.css';
+// import './news.css';
+import styles from './news.module.css';
 
 export const News = () => {
-
+    console.log(styles, 'News')
     return (
         <>
             <div className="news-container">

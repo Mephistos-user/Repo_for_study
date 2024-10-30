@@ -1,7 +1,8 @@
-import './tabs.css';
+// import './tabs.css';
+import styles from './tabs.module.css';
 
 export const Tabs = () => {
-
+    console.log(styles, 'Tabs')
     return (
         <>
             <div className="tabs-container">

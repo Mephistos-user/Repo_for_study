@@ -1,7 +1,7 @@
 import './App.scss';
-import { News } from './components/News';
-import { Organs } from './components/Organs';
-import { Tabs } from './components/Tabs';
+import { News } from './components/news/News';
+import { Organs } from './components/organs/Organs';
+import { Tabs } from './components/tabs/Tabs';
 
 function App() {
   return (

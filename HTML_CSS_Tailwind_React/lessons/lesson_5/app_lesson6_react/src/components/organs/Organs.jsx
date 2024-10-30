@@ -1,7 +1,8 @@
-import './organs.css';
+// import './organs.css';
+import styles from './organs.module.css';
 
 export const Organs = () => {
-
+    console.log(styles, 'Organs')
     return (
         <>
             <div className="organs-container">
