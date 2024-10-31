@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+.item {
+  font-size: 14px;
+  border-radius: 27px;
+  padding: 13px 34px;
+  border: 1px solid white;
+  background: transparent;
+  color: inherit;
+}

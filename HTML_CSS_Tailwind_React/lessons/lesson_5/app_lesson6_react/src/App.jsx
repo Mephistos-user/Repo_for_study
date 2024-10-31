@@ -1,4 +1,4 @@
-import './App.scss';
+import './App.css';
 import { News } from './components/news/News';
 import { Organs } from './components/organs/Organs';
 import { Tabs } from './components/tabs/Tabs';
