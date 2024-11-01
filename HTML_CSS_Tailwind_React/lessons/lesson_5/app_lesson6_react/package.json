@@ -11,6 +11,8 @@
     "react-jss": "^10.10.0",
     "react-scripts": "5.0.1",
     "sass": "^1.80.4",
+    "style-components": "^0.1.0",
+    "styled-components": "^6.1.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

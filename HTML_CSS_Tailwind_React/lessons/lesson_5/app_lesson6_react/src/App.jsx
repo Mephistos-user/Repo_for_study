@@ -2,17 +2,18 @@ import './App.scss';
 import { News } from './components/news/News';
 import { Organs } from './components/organs/Organs';
 import { Tabs } from './components/tabs/Tabs';
+import { StyledContainer, StyledHeading } from './style';
 
 function App() {
   return (
     <>
-      <div className="container">
+      <StyledContainer >
         <Tabs />
-        <h2 className="block__heading">Архив новостей</h2>
+        <StyledHeading >Архив новостей</StyledHeading>
         <News />
-        <h2 className="block__heading">Организации</h2>
+        <StyledHeading >Организации</StyledHeading>
         <Organs />
-      </div>
+      </StyledContainer>
     </>
   );
 }
