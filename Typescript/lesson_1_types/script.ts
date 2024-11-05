@@ -55,7 +55,7 @@ let unknownObj: unknown;
 unknownObj = '12345';
 
 const someObj: string = anyObj; // можно сочитать
-const someUnknoun: string = unknownObj; // нельзя сочитать
+// const someUnknoun: string = unknownObj; // нельзя сочитать
 
 /**
  * Неявный any
@@ -65,7 +65,7 @@ function f3(a) {
     console.log(a)
 }
 /**
- * с яным any проблем нет
+ * с явным any проблем нет
  */
 function f4(a: any) {
     console.log(a)
@@ -85,9 +85,9 @@ function f7(a: string): void {
     console.log('Функция f7 с входным типом string и с выходным типом void - не возвращает ничего')
     return;
 }
-function f8(a: string): string {
-    console.log('Функция f8 с входным типом string и с выходным типом string - ДОЛЖНА возвращать строку (return), но не возвращает ничего')
-}
+// function f8(a: string): string {
+//     console.log('Функция f8 с входным типом string и с выходным типом string - ДОЛЖНА возвращать строку (return), но не возвращает ничего')
+// }
 function f9(a: string): string {
     console.log('Функция f9 с входным типом string и с выходным типом string - возвращает строку')
     return a;
@@ -104,17 +104,17 @@ function f10(a: number): string {
 let undefVar: undefined;
 let nullVar: null;
 
-undefVar = 'test'; // undefined не сочетается с другими типами
+// undefVar = 'test'; // undefined не сочетается с другими типами
 
 let someUndefined1: undefined = undefined;
-let someUndefined2: undefined = null; // undefined не сочетается с другими типами
-let someUndefined3: undefined = 0; // undefined не сочетается с другими типами
+// let someUndefined2: undefined = null; // undefined не сочетается с другими типами
+// let someUndefined3: undefined = 0; // undefined не сочетается с другими типами
 
 let someNull1: null;
 someNull1 = null;
-someNull1 = undefined; // null не сочетается с другими типами
-someNull1 = 0; // null не сочетается с другими типами
-someNull1 = false; // null не сочетается с другими типами
+// someNull1 = undefined; // null не сочетается с другими типами
+// someNull1 = 0; // null не сочетается с другими типами
+// someNull1 = false; // null не сочетается с другими типами
 
 
 /**
@@ -156,7 +156,7 @@ const returnArgument = (arg?: string): void => {
 }
 returnArgument(); // или ничего не передаем в функцию или передаем строку, другие типы в этом случае нельзя передавать
 returnArgument('test'); // или ничего не передаем в функцию или передаем строку, другие типы в этом случае нельзя передавать
-returnArgument(123); // или ничего не передаем в функцию или передаем строку, другие типы в этом случае нельзя передавать
+// returnArgument(123); // или ничего не передаем в функцию или передаем строку, другие типы в этом случае нельзя передавать
 
 /**
  * объединение типов
@@ -164,8 +164,8 @@ returnArgument(123); // или ничего не передаем в функц�
 
 let stringOrNumber: string | number = 'test';
 stringOrNumber = 123;
-stringOrNumber = false;
-stringOrNumber = {x: 123};
+// stringOrNumber = false;
+// stringOrNumber = {x: 123};
 
 const returnArgument2 = (arg?: string | number): string |number | void => {
     if (arg && typeof arg === 'string') {
@@ -207,7 +207,7 @@ let x: "hello" = "hello";
 // OK
 x = "hello";
 // ...
-x = "world"; // Error, 'world' is not assignable to 'hello'
+// x = "world"; // Error, 'world' is not assignable to 'hello'
 
 /**
  * Объединение литералов
@@ -221,7 +221,7 @@ printText("Hello, world!", "left");
 printText("Hello, world!", "right");
 printText("Hello, world!", "center");
 
-printText("Hello, world!", "top"); // Error, 'top' is not assignable to 'left' | 'right' | 'center'
+// printText("Hello, world!", "top"); // Error, 'top' is not assignable to 'left' | 'right' | 'center'
 
 /**
  * Переиспользуемые типы (алиасы)
@@ -261,8 +261,8 @@ const getTransactionById = (id: number): Transaction | undefined => {
 }
 console.log(`getTransactionById 1: ${getTransactionById(1)}`)
 console.log(`getTransactionById 2: ${getTransactionById(2)}`)
-console.log(`getTransactionById "": ${getTransactionById('')}`)
-console.log(`getTransactionById null: ${getTransactionById(null)}`)
+// console.log(`getTransactionById "": ${getTransactionById('')}`)
+// console.log(`getTransactionById null: ${getTransactionById(null)}`)
 
 /**
  * Утверждение типа (Type Assertions)
@@ -273,13 +273,13 @@ console.log(`getTransactionById null: ${getTransactionById(null)}`)
 
 let myCanvas = document.getElementById('main_canvas');
 // let myCanvas = document.getElementById('main_canvas') as HTMLCanvasElement;
-let myCanvas2 = document.getElementById('main_canvas') as string;
+// let myCanvas2 = document.getElementById('main_canvas') as string;
 
-const userId = 1 as string; // Преобразование типа "number" в тип "string" может привести к ошибке, так как ни один из типов не перекрывается с другим в достаточной степени. Если это сделано намеренно, сначала преобразуйте выражение в "unknown"
+// const userId = 1 as string; // Преобразование типа "number" в тип "string" может привести к ошибке, так как ни один из типов не перекрывается с другим в достаточной степени. Если это сделано намеренно, сначала преобразуйте выражение в "unknown"
 const userId2 = 1 as unknown as string; // теперь TS будет принудительно считать данную переменную строковой
 
 let someArray = ['foo', 'bar', 'baz'];
-someArray = ['foo', 'bar', 'baz', 21, true];
+// someArray = ['foo', 'bar', 'baz', 21, true];
 const someArray2 = ['foo', 'bar', 'baz', 21, true] as Array<any>;
 
 /**
@@ -287,7 +287,7 @@ const someArray2 = ['foo', 'bar', 'baz', 21, true] as Array<any>;
  */
 
 function liveDangerously (x?: number | null) {
-    console.log(x.toFixed()); // Возможно, "x" имеет значение null или undefined
+    // console.log(x.toFixed()); // Возможно, "x" имеет значение null или undefined
 
     // Не рекомендуется использовать Non-null Assertion Operator, поскольку он может привести к ошибке во время выполнения
     console.log(x!.toFixed());
