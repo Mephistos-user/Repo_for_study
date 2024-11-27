@@ -1,0 +1,289 @@
+Next.js: npx create-next-app@latest --ts
+
+Remix: npx create-remix@latest
+
+Gatsby: npm init gatsby --ts
+
+Expo: npx create-react-native-app -t with-typescript // Expo - фреймворк для React-native для написания мобильных приложений
+
+// Список полезных типов:
+message: string;
+count: number;
+disabled: boolean;
+
+/** array of a type */
+names: string[];
+
+/** string literals to specify exact string values, with a union type to join them together */
+status: "waiting" | "success";
+
+/** an object with known properties (but could have more at) */
+obj: {
+    id: string;
+    title: string;
+}
+
+/** array of objects! (common) */
+objArr: {
+    id: string;
+    title: string;
+}[];
+
+/** any non-primitive value - can't access any properties (NOT COMMON but useful as placeholder) */
+obj2: object;
+
+/** an interface with no required properties - (NOT COMMON, except for things like `React.Component<{}, State>` ) */
+obj3: {};
+
+/** a dict oblect with any number of properties of the same type */
+dict1: {
+    [key: string]: MyTypeHere;
+};
+dict2: Record<string, MyTypeHere>; // equivalent to dict1
+
+/** function that doesn't take or return anything (VERY COMMON) */
+onClick: () => void;
+
+/** function with named prop (VERY COMMON) */
+onChange: (id: number) => void;
+
+/** function type syntax that takes an event (VERY COMMON) */
+onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+/** alternative function type syntax that takes an event (VERY COMMON) */
+onClick(event: React.MouseEvent<HTMLButtonElement>): void;
+
+/** any function as long as you don't invoke it (not recommended) */
+onSomethong: Function;
+
+/** an optional prop (VERY COMMON!) */
+optional?: OptionalType;
+
+/** when passing down the state setter function returned by `useState` child component. `number` is an example, swap out with whatever the your state */
+setState: React.Dispatch<React.SetStateAction<number>>;
+
+export declare interface AppProps {
+    children?: React.ReactNode; // best, accepts everything React can render
+    childrenElements: JSX.Element; // A single React element
+    style?: React.CSSProperties; // to pass through the styles property
+    onChange?: React.FormEventHandler<HTMLInputElement>; // form events! the generic parameter is the type of event.target
+    // more info:
+    // https://react-typescript-cheetsheet.netlify.app/docs/advanced/patterns_by_usecase/#wrappingmirroring
+    props: Prop & React.ComponentPropsWithoutRef<"button">; // to impersonate all the props of a button element and explicitly no forwarding its ref
+    props2: Prop & React.ComponentPropsWithoutRef<MyButtonWithForwardedRef>; // to impersonate all the props of MyButtonWithForwardedRef and explicitly forwarding its ref
+}
+
+// Declaring type of props - see "Typing Component Props" for more examples
+type AppProps = {
+    message: string;
+}; /** use `interface` if exporting so that consumers can extend */
+
+// Easiest way to declare a Function Component; return type is inferred
+const App = ({ message}: AppProps): JSX.Element => <div>{message}</div>;
+
+// you can also inline the type declaration; eliminates naming the but looks repetitive
+const App = ({ message }: { message: string }) => <div>{message}</div>
+
+
+// ХУКИ:
+const [user, setUser] = useState<User | null>(null);
+// later...
+setUser(newUser);
+
+
+function useCallback<T extends Function>(callback: T, deps: DependencyList): T;
+//...
+const memoizedCallback = useCallback(
+    (param1: string, param2: number) => {
+        console.log(param1, param2)
+        return { ok: true }
+    },
+    [...],
+);
+
+
+import { useReducer } from "react";
+const initialState = { count: 0 };
+type ACTIONTYPE =
+    | { type: "increment"; payload: number }
+    | { type: "decrement"; payload: string };
+
+function reducer(
+    state: typeof initialState,
+    action: ACTIONTYPE,
+) {
+    switch (action.type) {
+        case "increment":
+            return { count: state.count + action.payload };
+        case "decrement":
+            return { count: state.count - Number(action.payload) };
+        default:
+            throw new Error();
+    }
+}
+
+function Counter() {
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    return (
+        <>
+            <p>Count: {state.count}</p>
+            <button onClick={
+                () => dispatch({
+                    type: "increment",
+                    payload: 5 })}>
+                +
+            </button>
+            <button onClick={
+                () => dispatch({
+                    type: "decrement",
+                    payload: "5" })}>
+                -
+            </button>
+        </>
+    );
+}
+
+
+function Foo() {
+    // - If possible, prefer as specific as possible. For example, HTMLDivElement
+    // is better than HTMLElement and way better than Element.
+    // - Technical-wise, this returns RefObject<HTMLDivElement>
+    const divRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        // Note that ref.current may be null. This is expected, because you may
+        // conditionally render the ref-ed element, or you may forget to assign it
+        if (!divRef.current) throw Error("divRef is not assigned");
+
+        // Now divRef.current is sure to be HTMLDivElement
+        doSomethingWith(divRef.current);
+    });
+
+    // Give the ref to an element so React can manage it for you
+    return <div ref={divRef}>etc</div>;
+}
+
+function Foo() {
+    // Technical-wise, this returns MutableRefObject<number | null>
+    const intervalRef = useRef<number | null>(null);
+
+    // You manage the ref yourself (that's why it's called MutableRefObject!)
+    useEffect(() => {
+        intervalRef.current = setInterval(...);
+        return () => clearInterval(intervalRef.current);
+    }, []);
+
+    // The ref is not passed to any element's "ref" prop
+    return <button onClick={/** clearInterval the ref */}>Cancel timer</button>;
+}
+
+// Типизация классовых компонентов
+/** типизация классовых компонентов произодится как правило с помощью типизации MyProps и MyState */
+
+type MyProps = { // using `interface` is also ok
+    message: string;
+};
+type MyState = {
+    count: number;
+};
+class App extends React.Component<MyProps, MyState> {
+    state: MyState = {
+        // optional second annotation for better type interface
+        count: 0,
+    };
+    render() {
+        return (
+            <div>
+                {this.props.message} {this.state.count}
+            </div>
+        );
+    }
+}
+
+// ЭВЕНТЫ:
+onClick = {(event) => {
+    /** event will be correctly typed authomatically */
+}}
+
+onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+    this.setState({ text: e.currentTarget.value });
+};
+
+<form
+    ref={formRef}
+    onSubmit = {(e: React.SyntheticEvent) => {
+        e.preventDefault();
+        const target = e.target as typeof e.target & {
+            email: { value: string };
+            password: { value: string };
+        };
+        const email = target.email.value; // typechecks!
+        const password = target.password.value // typechecks!
+        // etc...
+    }}
+>
+
+// КОНТЕКСТ:
+import { createContext } from "react";
+
+type ThemeContextType = "light" | "dark";
+const ThemeContext = createContext<ThemeContextType>("light");
+
+import { createContext } from "react";
+interface CurrentUserContextType {
+    username: string;
+}
+const CurrentUserContext = createContext<CurrentUserContextType | null>(null);
+
+
+// createRef/forwardRef:
+
+import { createRef, PureComponent } from "react";
+class CssThemeProvider extends PureComponent<Props> {
+    private rootRef = createRef<HTMLDivElement>(); // like this
+    render() {
+        return (
+            <div ref={this.rootRef}>
+                {this.props.children}
+            </div>
+        );
+    }
+}
+
+import { forwardRef, ReactNode } from "react";
+interface Props {
+    children?: ReactNode;
+    type: "submit" | "button";
+}
+export type Ref = HTMLButtonElement;
+
+export const FancyButton = forwardRef<Ref, Props>((props, ref) = > (
+    <button type={props.type} ref={ref} className="MyClassName">
+        {props.children}
+    </button>
+));
+
+// ПОРТАЛЫ:
+import { useEffect, useRef, ReactNode } from "react";
+import { createPortal } from "react-dom";
+
+const modalRoot = document.querySelector("#modal-root") as HTMLElement;
+
+type ModalProps = {
+    children: ReactNode;
+};
+
+function Modal({ children }: ModalProps) {
+    // create div element only using ref
+    const elRef = useRef<HTMLDivElement | null>(null);
+    if (!elRef.current) elRef.current = document.createElement("div");
+    // render modal into the div
+    useEffect(() => {
+        const el = elRef.current!; // not-null assertion because it will never be null
+        modalRoot.appendChild(el);
+        return () => {
+            modalRoot.removeChild(el);
+        };
+    }, []);
+    return createPortal(children, elRef.current);
+}
