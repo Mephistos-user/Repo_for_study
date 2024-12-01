@@ -1,0 +1,22 @@
+// генерируем файл package.json:
+1. npm init
+
+// устанавливаем expressjs с сщхранением зависимостей
+2. npm install express --save
+
+// генерируем файл tsconfig.json:
+3. npx tsc --init
+
+// установить typeorm для работы с данными:
+4. npm install typeorm --save
+   npm install reflect-metadata --save
+    
+   // импортировать в главном файле приложения app.ts:
+   import "reflect-metadata"
+
+   // устанавливаем требуемый пакет для работы с базой данных (например PostgreSQL):
+   npm install pg --save
+
+
+
+npm install --save-dev

@@ -1,17 +1,42 @@
+// tsconfig.json
+
 {
     "compilerOptions": {
-        "target": "es2015", // ES6
+        "lib": [ // "lib" - подключает набор библиотек деклараций
+            "es5",
+            "es6"
+        ],
+        "target": "es5", // ES5. В каком стандарте будут сгененрированы js файлы
         "rootDir": "./src",
-        "outDir": "./dist", // Куда компилировать (если папки не существует, компилятор ее создаст)
+        "outDir": "./build", // Куда компилировать (если папки не существует, компилятор ее создаст)
         "allowJs": true, // Позволяет компилировать JS-файлы
         "checkJs": true, // Проверяет типы в JS-файлах и сообщает об ошибках
         "sourceMap": true, // Создать source map файлы для готовых JS-файлов (хорошо подходит для дебага)
         "removeComments": true, // Игнорировать комментарии
-        "module": "commonjs",
+        "module": "commonjs", // настраивает тип модулей которые будут использованны в проекте
+        "moduleResolution": "node", //
+        "emitDecoratorMetadata": true, //
+        "experimentalDecorators": true, //
+        "esModuleInterop": true, // генерирует дополнительный код для совместимости
         "noEmitOnError": true, // Запрещает генерировать JS-файлы, если произошла ошибка компиляции
         "noImplicitAny": true, // Запрещает задавать неявный тип any
         "strict": true, // Строгий режим включен
     },
 
     "include": ["src"] // Компилировать файлы только из папки src
+}
+
+// package.json
+
+"scripts": {
+    "dev": "tsc-watch --onSuccess \"node build/server.js\"", // запуск: npm run dev - в случае успеха запускает сгенерированные файлы из папки build в режиме реального времени автоматически перекомпилируя файлы при изменениях и перезапуская сервер
+    "start": "ts-node src/index.ts", // 
+},
+
+"devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^16.11.10",
+    "tsc-watch": "^6.0.4", // программа которая может запускать проект в режиме вотчера, т.е. следить за изменениями файлов
+    "typescript": "4.5.2",
+    "ts-node": "10.7.0"
 }
