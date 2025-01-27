@@ -1,0 +1,32 @@
+body {
+    font-family: 'Open Sans', arial, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    color: #373737;
+    background: #f7f7f7;
+}
+header::after, .container::after, footer::after, .widget-post-list li:after, #subscribe:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 960px;
+    padding: 0 15px;
+}
+header {
+    width: 100%;
+    background: #6c5ce7;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    position: relative;
+}
+#menu {
+    float: left;
+}
+#menu li {
+    display: inline-block;
+    margin-right: 30px;
+}
