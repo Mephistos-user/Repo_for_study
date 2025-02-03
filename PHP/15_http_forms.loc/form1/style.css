@@ -1,0 +1,39 @@
+body {
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    font-size: 12pt;
+    color: #2A293E;
+}
+.contact-us {
+    background: #f8f4e5;
+    padding: 50px 100px;
+    border-top: 10px solid #f45702;
+}
+label, input, textarea {
+    display: block;
+    width: 100%;
+    font-size: 12pt;
+    line-height: 24pt;
+    font-family: "Spartan";
+}
+.radioB {
+    display: inline-block;
+    width: 10%;
+}
+input {
+    margin-bottom: 24pt;
+}
+h3 {
+    font-weight: normal;
+    font-size: 10pt;
+    line-height: 24pt;
+    font-style: italic;
+    margin: 0 0 0.5em 0;
+}
+span {
+    font-size: 8pt;
+}
