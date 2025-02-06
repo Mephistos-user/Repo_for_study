@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormHTML</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="contact-us">
+        <form name="userForm" method="POST" action="form.php">
+            <label for="">Ваше имя:<span class="error">*</span><input type="text" name="userName"></label>
+            <label for="">Ваш email:<span class="error">*</span><input type="email" name="userEmail"></label>
+            <label for="">Ваш пол:<span class="error">*</span></label><br>
+                Мужской<input class="radioB" type="radio" name="userGender" value="Мужской">
+                Женский<input class="radioB" type="radio" name="userGender" value="Женский"><br>
+            <label for="">Ваш комментарий:<textarea name="userMessage"></textarea></label>
+            <input type="submit" name="send" value="Отправить">
+        </form>
+    </div>
+</body>
+</html>
