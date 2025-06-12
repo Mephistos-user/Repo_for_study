@@ -1,6 +1,7 @@
-package org.example;
+package org.example.example1;
 import java.util.Arrays;
 
+// Замена медленных алгоритмов на более эффективные
 public class Main1 {
     public static int findMax(int[] arr) {
         if(arr == null || arr.length == 0) {
@@ -9,7 +10,7 @@ public class Main1 {
 
         // в этом случае алгоритм работает со сложностью O(n) - медленно
         /*
-        int max=arr[0];
+        int max = arr[0];
         for(int i = 1; i < arr.length; i++) {
             if (arr[i] > max) {
                 max = arr[i];
