@@ -1,4 +1,5 @@
 // 5. Принцип инверсии зависимостей (Dependency Inversion Principle - DIP):
+/*
 public class Button {
     private Lamp lamp;
     public Button() {
@@ -24,7 +25,7 @@ public class Lamp {
         return isOn;
     }
 }
-
+*/
 // Здесь класс Button непосредственно зависит от класса Lamp.
 // Рефакторинг:
 public interface Switchable {
