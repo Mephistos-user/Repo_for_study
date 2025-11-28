@@ -1,0 +1,5 @@
+C:\Users\Admin\Repositories\Repo_for_study\C#\C_sharp_examples\C_sharp_examples\obj\Debug\net8.0\C_sharp_examples.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Repositories\Repo_for_study\C#\C_sharp_examples\C_sharp_examples\obj\Debug\net8.0\C_sharp_examples.AssemblyInfoInputs.cache
+C:\Users\Admin\Repositories\Repo_for_study\C#\C_sharp_examples\C_sharp_examples\obj\Debug\net8.0\C_sharp_examples.AssemblyInfo.cs
+C:\Users\Admin\Repositories\Repo_for_study\C#\C_sharp_examples\C_sharp_examples\obj\Debug\net8.0\C_sharp_examples.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Repositories\Repo_for_study\C#\C_sharp_examples\C_sharp_examples\obj\Debug\net8.0\C_sharp_examples.sourcelink.json

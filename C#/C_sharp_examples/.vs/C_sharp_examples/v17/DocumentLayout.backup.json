@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Repositories\\Repo_for_study\\C#\\C_sharp_examples\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{35F4ABBD-55AB-4AC2-98FC-83C916D83687}|C_sharp_examples\\C_sharp_examples.csproj|c:\\users\\admin\\repositories\\repo_for_study\\c#\\c_sharp_examples\\c_sharp_examples\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35F4ABBD-55AB-4AC2-98FC-83C916D83687}|C_sharp_examples\\C_sharp_examples.csproj|solutionrelative:c_sharp_examples\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35F4ABBD-55AB-4AC2-98FC-83C916D83687}|C_sharp_examples\\C_sharp_examples.csproj|c:\\users\\admin\\repositories\\repo_for_study\\c#\\c_sharp_examples\\c_sharp_examples\\1_methods\\methods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35F4ABBD-55AB-4AC2-98FC-83C916D83687}|C_sharp_examples\\C_sharp_examples.csproj|solutionrelative:c_sharp_examples\\1_methods\\methods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Methods.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Repositories\\Repo_for_study\\C#\\C_sharp_examples\\C_sharp_examples\\1_Methods\\Methods.cs",
+              "RelativeDocumentMoniker": "C_sharp_examples\\1_Methods\\Methods.cs",
+              "ToolTip": "C:\\Users\\Admin\\Repositories\\Repo_for_study\\C#\\C_sharp_examples\\C_sharp_examples\\1_Methods\\Methods.cs",
+              "RelativeToolTip": "C_sharp_examples\\1_Methods\\Methods.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T10:02:37.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Repositories\\Repo_for_study\\C#\\C_sharp_examples\\C_sharp_examples\\Program.cs",
+              "RelativeDocumentMoniker": "C_sharp_examples\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Repositories\\Repo_for_study\\C#\\C_sharp_examples\\C_sharp_examples\\Program.cs",
+              "RelativeToolTip": "C_sharp_examples\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T09:59:57.051Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
